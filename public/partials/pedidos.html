@@ -8,19 +8,18 @@
 
     <!-- CONTEÚDO -->
     <div class="col-md-12">
-
-      <div class="thumbnail pedido">
+      <div class="thumbnail pedido" ng-repeat="pedido in pedidos">
         <div class="caption">
-          <h5><b>Cliente</b>: Tiago lima</h5>
-          <h5><b>Telefone</b>:2585-5522</h5>
-          <h5><b>Celular</b>: 99525-5522</h5>
-          <h5><b>Endereço</b>: Av. Oliveira freire, 255</h5>
-          <h5><b>Ponto de ref.</b>: Ao lado do mercado extra.</h5>
+          <h5><b>Cliente</b>: {{pedido.nome}}</h5>
+          <h5><b>Telefone</b>: {{pedido.telefone}}</h5>
+          <h5><b>Celular</b>: {{pedido.celular}}</h5>
+          <h5><b>Endereço</b>: {{pedido.endereco}}</h5>
+          <h5><b>Ponto de ref.</b>: {{pedido.referencia}}</h5>
           <blockquote>
             1 pizza de calabresa, 1 pizza de frango com catupiry, 1 coca
           </blockquote>
           <p>
-            <a href="#" class="btn btn-default btn-block" role="button">Fazer</a>
+            <button type="button" class="btn btn-default btn-block" ng-click="fazer(pedido)">Fazer</a>
           </p>
         </div>
       </div>
@@ -36,11 +35,11 @@
 
     <div class="col-md-12">
 
-      <div class="thumbnail fazer-pedido">
+      <div class="thumbnail fazer-pedido" ng-repeat="fazer in fazendo">
         <div class="caption">
-          <h5><b>Tiago Lima </b></h5>
+          <h5><b>{{fazer.nome}}</b></h5>
           <p>
-            <a href="#" class="btn btn-default btn-block" role="button">Entregar</a>
+            <button type="button" class="btn btn-default btn-block">Entregar</a>
           </p>
         </div>
       </div>
@@ -68,7 +67,7 @@
             1 pizza de calabresa, 1 pizza de frango com catupiry, 1 coca
           </blockquote>
           <p>
-            <a href="#" class="btn btn-default btn-block" role="button">Finalizar</a>
+            <button type="button" class="btn btn-danger btn-block">Finalizar</a>
           </p>
         </div>
       </div>

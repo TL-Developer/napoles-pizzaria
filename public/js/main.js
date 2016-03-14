@@ -1,4 +1,4 @@
-angular.module('napoles',['ngRoute','ngResource']).config(function($routeProvider){
+angular.module('napoles', ['ngRoute','ngResource']).config(function($routeProvider){
 
   $routeProvider.when('/pedidos', {
     templateUrl: 'partials/pedidos.html',
