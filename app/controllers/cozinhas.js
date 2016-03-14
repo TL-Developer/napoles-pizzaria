@@ -1,4 +1,4 @@
-var pedidos = [
+var cozinhas = [
   {
     nome: 'Tiago lima',
     telefone: '2585-5522',
@@ -14,8 +14,8 @@ module.exports = function(app){
 
   var controller = {};
 
-  controller.getPedidos = function(req, res){
-    res.json(pedidos);
+  controller.getCozinhas = function(req, res){
+    res.json(cozinhas);
   };
 
   return controller;

@@ -1,9 +1,11 @@
 <div class="row">
 
-  <div class="col-md-5 col-sm-5">
+  <div class="col-md-4 col-sm-4">
 
     <div class="col-md-12">
-      <h2 class="text-center area">Pedidos</h2>
+      <h2 class="text-center area">
+        <i class="fa fa-desktop fa-2x"></i>
+      </h2>
     </div>
 
     <!-- CONTEÚDO -->
@@ -16,10 +18,11 @@
           <h5><b>Endereço</b>: {{pedido.endereco}}</h5>
           <h5><b>Ponto de ref.</b>: {{pedido.referencia}}</h5>
           <blockquote>
-            1 pizza de calabresa, 1 pizza de frango com catupiry, 1 coca
+            {{pedido.pedido}}
           </blockquote>
+          <h3 class="text-center area">Valor total: R${{pedido.valor}}</h3>
           <p>
-            <button type="button" class="btn btn-default btn-block" ng-click="fazer(pedido)">Fazer</a>
+            <button type="button" class="btn btn-lg btn-default btn-block" ng-click="fazer(pedido)">Ir para cozinha!</a>
           </p>
         </div>
       </div>
@@ -28,46 +31,58 @@
   </div>
 
 
-  <div class="col-md-2 col-sm-2">
+  <div class="col-md-4 col-sm-4">
     <div class="col-md-12">
-      <h2 class="text-center area">Fazendo</h2>
+      <h3 class="text-center area">
+        <i class="fa fa-cutlery fa-3x"></i>
+      </h3>
     </div>
 
     <div class="col-md-12">
 
-      <div class="thumbnail fazer-pedido" ng-repeat="fazer in fazendo">
+      <div class="thumbnail fazer-pedido" ng-repeat="cozinha in cozinhas">
         <div class="caption">
-          <h5><b>{{fazer.nome}}</b></h5>
-          <p>
-            <button type="button" class="btn btn-default btn-block">Entregar</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="col-md-5 col-sm-5">
-
-    <div class="col-md-12">
-      <h2 class="text-center area">Entrega</h2>
-    </div>
-
-    <div class="col-md-12">
-
-      <div class="thumbnail entrega-pedido">
-        <div class="caption">
-          <h5><b>Cliente</b>: Tiago lima</h5>
-          <h5><b>Telefone</b>:2585-5522</h5>
-          <h5><b>Celular</b>: 99525-5522</h5>
-          <h5><b>Endereço</b>: Av. Oliveira freire, 255</h5>
-          <h5><b>Ponto de ref.</b>: Ao lado do mercado extra.</h5>
+          <h5><b>Cliente</b>: {{cozinha.nome}}</h5>
+          <h5><b>Telefone</b>: {{cozinha.telefone}}</h5>
+          <h5><b>Celular</b>: {{cozinha.celular}}</h5>
+          <h5><b>Endereço</b>: {{cozinha.endereco}}</h5>
+          <h5><b>Ponto de ref.</b>: {{cozinha.referencia}}</h5>
           <blockquote>
-            1 pizza de calabresa, 1 pizza de frango com catupiry, 1 coca
+            {{cozinha.pedido}}
           </blockquote>
           <p>
-            <button type="button" class="btn btn-danger btn-block">Finalizar</a>
+            <button type="button" class="btn btn-warning btn-lg btn-block">Pronto para entrega!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-4 col-sm-4">
+
+    <div class="col-md-12">
+      <h2 class="text-center area">
+        <i class="fa fa-motorcycle fa-2x"></i>
+
+      </h2>
+    </div>
+
+    <div class="col-md-12">
+
+      <div class="thumbnail entrega-pedido" ng-repeat="entrega in entregas">
+        <div class="caption">
+          <h5><b>Cliente</b>: {{entrega.nome}}</h5>
+          <h5><b>Telefone</b>: {{entrega.telefone}}</h5>
+          <h5><b>Celular</b>: {{entrega.celular}}</h5>
+          <h5><b>Endereço</b>: {{entrega.endereco}}</h5>
+          <h5><b>Ponto de ref.</b>: {{entrega.referencia}}</h5>
+          <blockquote>
+            {{entrega.pedido}}
+          </blockquote>
+          <p>
+            <button type="button" class="btn btn-danger btn-lg btn-block">Finalizar pedido!</a>
           </p>
         </div>
       </div>
