@@ -1,21 +1,32 @@
-var cozinhas = [
-  {
-    nome: 'Tiago lima',
-    telefone: '2585-5522',
-    celular: '99525-5522',
-    endereco: 'Av. Oliveira freire, 255',
-    referencia: 'Ao lado do mercado extra.',
-    pedido: '1 pizza de calabresa, 1 pizza de frango com catupiry, 1 coca',
-    valor: 250
-  }
-];
+var cozinhas = [];
 
 module.exports = function(app){
 
-  var controller = {};
+  var controller = {}
+    , Cozinhas = app.models.cozinhas;
 
   controller.getCozinhas = function(req, res){
-    res.json(cozinhas);
+    Cozinhas.find().exec().then(function(cozinhas){
+      res.status(200).json(cozinhas);
+    },
+    function(erro){
+      console.error(erro);
+      res.status(500).json(erro);
+    });;
+  };
+
+  controller.createCozinha = function(req, res){
+    var cozinha = req.body;
+
+    Cozinhas.create(cozinha).then(function(cozinha){
+      res.status(201).json(cozinha);
+      app.get('io').emit('novoPedidoCozinha', cozinha);
+    },
+    function(erro){
+      console.log(erro);
+      console.log('Não foi possível enviar o pedido.');
+      res.status(500).json(erro);
+    });
   };
 
   return controller;
