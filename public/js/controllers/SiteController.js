@@ -32,7 +32,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
 
     $.ajax({
       method: "POST",
-      url: 'https://napoles-pizzaria.heroku.com/api/pedidos',
+      url: 'https://napoles-pizzaria.heroku.com/pedidos',
       data: {
         nome: 'tiago lima',
         telefone: '255555555',
