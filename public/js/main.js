@@ -1,12 +1,6 @@
 angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function($routeProvider, $httpProvider){
 
-  $httpProvider.defaults.useXDomain = true;
-  delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
-  $httpProvider.defaults.headers.common = {};
-  $httpProvider.defaults.headers.post = {};
-  $httpProvider.defaults.headers.put = {};
-  $httpProvider.defaults.headers.patch = {};
+  $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
   $routeProvider.when('/pedidos', {
     templateUrl: 'partials/pedidos.html',
