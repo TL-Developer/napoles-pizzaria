@@ -4,7 +4,9 @@ module.exports = function(app){
 
   app.route('/api/cozinhas')
     .get(controller.getCozinhas)
-    .post(controller.createCozinha)
+    .post(controller.createCozinha);
+
+  app.route('/api/cozinhas/:id')
     .delete(controller.deleteCozinha);
 
 };

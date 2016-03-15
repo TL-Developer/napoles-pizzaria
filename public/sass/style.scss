@@ -60,3 +60,12 @@ blockquote{
   border-radius: 5px;
   border: 1px solid white;
 }
+
+.mensagem-feedback {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.mensagem-feedback.ng-hide {
+  opacity:0;
+}

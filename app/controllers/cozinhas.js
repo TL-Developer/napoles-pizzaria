@@ -10,7 +10,7 @@ module.exports = function(app){
     function(erro){
       console.error(erro);
       res.status(500).json(erro);
-    });;
+    });
   };
 
   controller.createCozinha = function(req, res){

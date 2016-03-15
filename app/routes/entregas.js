@@ -6,4 +6,7 @@ module.exports = function(app){
     .get(controller.getEntregas)
     .post(controller.createEntregas);
 
+  app.route('/api/entregas/:id')
+    .delete(controller.deleteEntrega);
+
 };

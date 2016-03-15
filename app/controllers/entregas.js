@@ -27,16 +27,16 @@ module.exports = function(app){
     });
   };
 
-  // controller.deleteEntregas = function(req, res){
-  //   var _id = req.params.id;
+  controller.deleteEntrega = function(req, res){
+    var _id = req.params.id;
 
-  //   Cozinhas.remove({"_id": _id}).exec().then(function(){
-  //     res.end();
-  //   },
-  //   function(erro){
-  //     return console.error(erro);
-  //   });
-  // };
+    Entregas.remove({"_id": _id}).exec().then(function(){
+      res.end();
+    },
+    function(erro){
+      return console.error(erro);
+    });
+  };
 
   return controller;
 
