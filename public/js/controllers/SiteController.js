@@ -16,7 +16,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
       data: form.data
     };
 
-    $http.post('http://localhost:3000/api/pedidos', pedido).success(function(data, status){
+    $http.post('http://napoles-pizzaria.heroku.com/api/pedidos', pedido).success(function(data, status){
       $scope.mensagem = 'Enviado para cozinha!';
       $timeout(function(){
         $scope.mensagem = '';
