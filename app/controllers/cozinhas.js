@@ -1,5 +1,3 @@
-var cozinhas = [];
-
 module.exports = function(app){
 
   var controller = {}
@@ -26,6 +24,17 @@ module.exports = function(app){
       console.log(erro);
       console.log('Não foi possível enviar o pedido.');
       res.status(500).json(erro);
+    });
+  };
+
+  controller.deleteCozinha = function(req, res){
+    var _id = req.params.id;
+
+    Cozinhas.remove({"_id": _id}).exec().then(function(){
+      res.end();
+    },
+    function(erro){
+      return console.error(erro);
     });
   };
 

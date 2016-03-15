@@ -1,24 +1,42 @@
-// var entregas = [
-//   {
-//     nome: 'Tiago lima',
-//     telefone: '2585-5522',
-//     celular: '99525-5522',
-//     endereco: 'Av. Oliveira freire, 255',
-//     referencia: 'Ao lado do mercado extra.',
-//     pedido: '1 pizza de calabresa, 1 pizza de frango com catupiry, 1 coca',
-//     valor: 250,
-//     hora: '08:40',
-//     data: '15/03/2016'
-//   }
-// ];
-
 module.exports = function(app){
 
-  var controller = {};
+  var controller = {}
+    , Entregas = app.models.entregas;
 
   controller.getEntregas = function(req, res){
-    // res.json(entregas);
+    Entregas.find().exec().then(function(entregas){
+      res.status(200).json(entregas);
+    },
+    function(erro){
+      console.error(erro);
+      res.status(500).json(erro);
+    });;
   };
+
+  controller.createEntregas = function(req, res){
+    var entregas = req.body;
+
+    Entregas.create(entregas).then(function(entregas){
+      res.status(201).json(entregas);
+      app.get('io').emit('novoPedidoEntrega', entregas);
+    },
+    function(erro){
+      console.log(erro);
+      console.log('Não foi possível enviar o pedido.');
+      res.status(500).json(erro);
+    });
+  };
+
+  // controller.deleteEntregas = function(req, res){
+  //   var _id = req.params.id;
+
+  //   Cozinhas.remove({"_id": _id}).exec().then(function(){
+  //     res.end();
+  //   },
+  //   function(erro){
+  //     return console.error(erro);
+  //   });
+  // };
 
   return controller;
 

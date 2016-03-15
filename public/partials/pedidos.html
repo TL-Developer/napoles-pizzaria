@@ -23,7 +23,7 @@
           </blockquote>
           <h3 class="text-center area">Valor total: R${{pedido.valor}}</h3>
           <p>
-            <button type="button" class="btn btn-lg btn-default btn-block" ng-click="cozinha(pedido)">Ir para cozinha!</a>
+            <button type="button" class="btn btn-lg btn-default btn-block" ng-click="toCozinha(pedido)">Ir para cozinha!</a>
           </p>
         </div>
       </div>
@@ -54,7 +54,7 @@
           </blockquote>
           <h3 class="text-center area">Valor total: R${{cozinha.valor}}</h3>
           <p>
-            <button type="button" class="btn btn-warning btn-lg btn-block">Pronto para entrega!</a>
+            <button type="button" class="btn btn-warning btn-lg btn-block" ng-click="toEntrega(cozinha)">Pronto para entrega!</a>
           </p>
         </div>
       </div>

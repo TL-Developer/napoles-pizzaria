@@ -31,17 +31,7 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http', fun
     listaCozinhas();
   });
 
-  $scope.cozinha = function(pedido){
-
-    // $http.delete('/pedidos/' + pedido._id)
-    // .then(
-    //    function(response){
-    //     listaPedidos();
-    //    },
-    //    function(response){
-    //      console.log('Não foi possível remover o pedido');
-    //    }
-    // );
+  $scope.toCozinha = function(pedido){
 
     $http.post('/api/cozinhas', pedido).success(function(data, status){
       console.log('Enviado para cozinha!');
@@ -57,6 +47,28 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http', fun
     $http.get('/api/entregas').then(function(entrega){
       $scope.entregas = entrega.data;
     });
+  };
+  listaEntregas();
+  socket.on('novoPedidoEntrega', function(cozinha){
+    listaEntregas();
+  });
+
+  $scope.toEntrega = function(pedido){
+
+    $http.post('/api/entregas', pedido).success(function(data, status){
+      console.log('Enviado para entrega!');
+    });
+
+    // $http.delete('/api/cozinhas/' + pedido._id)
+    // .then(
+    //    function(response){
+    //     listaCozinhas();
+    //     console.log('Pedido da cozinha removido com sucesso!');
+    //    },
+    //    function(response){
+    //      console.log('Não foi possível remover o pedido da cozinha');
+    //    }
+    // );
   };
 
 }]);
