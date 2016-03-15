@@ -4,7 +4,8 @@ var express = require('express')
   , methodOverride = require('method-override')
   , helmet = require('helmet')
   , load = require('express-load')
-  , favicon = require('static-favicon');
+  , favicon = require('static-favicon')
+  , cors = require('cors');
 
 module.exports = function(){
   var app = express();
@@ -18,6 +19,7 @@ module.exports = function(){
     next();
   });
 
+  app.use(cors());
 
   app.use(express.static('./public'));
   app.use(favicon());
