@@ -9,6 +9,8 @@
 </head>
 <body>
 
+  <button class="enviar">enviar</button>
+
   <div ng-view></div>
 
 
@@ -33,6 +35,40 @@
 
   <script>
     var socket = io();
+
+    $('.enviar').on('click', function(){enviarPedido()});
+
+    var enviarPedido = function(form){
+
+    var data = new Date()
+      , mes = data.getDay()
+      , dia = data.getMonth()
+      , ano = data.getFullYear()
+      , hora = data.getHours()
+      , minutos = data.getMinutes();
+
+    $.ajax({
+      method: "POST",
+      url: 'https://napoles-pizzaria.heroku.com/api/pedidos',
+      data: {
+        nome: 'tiago lima',
+        telefone: '255555555',
+        celular: '999999999',
+        endereco: 'av.oliveira freire, 25',
+        referencia: 'ao lado do extra',
+        pedido: '1 pizza de calabresa com catupiry',
+        valor: '250',
+        hora: '17:56',
+        data: '15/03/2016'
+      },
+      success: function(resposta){
+
+      },
+      error: function(erro){
+      }
+    });
+
+  };
   </script>
 </body>
 </html>
