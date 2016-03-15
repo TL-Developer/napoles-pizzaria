@@ -1,6 +1,4 @@
-angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function($routeProvider, $httpProvider){
-
-  $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function($routeProvider){
 
   $routeProvider.when('/pedidos', {
     templateUrl: 'partials/pedidos.html',
