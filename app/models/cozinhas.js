@@ -41,7 +41,7 @@ module.exports = function(){
     },
     created: {
       type: Date,
-      default: Date.now
+      default: new Date().toUTCString()
     }
   });
 

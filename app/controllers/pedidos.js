@@ -1,16 +1,4 @@
-// var pedidos = [
-//   {
-//     nome: 'Tiago lima',
-//     telefone: '2585-5522',
-//     celular: '99525-5522',
-//     endereco: 'Av. Oliveira freire, 255',
-//     referencia: 'Ao lado do mercado extra.',
-//     pedido: '1 pizza de calabresa, 1 pizza de frango com catupiry, 1 coca',
-//     valor: '250',
-//     hora: '08:40',
-//     data: '15/03/2016'
-//   }
-// ];
+var moment = require('moment');
 
 module.exports = function(app){
 
@@ -30,7 +18,17 @@ module.exports = function(app){
   controller.createPedidos = function(req, res){
     var pedido = req.body;
 
-    Pedidos.create(pedido).then(function(pedido){
+    Pedidos.create({
+      nome: pedido.nome,
+      telefone: pedido.telefone,
+      celular: pedido.celular,
+      endereco: pedido.endereco,
+      referencia: pedido.referencia,
+      pedido: pedido.pedido,
+      valor: pedido.valor,
+      hora: moment().locale('pt-br').format('LT'),
+      data: moment().locale('pt-br').format('L')
+    }).then(function(pedido){
       res.status(201).json(pedido);
       app.get('io').emit('novoPedido', pedido);
     },

@@ -22,7 +22,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     };
 
     // https://napoles-pizzaria.herokuapp.com/api/pedidos
-    $http.post('/api/pedidos', pedido).success(function(data, status){
+    $http.post('https://napoles-pizzaria.herokuapp.com/api/pedidos', pedido).success(function(data, status){
       $scope.mensagem = 'Enviado para cozinha!';
       $timeout(function(){
         $scope.mensagem = '';
