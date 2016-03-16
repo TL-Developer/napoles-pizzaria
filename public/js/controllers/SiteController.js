@@ -18,7 +18,9 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
       endereco: form.endereco,
       referencia: form.referencia,
       pedido: form.pedido,
-      valor: form.valor
+      valor: form.valor,
+      bairro: form.bairro,
+      cep: form.cep
     };
 
     // https://napoles-pizzaria.herokuapp.com/api/pedidos

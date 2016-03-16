@@ -134,4 +134,6 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http','$ti
     $scope.rmPedidoEntrega(pedido);
   };
 
+
+
 }]);

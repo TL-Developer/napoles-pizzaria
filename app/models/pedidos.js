@@ -39,6 +39,14 @@ module.exports = function(){
       type: String,
       required: true
     },
+    bairro: {
+      type: String,
+      required: true
+    },
+    cep: {
+      type: String,
+      required: true
+    },
     created: {
       type: Date,
       default: new Date().toUTCString()
