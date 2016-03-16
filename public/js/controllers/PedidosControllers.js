@@ -12,7 +12,6 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http','$ti
   var listaPedidos = function(){
     $http.get('/api/pedidos').then(function(pedidos){
       $scope.pedidos = pedidos.data;
-      console.log($scope.pedidos);
     });
   };
   listaPedidos();
