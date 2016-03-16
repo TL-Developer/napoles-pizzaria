@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nápoles Pizzaria</title>
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/hille.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        html,h1{
+            margin:0;
+            padding: 0;
+        }
+        #colunas div h3 {
+            font-weight: 100;
+        }
+        #colunas h1 {
+            font-weight:300;
+            padding:10px 0;
+        }
+        .colunaPedidos, .colunaCozinha {
+            border-right:1px solid rgba(255,255,255,.18);
+        }
+        .item-cardapio small {
+            width: 100%;
+            display: block;
+            clear: both;
+        }
+        
+        /* NAV */
+        .open {
+            position: fixed;
+            top: 12px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            display: block;
+            cursor: pointer;
+            -webkit-transition: opacity 0.2s linear;
+            transition: opacity 0.2s linear;
+        }
+        .open:hover {
+            opacity: 0.8;
+        }
+        .open span {
+            display: block;
+            float: left;
+            clear: both;
+            height: 4px;
+            width: 40px;
+            border-radius: 40px;
+            background-color: #fff;
+            position: absolute;
+            right: 3px;
+            top: 3px;
+            overflow: hidden;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+        .open span:nth-child(1) {
+            margin-top: 10px;
+            z-index: 9;
+        }
+        .open span:nth-child(2) {
+            margin-top: 25px;
+        }
+        .open span:nth-child(3) {
+          margin-top: 40px;
+        }
+
+        .sub-menu {
+          -webkit-transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          height: 0;
+          width: 0;
+          right: 0;
+          top: 0;
+          position: absolute;
+          background: rgba(255, 255, 255, 0.56);
+          border-radius: 50%;
+          z-index: 18;
+          overflow: hidden;
+        }
+        .sub-menu li {
+          display: block;
+          float: right;
+          clear: both;
+          height: auto;
+          margin-right: -160px;
+          -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .sub-menu li:first-child {
+          margin-top: 180px;
+        }
+        .sub-menu li:nth-child(1) {
+          -webkit-transition-delay: 0.05s;
+        }
+        .sub-menu li:nth-child(2) {
+          -webkit-transition-delay: 0.10s;
+        }
+        .sub-menu li:nth-child(3) {
+          -webkit-transition-delay: 0.15s;
+        }
+        .sub-menu li:nth-child(4) {
+          -webkit-transition-delay: 0.20s;
+        }
+        .sub-menu li:nth-child(5) {
+          -webkit-transition-delay: 0.25s;
+        }
+        .sub-menu li a {
+          color: #009688;
+          font-weight: 100;
+          font-size: 1.8em;
+          width: 100%;
+          display: block;
+          float: left;
+          line-height: 40px;
+        }
+
+        .oppenned .sub-menu {
+          opacity: 1;
+          height: 400px;
+          width: 400px;
+        }
+        .oppenned span:nth-child(2) {
+          overflow: visible;
+        }
+        .oppenned span:nth-child(1), .oppenned span:nth-child(3) {
+          z-index: 100;
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg);
+        }
+        .oppenned span:nth-child(1) {
+          -webkit-transform: rotate(45deg) translateY(12px) translateX(12px);
+                  transform: rotate(45deg) translateY(12px) translateX(12px);
+        }
+        .oppenned span:nth-child(2) {
+          height: 400px;
+          width: 400px;
+          right: -160px;
+          top: -160px;
+          border-radius: 50%;
+          background-color: rgba(0, 150, 136, 0.64);
+        }
+        .oppenned span:nth-child(3) {
+          -webkit-transform: rotate(-45deg) translateY(-10px) translateX(10px);
+                  transform: rotate(-45deg) translateY(-10px) translateX(10px);
+        }
+        .oppenned li {
+          margin-right: 168px;
+        }
+
+        .button {
+          display: block;
+          float: left;
+          clear: both;
+          padding: 20px 40px;
+          background: #fff;
+          border-radius: 3px;
+          border: 2px solid #ffc24d;
+          overflow: hidden;
+          position: relative;
+        }
+        .button:after {
+          -webkit-transition: -webkit-transform 0.3s ease;
+          transition: -webkit-transform 0.3s ease;
+          transition: transform 0.3s ease;
+          transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+          content: "";
+          position: absolute;
+          height: 200px;
+          width: 400px;
+          -webkit-transform: rotate(45deg) translateX(-540px) translateY(-100px);
+                  transform: rotate(45deg) translateX(-540px) translateY(-100px);
+          background: #1c9378;
+          z-index: 1;
+        }
+        .button:before {
+          -webkit-transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          -moz-transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          content: attr(title);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          color: #fff;
+          z-index: 2;
+          text-align: center;
+          padding: 20px 40px;
+          -webkit-transform: translateY(200px);
+                  transform: translateY(200px);
+        }
+        .button:hover {
+          text-decoration: none;
+        }
+        .button:hover:after {
+          -webkit-transform: translateX(-300px) translateY(-100px);
+                  transform: translateX(-300px) translateY(-100px);
+        }
+        .button:hover:before {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="deep-orange darken-2">
+    <div id="colunas" class="row">
+        <h1 class="center teal-text text-lighten-4 teal darken-3">
+            Nápoles Pizzaria
+        </h1>
+        <div class="open">
+            <span class="cls"></span>
+            <span>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#about" title="about">Meu perfil</a>
+                    </li>
+                    <li>
+                        <a href="#skills" title="skills">Relatório</a>
+                    </li>
+                    <li>
+                        <a href="#jobs" title="jobs">Cadastros</a>
+                    </li>
+                    <li>
+                        <a href="#contact" title="contact">Sair</a>
+                    </li>
+                </ul>
+            </span>
+            <span class="cls"></span>
+        </div>
+
+        <div class="row deep-orange darken-1">
+            <div class="col s1 m3">&nbsp;</div>
+            <div class="input-field col s10 m6">
+                <input value="" id="busca_pedido" type="text">
+                <label class="active white-text" for="busca_pedido">
+                    Buscar pedido
+                </label>
+            </div>
+            <div class="col s1 m3">&nbsp;</div>
+        </div>
+        <div class="col s12 m4 colunaPedidos">
+            <h3 class="center deep-orange-text text-lighten-3">
+                <i class="fa fa-comment deep-orange-text text-lighten-3"></i> Pedidos
+            </h3>
+            <!-- Conta os itens da coluna:: qtdPedidos -->
+            <div class="col s12 qtdPedidos">
+                <div class="card-panel teal lighten-1 center">
+                    <span class="teal-text text-lighten-4">
+                        <i class="fa fa-clock-o teal-text text-darken-3"></i> 13 Pedidos na fila
+                    </span>
+                </div>
+            </div>
+            <div class="divider deep-orange lighten-1"></div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <!-- INICIO***** ITEM DO PEDIDO -->
+                        <li>
+                            <div class="collapsible-header white black-text">
+                                <i class="fa fa-comment-o grey-text"></i> 
+                                1125529565 
+                                <a href="#modal1" class="secondary-content modal-trigger">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                            </div>
+                            <div class="collapsible-body">
+                                <ul class="collection">
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-pizza icon-2x circle green"></i>
+                                        <span class="title">Quatro Queijos</span><br/>
+                                        <small class="grey-text text-darken-1">
+                                            <i class="fa fa-caret-right"></i> Com catupiry Original<br>
+                                            <i class="fa fa-caret-right"></i> Borda de cheedar
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 24,99</small>
+                                        </a>
+                                    </li>
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-hamburguer circle pink"></i>
+                                        <span class="title">X-Bacon</span>
+                                        <small class="grey-text text-darken-1">
+                                            <i class="fa fa-minus red-text"></i> retirar tomate<br>
+                                            <i class="fa fa-plus green-text"></i> adicionar catupiry
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 12,20</small>
+                                        </a>
+                                    </li>
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-bebida circle light-blue"></i>
+                                        <span class="title">Coca Cola</span>
+                                        <small class="grey-text text-darken-1">
+                                            2 litros
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 8,00</small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Modal com as informações do cliente -->
+                            <div id="modal1" class="modal">
+                                <div class="modal-content">
+                                    <h4>Dados do cliente</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <ul class="tabs">
+                                                <li class="tab col s4"><a class="active" href="#test1">Dados Cliente</a></li>
+                                                <li class="tab col s4"><a href="#test2">Pedidos realizados</a></li>
+                                                <li class="tab col s4"><a href="#test3">Endereço</a></li>
+                                            </ul>
+                                        </div>
+                                        <div id="test1" class="col s12">
+                                            Dados cadastrais
+                                        </div>
+                                        <div id="test2" class="col s12">
+                                            Todos os pedidos realizados (A cada 10 pizzas o cliente pode oferecer uma pizza grátis)
+                                        </div>
+                                        <div id="test3" class="col s12">
+                                            Mapa do Google Maps
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer teal">
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- FINAL***** ITEM DO PEDIDO -->
+                    </ul>
+                </div>             
+            </div>
+        </div>
+        <div class="col s12 m4 colunaCozinha">
+            <h3 class="center deep-orange-text text-lighten-3">
+                <i class="fa fa-cutlery deep-orange-text text-lighten-3"></i> Cozinha
+            </h3>
+            <!-- Conta os itens da coluna:: qtdCozinha -->
+            <div class="col s12 qtdCozinha">
+                <div class="card-panel teal lighten-1 center">
+                    <span class="teal-text text-lighten-4">
+                        <i class="fa fa-circle-o-notch fa-spin teal-text text-darken-3"></i> Preparando 3 Pratos
+                    </span>
+                </div>
+            </div>
+            <div class="divider deep-orange lighten-1">&nbsp;</div>
+            <!-- Inicia os itens -->
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <!-- INICIO***** ITEM DO PEDIDO -->
+                        <li>
+                            <div class="collapsible-header white black-text">
+                                <i class="fa fa-comment-o grey-text"></i> 
+                                1125529565 
+                                <a href="#modal1" class="secondary-content modal-trigger">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                            </div>
+                            <div class="collapsible-body">
+                                <ul class="collection">
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-pizza icon-2x circle green"></i>
+                                        <span class="title">Quatro Queijos</span><br/>
+                                        <small class="grey-text text-darken-1">
+                                            <i class="fa fa-caret-right"></i> Com catupiry Original<br>
+                                            <i class="fa fa-caret-right"></i> Borda de cheedar
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 24,99</small>
+                                        </a>
+                                    </li>
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-hamburguer circle pink"></i>
+                                        <span class="title">X-Bacon</span>
+                                        <small class="grey-text text-darken-1">
+                                            <i class="fa fa-minus red-text"></i> retirar tomate<br>
+                                            <i class="fa fa-plus green-text"></i> adicionar catupiry
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 12,20</small>
+                                        </a>
+                                    </li>
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-bebida circle light-blue"></i>
+                                        <span class="title">Coca Cola</span>
+                                        <small class="grey-text text-darken-1">
+                                            2 litros
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 8,00</small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Modal com as informações do cliente -->
+                            <div id="modal1" class="modal">
+                                <div class="modal-content">
+                                    <h4>Dados do cliente</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <ul class="tabs">
+                                                <li class="tab col s4"><a class="active" href="#test1">Dados Cliente</a></li>
+                                                <li class="tab col s4"><a href="#test2">Pedidos realizados</a></li>
+                                                <li class="tab col s4"><a href="#test3">Endereço</a></li>
+                                            </ul>
+                                        </div>
+                                        <div id="test1" class="col s12">
+                                            Dados cadastrais
+                                        </div>
+                                        <div id="test2" class="col s12">
+                                            Todos os pedidos realizados (A cada 10 pizzas o cliente pode oferecer uma pizza grátis)
+                                        </div>
+                                        <div id="test3" class="col s12">
+                                            Mapa do Google Maps
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer teal">
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- FINAL***** ITEM DO PEDIDO -->
+                    </ul>
+                </div>             
+            </div>
+        </div>
+        <div class="col s12 m4 coluna_entrega">
+            <h3 class="center deep-orange-text text-lighten-3">
+                <i class="fa fa-paper-plane deep-orange-text text-lighten-3"></i> Entrega
+            </h3>
+            <!-- Conta os itens da coluna:: qtdEntrega -->
+            <div class="col s12 qtdEntrega">
+                <div class="card-panel teal lighten-1 center">
+                    <span class="teal-text text-lighten-4">
+                        <i class="fa fa-check teal-text text-darken-3"></i> 13 Pedidos prontos
+                    </span>
+                </div>
+            </div>
+            <div class="divider deep-orange lighten-1"></div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <!-- INICIO***** ITEM DO PEDIDO -->
+                        <li>
+                            <div class="collapsible-header white black-text">
+                                <i class="fa fa-comment-o grey-text"></i> 
+                                1125529565 
+                                <a href="#modal1" class="secondary-content modal-trigger">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                            </div>
+                            <div class="collapsible-body">
+                                <ul class="collection">
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-pizza icon-2x circle green"></i>
+                                        <span class="title">Quatro Queijos</span><br/>
+                                        <small class="grey-text text-darken-1">
+                                            <i class="fa fa-caret-right"></i> Com catupiry Original<br>
+                                            <i class="fa fa-caret-right"></i> Borda de cheedar
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 24,99</small>
+                                        </a>
+                                    </li>
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-hamburguer circle pink"></i>
+                                        <span class="title">X-Bacon</span>
+                                        <small class="grey-text text-darken-1">
+                                            <i class="fa fa-minus red-text"></i> retirar tomate<br>
+                                            <i class="fa fa-plus green-text"></i> adicionar catupiry
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 12,20</small>
+                                        </a>
+                                    </li>
+                                    <li class="collection-item avatar item-cardapio">
+                                        <i class="icon-bebida circle light-blue"></i>
+                                        <span class="title">Coca Cola</span>
+                                        <small class="grey-text text-darken-1">
+                                            2 litros
+                                        </small>
+                                        <a href="#!" class="secondary-content black-text">
+                                            <small>R$ 8,00</small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Modal com as informações do cliente -->
+                            <div id="modal1" class="modal">
+                                <div class="modal-content">
+                                    <h4>Dados do cliente</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <ul class="tabs">
+                                                <li class="tab col s4"><a class="active" href="#test1">Dados Cliente</a></li>
+                                                <li class="tab col s4"><a href="#test2">Pedidos realizados</a></li>
+                                                <li class="tab col s4"><a href="#test3">Endereço</a></li>
+                                            </ul>
+                                        </div>
+                                        <div id="test1" class="col s12">
+                                            Dados cadastrais
+                                        </div>
+                                        <div id="test2" class="col s12">
+                                            Todos os pedidos realizados (A cada 10 pizzas o cliente pode oferecer uma pizza grátis)
+                                        </div>
+                                        <div id="test3" class="col s12">
+                                            Mapa do Google Maps
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer teal">
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- FINAL***** ITEM DO PEDIDO -->
+                    </ul>
+                </div>             
+            </div>
+        </div>
+    </div>
+    <script src="js/lib/jquery-2.2.1.min.js"></script>
+    <script src="js/lib/materialize.min.js"></script>
+    <script>
+        $('.modal-trigger').leanModal();
+        
+        $(document).delegate('.open', 'click', function(event){
+            $(this).addClass('oppenned');
+            event.stopPropagation();
+        })        
+        $(document).delegate('body', 'click', function(event) {
+            $('.open').removeClass('oppenned');
+        })        
+        $(document).delegate('.cls', 'click', function(event){ 
+            $('.open').removeClass('oppenned');
+            event.stopPropagation();        
+        });
+    </script>
+</body>
+</html>

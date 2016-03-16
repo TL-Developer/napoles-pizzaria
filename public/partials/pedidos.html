@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h4 ng-show="mensagem" class="mensagem-feedback alert alert-success" role="alert"><i class="fa fa-check"></i> {{mensagem}}</h4>
 </div>
 <div class="row">
@@ -11,7 +11,6 @@
       </h2>
     </div>
 
-    <!-- CONTEÚDO -->
     <div class="col-md-12">
       <div class="thumbnail pedido" ng-repeat="pedido in pedidos">
         <div class="caption">
@@ -103,3 +102,223 @@
 
 </div>
 
+ -->
+<div id="colunas" class="row">
+  <h1 class="center teal-text text-lighten-4 teal darken-3">
+      Nápoles Pizzaria
+  </h1>
+  <div class="open">
+      <span class="cls"></span>
+      <span>
+          <ul class="sub-menu">
+              <li>
+                  <a href="#contact" title="contact">Sair</a>
+              </li>
+          </ul>
+      </span>
+      <span class="cls"></span>
+  </div>
+
+  <div class="row deep-orange darken-1">
+      <div class="col s1 m3">&nbsp;</div>
+      <div class="input-field col s10 m6">
+          <input value="" id="busca_pedido" type="text">
+          <label class="active white-text" for="busca_pedido">
+              Buscar pedido
+          </label>
+      </div>
+      <div class="col s1 m3">&nbsp;</div>
+  </div>
+  <div class="col s12 m4 colunaPedidos">
+      <h3 class="center deep-orange-text text-lighten-3">
+          <i class="fa fa-comment deep-orange-text text-lighten-3"></i> Pedidos
+      </h3>
+      <!-- Conta os itens da coluna:: qtdPedidos -->
+      <div class="col s12 qtdPedidos">
+          <div class="card-panel teal lighten-1 center">
+              <span class="teal-text text-lighten-4">
+                  <i class="fa fa-clock-o teal-text text-darken-3"></i> 13 Pedidos na fila
+              </span>
+          </div>
+      </div>
+      <div class="divider deep-orange lighten-1"></div>
+      <div class="row">
+          <div class="col s12">
+              <ul class="collapsible popout" data-collapsible="accordion">
+                  <!-- INICIO***** ITEM DO PEDIDO -->
+                  <li>
+                      <h6 class="text-center hora">20:12hs</h6>
+                      <div class="collapsible-header white black-text">
+                          <a href="#modal1" class="secondary-content modal-trigger left">
+                              <i class="fa fa-user"></i>
+                          </a>
+                          Tiago Lima
+                          <br />
+                          <i class="fa fa-phone grey-text"></i>11 2585-2255
+                          <br />
+                          <i class="fa fa-mobile grey-text"></i>11 95885-5588
+                          <br />
+                          <i class="fa fa-map-marker grey-text"></i>Jd.Helena
+                      </div>
+                      <div class="collapsible-body">
+                          <div class="col s12 white">
+                            <blockquote class="title">
+                              1 Pizza quatro queijos com borda catupiry, 10 Esfihas, 1 coca cola
+                              </blockquote><br/>
+
+                              <h5 class="secondary-content red-text">
+                                  <small><b>R$ 24,99</b></small>
+                              </h5>
+                          </div>
+                      </div>
+                      <!-- Modal com as informações do cliente -->
+                      <div id="modal1" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Dados do cliente</h4>
+                              <div class="row">
+
+                                <ul class="collection">
+                                  <li class="collection-item">Nome: Tiago Lima</a>
+                                  <li class="collection-item">Telefone: 11 2585-2255</a>
+                                  <li class="collection-item">Celular: 11 98545-5545</a>
+                                  <li class="collection-item">Endereço: Av.Oliveira freire, 55 - Jd.Helena</a>
+                                  <li class="collection-item">Referencia: Ao lado do mercado extra</a>
+                                  <li class="collection-item">Pedido: 1 pizza de calabresa, 1 coca</a>
+                                  <li class="collection-item">Hora: 16:38</a>
+                                  <li class="collection-item">Data: 16/03/2016</a>
+                                  <li class="collection-item right red-text">Valor: R$100</a>
+                                </ul>
+
+                              </div>
+                          </div>
+                          <div class="modal-footer teal">
+                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</a>
+                          </div>
+                      </div>
+                      <a class="waves-effect waves-light btn full-width"><i class="fa fa-cutlery"></i> ir para cozinha</a>
+                    <hr />
+                  </li>
+
+                  <!-- FINAL***** ITEM DO PEDIDO -->
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div class="col s12 m4 colunaCozinha">
+      <h3 class="center deep-orange-text text-lighten-3">
+          <i class="fa fa-cutlery deep-orange-text text-lighten-3"></i> Cozinha
+      </h3>
+      <!-- Conta os itens da coluna:: qtdCozinha -->
+      <div class="col s12 qtdCozinha">
+          <div class="card-panel teal lighten-1 center">
+              <span class="teal-text text-lighten-4">
+                  <i class="fa fa-circle-o-notch fa-spin teal-text text-darken-3"></i> Preparando 3 Pratos
+              </span>
+          </div>
+      </div>
+      <div class="divider deep-orange lighten-1">&nbsp;</div>
+      <!-- Inicia os itens -->
+      <div class="row">
+          <div class="col s12">
+
+
+            <ul class="collapsible popout" data-collapsible="accordion">
+                  <!-- INICIO***** ITEM DO PEDIDO -->
+                  <li>
+                      <h6 class="text-center hora">20:12hs</h6>
+                      <div class="collapsible-header active white black-text">
+                          <i class="fa fa-user secondary-content"></i>
+                          Tiago Lima
+                      </div>
+                      <div class="collapsible-body">
+                          <div class="col s12 white">
+                            <blockquote class="title">
+                              1 Pizza quatro queijos com borda catupiry, 10 Esfihas, 1 coca cola
+                              </blockquote><br/>
+                          </div>
+                      </div>
+                      <a class="waves-effect waves-light btn full-width"><i class="fa fa-paper-plane"></i> ir para entrega</a>
+                    <hr />
+                  </li>
+
+                  <!-- FINAL***** ITEM DO PEDIDO -->
+              </ul>
+
+
+          </div>
+      </div>
+  </div>
+  <div class="col s12 m4 coluna_entrega">
+      <h3 class="center deep-orange-text text-lighten-3">
+          <i class="fa fa-paper-plane deep-orange-text text-lighten-3"></i> Entrega
+      </h3>
+      <!-- Conta os itens da coluna:: qtdEntrega -->
+      <div class="col s12 qtdEntrega">
+          <div class="card-panel teal lighten-1 center">
+              <span class="teal-text text-lighten-4">
+                  <i class="fa fa-check teal-text text-darken-3"></i> 13 Pedidos prontos
+              </span>
+          </div>
+      </div>
+      <div class="divider deep-orange lighten-1"></div>
+      <div class="row">
+          <div class="col s12">
+
+
+
+            <ul class="collapsible popout" data-collapsible="accordion">
+                  <!-- INICIO***** ITEM DO PEDIDO -->
+                  <li>
+                      <h6 class="text-center hora">20:12hs</h6>
+                      <div class="collapsible-header active white black-text">
+                          <i class="fa fa-user secondary-content"></i>
+                          Tiago Lima
+                          <br />
+                          <i class="fa fa-phone grey-text"></i>11 2585-2255
+                          <br />
+                          <i class="fa fa-mobile grey-text"></i>11 95885-5588
+                      </div>
+                      <div class="collapsible-body">
+                          <div class="col s12 white">
+                            <blockquote class="title">
+                              Av Oliveira freire, 55 - Jd. Helena
+                            </blockquote><br/>
+                          </div>
+                      </div>
+                      <a class="waves-effect waves-light btn full-width"><i class="fa fa-paper-plane"></i> finalizar pedido</a>
+                    <hr />
+                  </li>
+
+                  <!-- FINAL***** ITEM DO PEDIDO -->
+              </ul>
+
+
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<script>
+
+  $('.modal-trigger').leanModal();
+
+  $(document).delegate('.open', 'click', function(event){
+      $(this).addClass('oppenned');
+      event.stopPropagation();
+  })
+  $(document).delegate('body', 'click', function(event) {
+      $('.open').removeClass('oppenned');
+  })
+  $(document).delegate('.cls', 'click', function(event){
+      $('.open').removeClass('oppenned');
+      event.stopPropagation();
+  });
+
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+</script>
