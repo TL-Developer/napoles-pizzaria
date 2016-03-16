@@ -18,12 +18,11 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
       endereco: form.endereco,
       referencia: form.referencia,
       pedido: form.pedido,
-      valor: form.valor,
-      hora: form.hora,
-      data: form.data
+      valor: form.valor
     };
 
-    $http.post('https://napoles-pizzaria.herokuapp.com/api/pedidos', pedido).success(function(data, status){
+    // https://napoles-pizzaria.herokuapp.com/api/pedidos
+    $http.post('/api/pedidos', pedido).success(function(data, status){
       $scope.mensagem = 'Enviado para cozinha!';
       $timeout(function(){
         $scope.mensagem = '';
