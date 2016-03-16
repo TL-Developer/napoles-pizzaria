@@ -197,7 +197,7 @@
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
                           </div>
                       </div>
-                      <a class="waves-effect waves-light btn full-width"><i class="fa fa-cutlery"></i> ir para cozinha</a>
+                      <a class="waves-effect waves-light btn full-width" ng-click="toCozinha(pedido)"><i class="fa fa-cutlery"></i> ir para cozinha</a>
                     <hr />
                   </li>
 
@@ -239,7 +239,7 @@
                               </blockquote><br/>
                           </div>
                       </div>
-                      <a class="waves-effect waves-light btn full-width"><i class="fa fa-paper-plane"></i> ir para entrega</a>
+                      <a class="waves-effect waves-light btn full-width" ng-click="toEntrega(cozinha)"><i class="fa fa-paper-plane"></i> ir para entrega</a>
                     <hr />
                   </li>
 
@@ -287,15 +287,12 @@
                             </blockquote><br/>
                           </div>
                       </div>
-                      <a class="waves-effect waves-light btn full-width"><i class="fa fa-paper-plane"></i> finalizar pedido</a>
+                      <a class="waves-effect waves-light btn full-width" ng-click="toPedidoSuccess(entrega)"><i class="fa fa-paper-plane"></i> finalizar pedido</a>
                     <hr />
                   </li>
 
                   <!-- FINAL***** ITEM DO PEDIDO -->
               </ul>
-
-
-
 
           </div>
       </div>
