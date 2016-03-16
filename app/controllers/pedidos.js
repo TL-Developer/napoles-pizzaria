@@ -26,7 +26,7 @@ module.exports = function(app){
       referencia: pedido.referencia,
       pedido: pedido.pedido,
       valor: pedido.valor,
-      hora: moment().locale('pt-br').format('LT'),
+      hora: moment().hours() + ':' + moment().minutes(),
       data: moment().locale('pt-br').format('L')
     }).then(function(pedido){
       res.status(201).json(pedido);
