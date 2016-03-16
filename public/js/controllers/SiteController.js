@@ -23,24 +23,12 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
       data: form.data
     };
 
-    $http.post('https://napoles-pizzaria.herokuapp.com/api/pedidos', {
-      nome: 'Tiago lima',
-      telefone: '255555555',
-      celular: '999999999',
-      endereco: 'av.oliveira freire, 25',
-      referencia: 'ao lado do extra',
-      pedido: '1 pizza de calabresa com catupiry',
-      valor: '250',
-      hora: '17:56',
-      data: '15/03/2016'
-    }).success(function(data, status){
+    $http.post('https://napoles-pizzaria.herokuapp.com/api/pedidos', pedido).success(function(data, status){
       $scope.mensagem = 'Enviado para cozinha!';
       $timeout(function(){
         $scope.mensagem = '';
       }, 2000);
     });
 
-
   };
-
 }]);
