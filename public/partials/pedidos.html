@@ -1,157 +1,32 @@
-<!-- <div class="container">
-  <h4 ng-show="mensagem" class="mensagem-feedback alert alert-success" role="alert"><i class="fa fa-check"></i> {{mensagem}}</h4>
-</div>
-<div class="row">
-
-  <div class="col-md-4 col-sm-4">
-
-    <div class="col-md-12">
-      <h2 class="text-center area">
-        <i class="fa fa-desktop fa-2x"></i>
-      </h2>
-    </div>
-
-    <div class="col-md-12">
-      <div class="thumbnail pedido" ng-repeat="pedido in pedidos">
-        <div class="caption">
-          <h3 class="text-right hora">{{pedido.hora}} - {{pedido.data}}</h3>
-          <h5><b>Cliente</b>: {{pedido.nome}}</h5>
-          <h5><b>Telefone</b>: {{pedido.telefone}}</h5>
-          <h5><b>Celular</b>: {{pedido.celular}}</h5>
-          <h5><b>Endereço</b>: {{pedido.endereco}}</h5>
-          <h5><b>Ponto de ref.</b>: {{pedido.referencia}}</h5>
-          <blockquote>
-            {{pedido.pedido}}
-          </blockquote>
-          <h3 class="text-center area">Valor total: R${{pedido.valor}}</h3>
-          <p>
-            <button type="button" class="btn btn-lg btn-default btn-block" ng-click="toCozinha(pedido)">Ir para cozinha!</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="col-md-4 col-sm-4">
-    <div class="col-md-12">
-      <h3 class="text-center area">
-        <i class="fa fa-cutlery fa-3x"></i>
-      </h3>
-    </div>
-
-    <div class="col-md-12">
-
-      <div class="thumbnail fazer-pedido" ng-repeat="cozinha in cozinhas">
-        <div class="caption">
-          <h3 class="text-right hora">{{cozinha.hora}}</h3>
-          <h5><b>Cliente</b>: {{cozinha.nome}}</h5>
-          <h5><b>Telefone</b>: {{cozinha.telefone}}</h5>
-          <h5><b>Celular</b>: {{cozinha.celular}}</h5>
-          <h5><b>Endereço</b>: {{cozinha.endereco}}</h5>
-          <h5><b>Ponto de ref.</b>: {{cozinha.referencia}}</h5>
-          <blockquote>
-            {{cozinha.pedido}}
-          </blockquote>
-          <h3 class="text-center area">Valor total: R${{cozinha.valor}}</h3>
-          <p>
-            <button type="button" class="btn btn-warning btn-lg btn-block" ng-click="toEntrega(cozinha)">Pronto para entrega!</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="col-md-4 col-sm-4">
-
-    <div class="col-md-12">
-      <h2 class="text-center area">
-        <i class="fa fa-motorcycle fa-2x"></i>
-
-      </h2>
-    </div>
-
-    <div class="col-md-12">
-
-      <div class="thumbnail entrega-pedido" ng-repeat="entrega in entregas">
-        <div class="caption">
-          <h3 class="text-right hora">{{entrega.hora}}</h3>
-          <h5><b>Cliente</b>: {{entrega.nome}}</h5>
-          <h5><b>Telefone</b>: {{entrega.telefone}}</h5>
-          <h5><b>Celular</b>: {{entrega.celular}}</h5>
-          <h5><b>Endereço</b>: {{entrega.endereco}}</h5>
-          <h5><b>Ponto de ref.</b>: {{entrega.referencia}}</h5>
-          <blockquote>
-            {{entrega.pedido}}
-          </blockquote>
-          <h3 class="text-center area">Valor total: R${{entrega.valor}}</h3>
-          <p>
-            <button type="button" class="btn btn-danger btn-lg btn-block" ng-click="toPedidoSuccess(entrega)">Finalizar pedido!</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  </div>
-
-
-</div>
-
- -->
 <div id="colunas" class="row">
-  <h1 class="center teal-text text-lighten-4 teal darken-3">
+  <h4 class="center teal-text text-lighten-4 teal darken-3">
       Nápoles Pizzaria
-  </h1>
-  <div class="open">
-      <span class="cls"></span>
-      <span>
-          <ul class="sub-menu">
-              <li>
-                  <a href="#contact" title="contact">Sair</a>
-              </li>
-          </ul>
-      </span>
-      <span class="cls"></span>
-  </div>
+  </h4>
 
-  <div class="row deep-orange darken-1">
-      <div class="col s1 m3">&nbsp;</div>
-      <div class="input-field col s10 m6">
-          <input value="" id="busca_pedido" type="text">
-          <label class="active white-text" for="busca_pedido">
-              Buscar pedido
-          </label>
-      </div>
-      <div class="col s1 m3">&nbsp;</div>
-  </div>
   <div class="col s12 m4 colunaPedidos">
-      <h3 class="center deep-orange-text text-lighten-3">
+      <h5 class="center deep-orange-text text-lighten-3">
           <i class="fa fa-comment deep-orange-text text-lighten-3"></i> Pedidos
-      </h3>
+      </h5>
       <!-- Conta os itens da coluna:: qtdPedidos -->
-      <div class="col s12 qtdPedidos">
+      <div class="col s12">
           <div class="card-panel teal lighten-1 center">
               <span class="teal-text text-lighten-4">
-                  <i class="fa fa-clock-o teal-text text-darken-3"></i> 13 Pedidos na fila
+                  <i class="fa fa-clock-o teal-text text-darken-3"></i> {{pedidos.length}} Pedidos na fila
               </span>
           </div>
       </div>
       <div class="divider deep-orange lighten-1"></div>
       <div class="row">
-          <div class="col s12">
+          <div class="col s12 totalPedidos">
               <ul class="collapsible popout" data-collapsible="accordion">
                   <!-- INICIO***** ITEM DO PEDIDO -->
-                  <li ng-repeat="pedido in pedidos">
-                      <h6 class="text-center hora">{{pedido.hora}}</h6>
+                  <li ng-repeat="pedido in pedidos | orderBy:'hora'">
+                      <h6 class="hora">as <b>{{pedido.hora}}hs</b></h6>
+                      <a href="#{{pedido._id}}" class="waves-effect waves-light btn full-width secondary-content modal-trigger left" modal>
+                          <i class="fa fa-shopping-basket"></i> detalhes
+                      </a>
                       <div class="collapsible-header white black-text">
-                          <a href="#{{pedido._id}}" class="secondary-content modal-trigger left" modal>
-                              <i class="fa fa-user"></i>
-                          </a>
+                          <i class="fa fa-user secondary-content left"></i>
                           {{pedido.nome}}
                           <br />
                           <i class="fa fa-phone grey-text"></i>{{pedido.telefone}}
@@ -178,17 +53,14 @@
                               <div class="row">
 
                                 <ul class="collection">
-                                  <li class="collection-item">Nome: {{pedido.nome}}</a>
-                                  <li class="collection-item">Telefone: {{pedido.telefone}}</a>
-                                  <li class="collection-item">Celular: {{pedido.celular}}</a>
-                                  <li class="collection-item">Endereço: {{pedido.endereco}}</a>
-                                  <li class="collection-item">Bairro: {{pedido.bairro}}</a>
-                                  <li class="collection-item">Cep: {{pedido.cep}}</a>
-                                  <li class="collection-item">Referencia: {{pedido.referencia}}</a>
-                                  <li class="collection-item">Hora: {{pedido.hora}}</a>
-                                  <li class="collection-item">Data: {{pedido.data}}</a>
-                                  <li class="collection-item">Pedido: {{pedido.pedido}}</a>
-                                  <li class="collection-item right red-text"><h5><b>R${{pedido.valor}}</b></h5></a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{pedido.nome}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{pedido.telefone}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{pedido.celular}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.endereco}} - {{pedido.bairro}} - cep: {{pedido.cep}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.referencia}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{pedido.data}} as {{pedido.hora}}hs</a>
+                                  <li class="collection-item"><blockquote>{{pedido.pedido}}</blockquote></a>
+                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{pedido.valor}}</b></h5></a>
                                 </ul>
 
                               </div>
@@ -198,6 +70,23 @@
                           </div>
                       </div>
                       <a class="waves-effect waves-light btn full-width" ng-click="toCozinha(pedido)"><i class="fa fa-cutlery"></i> ir para cozinha</a>
+                      <a href="#deletarPedido" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+
+                      <!-- Modal com as informações do cliente -->
+                      <div id="deletarPedido" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Cancelar o pedido?</h4>
+
+
+                                <p>Tem certeza que deseja remover este pedido?</p>
+
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedido(pedido)">Sim</button>
+                          </div>
+                      </div>
+
                     <hr />
                   </li>
 
@@ -207,27 +96,29 @@
       </div>
   </div>
   <div class="col s12 m4 colunaCozinha">
-      <h3 class="center deep-orange-text text-lighten-3">
+      <h5 class="center deep-orange-text text-lighten-3">
           <i class="fa fa-cutlery deep-orange-text text-lighten-3"></i> Cozinha
-      </h3>
+      </h5>
       <!-- Conta os itens da coluna:: qtdCozinha -->
       <div class="col s12 qtdCozinha">
           <div class="card-panel teal lighten-1 center">
               <span class="teal-text text-lighten-4">
-                  <i class="fa fa-circle-o-notch fa-spin teal-text text-darken-3"></i> Preparando 3 Pratos
+                  <i class="fa fa-circle-o-notch fa-spin teal-text text-darken-3"></i> {{cozinhas.length}} Pedidos na cozinha
               </span>
           </div>
       </div>
       <div class="divider deep-orange lighten-1">&nbsp;</div>
       <!-- Inicia os itens -->
       <div class="row">
-          <div class="col s12">
-
+          <div class="col s12 totalPedidos">
 
             <ul class="collapsible popout" data-collapsible="accordion">
                   <!-- INICIO***** ITEM DO PEDIDO -->
-                  <li ng-repeat="cozinha in cozinhas">
-                      <h6 class="text-center hora">{{cozinha.hora}}</h6>
+                  <li ng-repeat="cozinha in cozinhas | orderBy:'hora'">
+                      <h6 class="text-center hora">as <b>{{cozinha.hora}}hs</b></h6>
+                      <a href="#{{cozinha._id}}" class="waves-effect waves-light btn full-width secondary-content modal-trigger left" modal>
+                          <i class="fa fa-shopping-basket"></i> detalhes
+                      </a>
                       <div class="collapsible-header active white black-text">
                           <i class="fa fa-user secondary-content"></i>
                           {{cozinha.nome}}
@@ -239,7 +130,48 @@
                               </blockquote><br/>
                           </div>
                       </div>
+                      <!-- Modal com as informações do cliente -->
+                      <div id="{{cozinha._id}}" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Dados do Pedido</h4>
+                              <div class="row">
+
+                                <ul class="collection">
+                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{cozinha.nome}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{cozinha.telefone}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{cozinha.celular}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.endereco}} - {{cozinha.bairro}} - cep: {{cozinha.cep}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.referencia}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{cozinha.data}} as {{cozinha.hora}}hs</a>
+                                  <li class="collection-item"><blockquote>{{cozinha.pedido}}</blockquote></a>
+                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{cozinha.valor}}</b></h5></a>
+                                </ul>
+
+                              </div>
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
+                          </div>
+                      </div>
                       <a class="waves-effect waves-light btn full-width" ng-click="toEntrega(cozinha)"><i class="fa fa-paper-plane"></i> ir para entrega</a>
+                      <a href="#deletarPedidoCozinha" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+
+                      <!-- Modal com as informações do cliente -->
+                      <div id="deletarPedidoCozinha" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Cancelar o pedido?</h4>
+
+
+                                <p>Tem certeza que deseja remover este pedido?</p>
+
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedidoCozinha(cozinha)">Sim</button>
+                          </div>
+                      </div>
+
+
                     <hr />
                   </li>
 
@@ -251,27 +183,28 @@
       </div>
   </div>
   <div class="col s12 m4 coluna_entrega">
-      <h3 class="center deep-orange-text text-lighten-3">
+      <h5 class="center deep-orange-text text-lighten-3">
           <i class="fa fa-paper-plane deep-orange-text text-lighten-3"></i> Entrega
-      </h3>
+      </h5>
       <!-- Conta os itens da coluna:: qtdEntrega -->
       <div class="col s12 qtdEntrega">
           <div class="card-panel teal lighten-1 center">
               <span class="teal-text text-lighten-4">
-                  <i class="fa fa-check teal-text text-darken-3"></i> 13 Pedidos prontos
+                  <i class="fa fa-check teal-text text-darken-3"></i> {{entregas.length}} Pedidos para entrega
               </span>
           </div>
       </div>
       <div class="divider deep-orange lighten-1"></div>
       <div class="row">
-          <div class="col s12">
-
-
+          <div class="col s12 totalPedidos">
 
             <ul class="collapsible popout" data-collapsible="accordion">
                   <!-- INICIO***** ITEM DO PEDIDO -->
-                  <li ng-repeat="entrega in entregas">
-                      <h6 class="text-center hora">{{entrega.hora}}</h6>
+                  <li ng-repeat="entrega in entregas | orderBy:'hora'">
+                      <h6 class="text-center hora">as <b>{{entrega.hora}}hs</b></h6>
+                      <a href="#{{entrega._id}}" class="waves-effect waves-light btn full-width secondary-content modal-trigger left" modal>
+                          <i class="fa fa-shopping-basket"></i> detalhes
+                      </a>
                       <div class="collapsible-header active white black-text">
                           <i class="fa fa-user secondary-content"></i>
                           {{entrega.nome}}
@@ -287,7 +220,47 @@
                             </blockquote><br/>
                           </div>
                       </div>
-                      <a class="waves-effect waves-light btn full-width" ng-click="toPedidoSuccess(entrega)"><i class="fa fa-paper-plane"></i> finalizar pedido</a>
+                      <!-- Modal com as informações do cliente -->
+                      <div id="{{entrega._id}}" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Dados do Pedido</h4>
+                              <div class="row">
+
+                                <ul class="collection">
+                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{entrega.nome}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{entrega.telefone}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{entrega.celular}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.endereco}} - {{entrega.bairro}} - cep: {{entrega.cep}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.referencia}}</a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{entrega.data}} as {{entrega.hora}}hs</a>
+                                  <li class="collection-item"><blockquote>{{entrega.pedido}}</blockquote></a>
+                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{entrega.valor}}</b></h5></a>
+                                </ul>
+
+                              </div>
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
+                          </div>
+                      </div>
+                      <a class="waves-effect waves-light btn full-width" ng-click="toPedidoSuccess(entrega)"><i class="fa fa-check"></i> finalizar pedido</a>
+                      <a href="#deletarPedidoEntrega" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+
+                      <!-- Modal com as informações do cliente -->
+                      <div id="deletarPedidoEntrega" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Cancelar o pedido?</h4>
+
+
+                                <p>Tem certeza que deseja remover este pedido?</p>
+
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedidoEntrega(entrega)">Sim</button>
+                          </div>
+                      </div>
+
                     <hr />
                   </li>
 
@@ -301,23 +274,19 @@
 
 <script>
 
-  // $('.modal-trigger').leanModal();
-
-  $(document).delegate('.open', 'click', function(event){
-      $(this).addClass('oppenned');
-      event.stopPropagation();
-  })
-  $(document).delegate('body', 'click', function(event) {
-      $('.open').removeClass('oppenned');
-  })
-  $(document).delegate('.cls', 'click', function(event){
-      $('.open').removeClass('oppenned');
-      event.stopPropagation();
-  });
-
   $(document).ready(function(){
     $('.collapsible').collapsible({
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
+
+    $('.totalPedidos').css({
+      'height': $(window).height() - 165+'px'
+    });
+    $(window).resize(function(){
+      $('.totalPedidos').css({
+        'height': $(window).height() - 165+'px'
+      });
+    });
   });
+
 </script>

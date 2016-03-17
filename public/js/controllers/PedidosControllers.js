@@ -1,4 +1,4 @@
-angular.module('napoles').controller('PedidosControllers',['$scope','$http','$timeout', function($scope, $http, $timeout){
+angular.module('napoles').controller('PedidosControllers',['$scope','$http', function($scope, $http){
 
 
   var socket = io();
@@ -12,7 +12,6 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http','$ti
   var listaPedidos = function(){
     $http.get('/api/pedidos').then(function(pedidos){
       $scope.pedidos = pedidos.data;
-      console.log($scope.pedidos);
     });
   };
   listaPedidos();
@@ -36,14 +35,17 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http','$ti
     );
   };
 
+  // CANCELANDO O PEDIDO
+  $scope.cancelPedido = function(pedido){
+    $scope.rmPedidos(pedido);
+    Materialize.toast('Pedido CANCELADO com sucesso!', 2000);
+  };
+
   // FUNÇÃO QUE MANDA PEDIDO PARA COZINHA
   $scope.toCozinha = function(pedido){
 
     $http.post('/api/cozinhas', pedido).success(function(data, status){
-      $scope.mensagem = 'Enviado para cozinha!';
-      $timeout(function(){
-        $scope.mensagem = '';
-      }, 2000);
+      Materialize.toast('Pedido Enviado para Cozinha!', 2000);
     });
 
     $scope.rmPedidos(pedido);
@@ -82,14 +84,17 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http','$ti
     );
   };
 
+  // CANCELANDO PEDIDO DA COZINHA
+  $scope.cancelPedidoCozinha = function(pedido){
+    $scope.rmPedidoCozinha(pedido);
+    Materialize.toast('Pedido CANCELADO com sucesso!', 2000);
+  };
+
   // FUNÇÃO QUE MANDA PEDIDO PARA ENTREGA
   $scope.toEntrega = function(pedido){
 
     $http.post('/api/entregas', pedido).success(function(data, status){
-      $scope.mensagem = 'Enviado para entrega!';
-      $timeout(function(){
-        $scope.mensagem = '';
-      }, 2000);
+      Materialize.toast('Pedido Enviado para Entrega!', 2000);
     });
 
     $scope.rmPedidoCozinha(pedido);
@@ -119,10 +124,6 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http','$ti
     .then(
        function(response){
         listaEntregas();
-        $scope.mensagem = 'Pedido realizado com sucesso!';
-        $timeout(function(){
-          $scope.mensagem = '';
-        }, 2000);
        },
        function(response){
          console.log('Não foi possível remover o pedido da cozinha');
@@ -130,9 +131,16 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http','$ti
     );
   };
 
+  // CANCELANDO PEDIDO DA COZINHA
+  $scope.cancelPedidoEntrega = function(pedido){
+    $scope.rmPedidoEntrega(pedido);
+    Materialize.toast('Pedido CANCELADO com sucesso!', 2000);
+  };
+
   // FUNÇÃO ARQUIVO OS PEDIDOS FEITOS
   $scope.toPedidoSuccess = function(pedido){
     $scope.rmPedidoEntrega(pedido);
+    Materialize.toast('Pedido realizado com sucesso!', 2000);
   };
 
 }]);

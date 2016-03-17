@@ -242,3 +242,19 @@ ul.popout{
 .full-width{
   width: 100%;
 }
+
+.teal-text{
+  margin: 0;
+}
+.totalPedidos{
+  height: 550px;
+  overflow: hidden;
+}
+.totalPedidos:hover{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body{
+  overflow: hidden;
+}
