@@ -1,0 +1,400 @@
+<h4 class="center teal-text text-lighten-4 teal darken-3">
+    Nápoles Pizzaria - Produtos
+</h4>
+<div class="container">
+
+<br />
+
+  <div class="col s12">
+
+    <ul class="tabs">
+      <li class="tab col s3"><a href="#pizzas" class="active">Pizzas</a></li>
+      <li class="tab col s3"><a href="#esfihas">Esfihas</a></li>
+      <li class="tab col s3"><a href="#bebidas">Bebidas</a></li>
+      <li class="tab col s3"><a href="#sucos">Sucos</a></li>
+      <li class="tab col s3"><a href="#brotos">Brotos</a></li>
+    </ul>
+
+  </div>
+
+  <div class="col s12">
+
+    <!-- PIZZAS -->
+    <div id="pizzas">
+
+      <br>
+      <div class="row">
+        <div class="col s12 teal white">
+          <form>
+            <div class="row">
+              <div class="input-field col s4">
+                <input id="nome" type="text" class="validate teal white">
+                <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="descricao" type="text" class="validate teal white">
+                <label for="descricao">Descrição</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valor" type="text" class="validate teal white">
+                <label for="valor">Valor</label>
+              </div>
+
+              <a class="btn waves-effect waves-light">inserir</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <form class="col s12">
+          <div class="input-field col s12">
+            <input id="buscar" type="text" class="validate teal white">
+            <label for="buscar">Buscar produto...</label>
+          </div>
+      </form>
+      <br>
+      <table class="highlight teal white">
+        <thead>
+          <tr>
+              <th data-field="nome">Nome</th>
+              <th data-field="descricao">Descrição</th>
+              <th data-field="preco">Valor</th>
+              <th data-field="editar"></th>
+              <th data-field="excluir"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Calabresa
+            </td>
+            <td>calabresa com cebola</td>
+            <td>R$20.00</td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light red"><i class="fa fa-remove"></i></a>
+            </td>
+            <td class="right">
+              <a href="#produto" class="btn-floating btn waves-effect waves-light blue modal-trigger"><i class="fa fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Modal com as informações do cliente -->
+      <div id="produto" class="modal">
+          <div class="modal-content">
+              <h4 class="center">Alterar produto</h4>
+              <div class="row">
+
+                <div class="col s12 teal white">
+                  <form>
+                    <div class="row">
+                      <div class="input-field col s4">
+                        <input id="nome" type="text" class="validate teal white">
+                        <label for="nome">Nome</label>
+                      </div>
+
+                      <div class="input-field col s4">
+                        <input id="descricao" type="text" class="validate teal white">
+                        <label for="descricao">Descrição</label>
+                      </div>
+
+                      <div class="input-field col s4">
+                        <input id="valor" type="text" class="validate teal white">
+                        <label for="valor">Valor</label>
+                      </div>
+
+                      <button class="btn waves-effect waves-light modal-action modal-close">Salvar</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+          </div>
+      </div>
+
+
+    </div>
+    <!-- END PIZZAS -->
+
+
+    <!-- ESFIHAS -->
+    <div id="esfihas">
+
+      <br>
+      <div class="row">
+        <div class="col s12 teal white">
+          <form>
+            <div class="row">
+              <div class="input-field col s4">
+                <input id="nome" type="text" class="validate teal white">
+                <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="descricao" type="text" class="validate teal white">
+                <label for="descricao">Descrição</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valor" type="text" class="validate teal white">
+                <label for="valor">Valor</label>
+              </div>
+
+              <a class="btn waves-effect waves-light">inserir</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <form class="col s12">
+          <div class="input-field col s12">
+            <input id="icon_prefix" type="text" class="validate teal white">
+            <label for="icon_prefix">Buscar produto...</label>
+          </div>
+      </form>
+      <br>
+
+      <br>
+      <table class="highlight teal white">
+        <thead>
+          <tr>
+              <th data-field="nome">Nome</th>
+              <th data-field="descricao">Descrição</th>
+              <th data-field="preco">Valor</th>
+              <th data-field="editar"></th>
+              <th data-field="excluir"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Carne
+            </td>
+            <td>carne</td>
+            <td>R$20.00</td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light red"><i class="fa fa-remove"></i></a>
+            </td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light blue"><i class="fa fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- END ESFIHAS -->
+
+    <!-- BROTOS -->
+    <div id="brotos">
+
+      <br>
+      <div class="row">
+        <div class="col s12 teal white">
+          <form>
+            <div class="row">
+              <div class="input-field col s4">
+                <input id="nome" type="text" class="validate teal white">
+                <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="descricao" type="text" class="validate teal white">
+                <label for="descricao">Descrição</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valor" type="text" class="validate teal white">
+                <label for="valor">Valor</label>
+              </div>
+
+              <a class="btn waves-effect waves-light">inserir</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <form class="col s12">
+          <div class="input-field col s12">
+            <input id="icon_prefix" type="text" class="validate teal white">
+            <label for="icon_prefix">Buscar produto...</label>
+          </div>
+      </form>
+      <br>
+      <table class="highlight teal white">
+        <thead>
+          <tr>
+              <th data-field="nome">Nome</th>
+              <th data-field="descricao">Descrição</th>
+              <th data-field="preco">Valor</th>
+              <th data-field="editar"></th>
+              <th data-field="excluir"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Calabresa
+            </td>
+            <td>calabresa com cebola</td>
+            <td>R$20.00</td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light red"><i class="fa fa-remove"></i></a>
+            </td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light blue"><i class="fa fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- END BROTOS -->
+
+    <!-- BEBIDAS -->
+    <div id="bebidas">
+
+      <br>
+      <div class="row">
+        <div class="col s12 teal white">
+          <form>
+            <div class="row">
+              <div class="input-field col s4">
+                <input id="nome" type="text" class="validate teal white">
+                <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="descricao" type="text" class="validate teal white">
+                <label for="descricao">Descrição</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valor" type="text" class="validate teal white">
+                <label for="valor">Valor</label>
+              </div>
+
+              <a class="btn waves-effect waves-light">inserir</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <form class="col s12">
+          <div class="input-field col s12">
+            <input id="icon_prefix" type="text" class="validate teal white">
+            <label for="icon_prefix">Buscar produto...</label>
+          </div>
+      </form>
+      <br>
+      <table class="highlight teal white">
+        <thead>
+          <tr>
+              <th data-field="nome">Nome</th>
+              <th data-field="descricao">Descrição</th>
+              <th data-field="preco">Valor</th>
+              <th data-field="editar"></th>
+              <th data-field="excluir"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Coca cola
+            </td>
+            <td>light</td>
+            <td>R$4.00</td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light red"><i class="fa fa-remove"></i></a>
+            </td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light blue"><i class="fa fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- END BEBIDAS -->
+
+    <!-- SUCOS -->
+    <div id="sucos">
+
+      <br>
+      <div class="row">
+        <div class="col s12 teal white">
+          <form>
+            <div class="row">
+              <div class="input-field col s4">
+                <input id="nome" type="text" class="validate teal white">
+                <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="descricao" type="text" class="validate teal white">
+                <label for="descricao">Descrição</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valor" type="text" class="validate teal white">
+                <label for="valor">Valor</label>
+              </div>
+
+              <a class="btn waves-effect waves-light">inserir</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <form class="col s12">
+          <div class="input-field col s12">
+            <input id="icon_prefix" type="text" class="validate teal white">
+            <label for="icon_prefix">Buscar produto...</label>
+          </div>
+      </form>
+      <br>
+      <table class="highlight teal white">
+        <thead>
+          <tr>
+              <th data-field="nome">Nome</th>
+              <th data-field="descricao">Descrição</th>
+              <th data-field="preco">Valor</th>
+              <th data-field="editar"></th>
+              <th data-field="excluir"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Nectar
+            </td>
+            <td>light</td>
+            <td>R$3.00</td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light red"><i class="fa fa-remove"></i></a>
+            </td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light blue"><i class="fa fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- END SUCOS -->
+
+  </div>
+
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
+    $('.modal-trigger').leanModal();
+  });
+</script>

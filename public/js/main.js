@@ -10,6 +10,11 @@ angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function(
     controller: 'SiteController'
   })
 
+  .when('/produtos', {
+    templateUrl: 'partials/produtos.html',
+    controller: 'ProdutosController'
+  })
+
   .otherwise({redirectTo: '/pedidos'});
 
 });
