@@ -11,6 +11,8 @@ module.exports = function(){
 
   app.set('port', process.env.PORT || 3000);
 
+  app.set('secret','tokenapisecret');
+
   app.use(express.static('./public'));
 
   app.use(function(req, res, next){
@@ -34,6 +36,7 @@ module.exports = function(){
 
  load('models', {cwd: 'app'})
   .then('controllers')
+  .then('routes/auth.js')
   .then('routes')
   .into(app);
 

@@ -2,6 +2,16 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
 
   $scope.mensagem = '';
 
+  // LISTANDO API DE PIZZAS DO SISTEMA
+  $http({
+      method: 'GET',
+      url: 'http://napoles-pizzaria.herokuapp.com/api/pizzas'
+   }).success(function(data){
+       console.log(data);
+  }).error(function(err){
+      console.log(err);
+  });
+
   $scope.enviarPedido = function(form){
 
     var data = new Date()

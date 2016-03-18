@@ -10,6 +10,12 @@ var pizzas = [
     nome: 'mussarela',
     descricao: 'mussarela e cebola',
     valor: '20,00'
+  },
+  {
+    _id: 3,
+    nome: 'frango com catupiry',
+    descricao: 'frango, catupiry e mussarela',
+    valor: '20,00'
   }
 ];
 
