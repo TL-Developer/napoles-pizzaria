@@ -13,7 +13,7 @@ module.exports = function(){
 
   app.set('port', process.env.PORT || 3000);
 
-  app.set('secret','tokenapisecret');
+  app.set('secret','tksecretpizza');
 
   app.use(passport.initialize());
 
@@ -47,6 +47,7 @@ module.exports = function(){
 
  load('models', {cwd: 'app'})
   .then('controllers')
+  .then('routes/auth.js')
   .then('routes')
   .into(app);
 

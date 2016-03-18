@@ -1,11 +1,9 @@
-var passport = require('passport');
-
 module.exports = function(app){
 
   var controller = app.controllers.pedidos;
 
   app.route('/api/pedidos')
-    .get(passport.authenticate('basic', { session: false }), controller.getPedidos)
+    .get(controller.getPedidos)
     .post(controller.createPedidos);
 
   app.route('/api/pedidos/:id')

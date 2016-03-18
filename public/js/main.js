@@ -1,4 +1,6 @@
-angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function($routeProvider){
+angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function($routeProvider, $httpProvider){
+
+  $httpProvider.interceptors.push('tokenInterceptor');
 
   $routeProvider.when('/login', {
     templateUrl: 'partials/login.html',
@@ -20,6 +22,6 @@ angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function(
     controller: 'ProdutosController'
   })
 
-  .otherwise({redirectTo: '/login'});
+  .otherwise({redirectTo: '/pedidos'});
 
 });
