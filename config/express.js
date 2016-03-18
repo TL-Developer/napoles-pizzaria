@@ -4,7 +4,9 @@ var express = require('express')
   , methodOverride = require('method-override')
   , helmet = require('helmet')
   , load = require('express-load')
-  , favicon = require('static-favicon');
+  , favicon = require('static-favicon')
+  , passport = require('passport')
+  , BasicStrategy = require('passport-http').BasicStrategy;
 
 module.exports = function(){
   var app = express();
@@ -12,6 +14,16 @@ module.exports = function(){
   app.set('port', process.env.PORT || 3000);
 
   app.set('secret','tokenapisecret');
+
+  app.use(passport.initialize());
+
+  passport.use(new BasicStrategy(function(username, password, done){
+    if(username.valueOf() == 'paulo' && password.valueOf() == 'napoles'){
+      return done(null, true);
+    }else{
+      return done(null, false);
+    }
+  }));
 
   app.use(express.static('./public'));
 
@@ -33,10 +45,8 @@ module.exports = function(){
   app.disable('x-powered-by');
   app.use(helmet.ieNoOpen());
 
-
  load('models', {cwd: 'app'})
   .then('controllers')
-  .then('routes/auth.js')
   .then('routes')
   .into(app);
 

@@ -1,6 +1,11 @@
 angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function($routeProvider){
 
-  $routeProvider.when('/pedidos', {
+  $routeProvider.when('/login', {
+    templateUrl: 'partials/login.html',
+    controller: 'LoginController'
+  })
+
+  .when('/pedidos', {
     templateUrl: 'partials/pedidos.html',
     controller: 'PedidosControllers'
   })
@@ -15,6 +20,6 @@ angular.module('napoles', ['ngRoute','ngResource','ngAnimate']).config(function(
     controller: 'ProdutosController'
   })
 
-  .otherwise({redirectTo: '/pedidos'});
+  .otherwise({redirectTo: '/login'});
 
 });

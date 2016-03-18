@@ -1,12 +1,14 @@
+var passport = require('passport');
+
 module.exports = function(app){
 
   var controller = app.controllers.entregas;
 
   app.route('/api/entregas')
-    .get(controller.getEntregas)
-    .post(controller.createEntregas);
+    .get(passport.authenticate('basic', { session: false }),controller.getEntregas)
+    .post(passport.authenticate('basic', { session: false }),controller.createEntregas);
 
   app.route('/api/entregas/:id')
-    .delete(controller.deleteEntrega);
+    .delete(passport.authenticate('basic', { session: false }),controller.deleteEntrega);
 
 };

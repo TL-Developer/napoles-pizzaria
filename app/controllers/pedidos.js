@@ -6,6 +6,7 @@ module.exports = function(app){
     , Pedidos = app.models.pedidos;
 
   controller.getPedidos = function(req, res){
+
     Pedidos.find().exec().then(function(pedidos){
       res.status(200).json(pedidos);
     },

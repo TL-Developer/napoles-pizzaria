@@ -1,0 +1,26 @@
+<div class="container center">
+  <h1 class="center">
+      Entrar
+  </h1>
+  <div class="row">
+    <div class="col s12 teal white">
+
+      <div class="row">
+        <form>
+          <div class="input-field col s12">
+            <input id="usuario" type="text" class="validate" ng-model="usuario" required>
+            <label for="usuario">Usuário</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="senha" type="password" class="validate" ng-model="senha" required>
+            <label for="senha">Senha</label>
+          </div>
+
+          <button type="submit" class="waves-effect waves-light btn" ng-click="login(this)">entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
