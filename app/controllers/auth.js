@@ -31,7 +31,7 @@ module.exports = function(app){
 
   controller.verificaToken = function(req, res, next){
 
-    var token = req.headers['x-access-token'];
+    var token = req.body.token || req.param('token') || req.headers['x-access-token'];
 
     if(token){
       console.log('verificando token...');

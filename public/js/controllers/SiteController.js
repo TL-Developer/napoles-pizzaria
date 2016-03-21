@@ -5,7 +5,10 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
   // LISTANDO API DE PIZZAS DO SISTEMA
   $http({
       method: 'GET',
-      url: 'http://napoles-pizzaria.herokuapp.com/api/pizzas'
+      url: 'http://napoles-pizzaria.herokuapp.com/api/pizzas',
+      headers: {
+        'x-access-token':'eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg'
+      }
    }).success(function(data){
        console.log(data);
   }).error(function(err){
@@ -34,12 +37,29 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     };
 
     // https://napoles-pizzaria.herokuapp.com/api/pedidos
-    $http.post('https://napoles-pizzaria.herokuapp.com/api/pedidos', pedido).success(function(data, status){
-      $scope.mensagem = 'Enviado para cozinha!';
-      $timeout(function(){
-        $scope.mensagem = '';
-      }, 2000);
-    });
+    // $http.post('https://napoles-pizzaria.herokuapp.com/api/pedidos',{
+    //   pedido,
+    //   'x-access-token': 'eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg'
+    // }).success(function(data, status){
+    //   $scope.mensagem = 'Enviado para cozinha!';
+    //   $timeout(function(){
+    //     $scope.mensagem = '';
+    //   }, 2000);
+    // });
+
+
+    // $http({
+    //   method: 'POST',
+    //   url: 'https://napoles-pizzaria.herokuapp.com/api/pedidos',
+    //   data: pedido,
+    //   headers: {
+    //     'x-access-token': 'eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg'
+    //   }
+    // }).success(function(data){
+    //    console.log(data);
+    // }).error(function(err){
+    //   console.log(err);
+    // });
 
   };
 }]);
