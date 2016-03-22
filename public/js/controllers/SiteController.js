@@ -32,8 +32,8 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
       observacoes: form.observacoes
     };
 
-    // https://napoles-pizzaria.herokuapp.com/api/pedidos
-    $http.post('https://napoles-pizzaria.herokuapp.com/api/pedidos?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg', pedido).success(function(data, status){
+    // https://napoles-pizzaria.herokuapp.com/api/pedidos?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+    $http.post('/api/pedidos', pedido).success(function(data, status){
       $scope.mensagem = 'Enviado para cozinha!';
       $timeout(function(){
         $scope.mensagem = '';

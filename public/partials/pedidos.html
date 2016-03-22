@@ -32,14 +32,14 @@
                           <i class="fa fa-phone grey-text"></i>{{pedido.telefone}}
                           <br />
                           <i class="fa fa-mobile grey-text"></i>{{pedido.celular}}
-                          <br />
-                          <i class="fa fa-map-marker grey-text"></i>{{pedido.bairro}}
                       </div>
                       <div class="collapsible-body">
                           <div class="col s12 white">
                             <blockquote class="title">
                               {{pedido.pedido}}
-                              </blockquote><br/>
+                              <br />
+                              <small class="red-text bold">* {{pedido.observacoes}}</small>
+                            </blockquote><br/>
 
                               <h5 class="secondary-content red-text">
                                   <small><b>R$ {{pedido.valor}}</b></small>
@@ -53,14 +53,21 @@
                               <div class="row">
 
                                 <ul class="collection">
-                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{pedido.nome}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{pedido.telefone}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{pedido.celular}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.endereco}} - {{pedido.bairro}} - cep: {{pedido.cep}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.referencia}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{pedido.data}} as {{pedido.hora}}hs</a>
-                                  <li class="collection-item"><blockquote>{{pedido.pedido}}</blockquote></a>
-                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{pedido.valor}}</b></h5></a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{pedido.nome}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{pedido.telefone}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{pedido.celular}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.endereco}} - {{pedido.bairro}} - cep: {{pedido.cep}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.referencia}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{pedido.data}} as {{pedido.hora}}hs</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-dollar left"></i>{{pedido.formaPg}}</li>
+                                  <li class="collection-item">
+                                    <blockquote>
+                                      {{pedido.pedido}}
+                                      <br />
+                                      <small class="red-text bold">* {{pedido.observacoes}}</small>
+                                    </blockquote>
+                                  </li>
+                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{pedido.valor}}</b></h5></li>
                                 </ul>
 
                               </div>
