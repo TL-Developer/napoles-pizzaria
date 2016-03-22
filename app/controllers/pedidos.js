@@ -29,6 +29,8 @@ module.exports = function(app){
       valor: pedido.valor,
       bairro: pedido.bairro,
       cep: pedido.cep,
+      formaPg: pedido.formaPg,
+      observacoes: pedido.observacoes,
       hora: moment().hours() + ':' + moment().minutes(),
       data: moment().locale('pt-br').format('L')
     }).then(function(pedido){

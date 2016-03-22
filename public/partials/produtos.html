@@ -9,10 +9,11 @@
 
     <ul class="tabs">
       <li class="tab col s3"><a href="#pizzas" class="active">Pizzas</a></li>
+      <li class="tab col s3"><a href="#pizzasDoces">Pizzas doces</a></li>
       <li class="tab col s3"><a href="#esfihas">Esfihas</a></li>
+      <li class="tab col s3"><a href="#esfihasDoces">Esfihas doces</a></li>
       <li class="tab col s3"><a href="#bebidas">Bebidas</a></li>
       <li class="tab col s3"><a href="#sucos">Sucos</a></li>
-      <li class="tab col s3"><a href="#brotos">Brotos</a></li>
     </ul>
 
   </div>
@@ -38,8 +39,13 @@
               </div>
 
               <div class="input-field col s4">
-                <input id="valor" type="text" class="validate teal white">
-                <label for="valor">Valor</label>
+                <input id="valorGrande" type="text" class="validate teal white">
+                <label for="valorGrande">Grande</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valorBroto" type="text" class="validate teal white">
+                <label for="valorBroto">Broto</label>
               </div>
 
               <a class="btn waves-effect waves-light">inserir</a>
@@ -60,7 +66,8 @@
           <tr>
               <th data-field="nome">Nome</th>
               <th data-field="descricao">Descrição</th>
-              <th data-field="preco">Valor</th>
+              <th data-field="valorGrande">Grande</th>
+              <th data-field="valorBroto">Broto</th>
               <th data-field="editar"></th>
               <th data-field="excluir"></th>
           </tr>
@@ -72,7 +79,8 @@
               {{pizza.nome}}
             </td>
             <td>{{pizza.descricao}}</td>
-            <td>{{pizza.valor}}</td>
+            <td>{{pizza.valorGrande}}</td>
+            <td>{{pizza.valorBroto}}</td>
             <td class="right">
               <a class="btn-floating btn waves-effect waves-light red"><i class="fa fa-remove"></i></a>
             </td>
@@ -119,6 +127,114 @@
       </table>
     </div>
     <!-- END PIZZAS -->
+
+    <!-- PIZZAS DOCES -->
+    <div id="pizzasDoces">
+
+      <br>
+      <div class="row">
+        <div class="col s12 teal white">
+          <form>
+            <div class="row">
+              <div class="input-field col s4">
+                <input id="nome" type="text" class="validate teal white">
+                <label for="nome">Nome</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="descricao" type="text" class="validate teal white">
+                <label for="descricao">Descrição</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valorGrande" type="text" class="validate teal white">
+                <label for="valorGrande">Grande</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input id="valorBroto" type="text" class="validate teal white">
+                <label for="valorBroto">Broto</label>
+              </div>
+
+              <a class="btn waves-effect waves-light">inserir</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <form class="col s12">
+          <div class="input-field col s12">
+            <input id="buscar" type="text" class="validate teal white">
+            <label for="buscar">Buscar produto...</label>
+          </div>
+      </form>
+      <br>
+      <table class="highlight teal white">
+        <thead>
+          <tr>
+              <th data-field="nome">Nome</th>
+              <th data-field="descricao">Descrição</th>
+              <th data-field="valorGrande">Grande</th>
+              <th data-field="valorBroto">Broto</th>
+              <th data-field="editar"></th>
+              <th data-field="excluir"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="pizza in pizzas">
+            <td>
+              {{pizza.nome}}
+            </td>
+            <td>{{pizza.descricao}}</td>
+            <td>{{pizza.valorGrande}}</td>
+            <td>{{pizza.valorBroto}}</td>
+            <td class="right">
+              <a class="btn-floating btn waves-effect waves-light red"><i class="fa fa-remove"></i></a>
+            </td>
+            <td class="right">
+              <a href="#{{pizza._id}}" class="btn-floating btn waves-effect waves-light blue modal-trigger" modal><i class="fa fa-edit"></i></a>
+
+              <!-- Modal com as informações do cliente -->
+              <div id="{{pizza._id}}" class="modal">
+                  <div class="modal-content">
+                      <h4 class="center">Alterar produto</h4>
+                      <div class="row">
+
+                        <div class="col s12 teal white">
+                          <form>
+                            <div class="row">
+                              <div class="input-field col s4">
+                                <input id="nome" type="text" class="validate teal white" ng-model="pizza.nome">
+                                <label for="nome" class="active">Nome</label>
+                              </div>
+
+                              <div class="input-field col s4">
+                                <input id="descricao" type="text" class="validate teal white" ng-model="pizza.descricao">
+                                <label for="descricao" class="active">Descrição</label>
+                              </div>
+
+                              <div class="input-field col s4">
+                                <input id="valor" type="text" class="validate teal white" ng-model="pizza.valor">
+                                <label for="valor" class="active">Valor</label>
+                              </div>
+
+                              <button class="btn waves-effect waves-light modal-action modal-close">Salvar</button>
+                            </div>
+                          </form>
+                        </div>
+
+                      </div>
+                  </div>
+              </div>
+            </td>
+
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- END PIZZAS DOCES -->
 
 
     <!-- ESFIHAS -->
@@ -189,8 +305,8 @@
     </div>
     <!-- END ESFIHAS -->
 
-    <!-- BROTOS -->
-    <div id="brotos">
+    <!-- ESFIHAS DOCES -->
+    <div id="esfihasDoces">
 
       <br>
       <div class="row">
@@ -253,7 +369,7 @@
         </tbody>
       </table>
     </div>
-    <!-- END BROTOS -->
+    <!-- END ESFIHAS DOCES -->
 
     <!-- BEBIDAS -->
     <div id="bebidas">

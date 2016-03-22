@@ -2,7 +2,7 @@ angular.module('napoles').controller('ProdutosController',['$scope','$http', fun
 
   // PIZZAS
   $scope.pizzas = [];
-  $http.get('/api/pizzas').then(function(pizzas){
+  $http.get('/api/produtos/pizzas').then(function(pizzas){
     $scope.pizzas = pizzas.data;
     console.log($scope.pizzas);
   }, function(erro){

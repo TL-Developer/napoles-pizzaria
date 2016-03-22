@@ -3,7 +3,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
   $scope.mensagem = '';
 
   // LISTANDO API DE PIZZAS DO SISTEMA
-  $http.get('https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg').then(function(data){
+  $http.get('https://napoles-pizzaria.herokuapp.com/api/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg').then(function(data){
     console.log(data)
   }, function(err){
     console.log(err)
@@ -27,9 +27,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
       pedido: form.pedido,
       valor: form.valor,
       bairro: form.bairro,
-      cep: form.cep,
-      formaPg: form.formaPg,
-      observacoes: form.observacoes
+      cep: form.cep
     };
 
     // https://napoles-pizzaria.herokuapp.com/api/pedidos

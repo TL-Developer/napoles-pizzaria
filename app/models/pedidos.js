@@ -47,6 +47,13 @@ module.exports = function(){
       type: String,
       required: true
     },
+    formaPg: {
+      type: String,
+      required: true
+    },
+    observacoes: {
+      type: String
+    },
     created: {
       type: Date,
       default: new Date().toUTCString()
