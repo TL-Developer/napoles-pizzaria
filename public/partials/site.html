@@ -1,47 +1,254 @@
-<div class="container">
-  <h4 ng-show="mensagem" class="mensagem-feedback alert alert-success" role="alert"><i class="fa fa-check"></i> {{mensagem}}</h4>
-</div>
+<div class="geral" style="background: black; width: 100%;position: absolute;">
+  <div class="container">
+    <h4 ng-show="mensagem" class="mensagem-feedback alert alert-success" role="alert"><i class="fa fa-check"></i> {{mensagem}}</h4>
+  </div>
 
-<div class="container">
+  <div class="container">
 
-  <form ng-submit="enviarPedido(this)">
-    <fieldset>
-      <legend><h1 class="text-center area">Cadastrando pedido pelo site</h1></legend>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Nome" ng-model="nome">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Telefone" ng-model="telefone">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Celular" ng-model="celular">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Endereço" ng-model="endereco">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Bairro" ng-model="bairro">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Cep" ng-model="cep">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Ponto de ref." ng-model="referencia">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Valor" ng-model="valor">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Pedido" ng-model="pedido">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Observações" ng-model="observacoes">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Forma de pagamento" ng-model="formaPg">
-      </div>
+    <!-- 1ª ETAPA -->
+    <div class="row">
 
-      <button type="submit" class="btn btn-primary btn-block">Enviar pedido para o sistema!</button>
-    </fieldset>
-  </form>
+      <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
+
+        <form>
+
+          <div class="selecione-bairro" style="margin-bottom: 10px; border-bottom: 1px solid #ccc;">
+            <h3 class="text-center">Descubra seu bairro com delivery</h3>
+            <div class="form-group">
+              <select name="bairro" id="bairro" class="form-control">
+                <option value="Selecione o bairro">Selecione o bairro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="endereco" style="margin-bottom: 10px;">
+            <h3 class="text-center">Qual endereço de entega?</h3>
+            <div class="form-group">
+              <div class="row">
+
+                <div class="col-md-4">
+                  <input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
+                </div>
+
+                <div class="col-md-4">
+                  <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" disabled>
+                </div>
+
+                <div class="col-md-4">
+                  <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" disabled>
+                </div>
+
+              </div>
+
+              <br />
+
+              <div class="form-group">
+                <div class="row">
+
+                  <div class="col-md-9">
+                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço" disabled>
+                  </div>
+
+                  <div class="col-md-3">
+                    <input type="text" id="numero" name="numero" class="form-control" placeholder="Nº" disabled>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento" disabled>
+                  </div>
+
+                  <div class="col-md-6">
+                    <input type="text" id="referencia" name="referencia" class="form-control" placeholder="Ponto de referencia" disabled>
+                  </div>
+                </div>
+              </div>
+
+              <input type="submit" value="PROXIMO!" class="btn btn-block btn-primary">
+
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <!-- END: 1ª ETAPA -->
+
+
+      <!-- 2ª ETAPA -->
+      <div class="row">
+
+        <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
+
+          <form>
+
+            <div class="dados" style="margin-bottom: 10px;">
+              <h3 class="text-center">Digite seus dados</h3>
+              <div class="form-group">
+                <div class="row">
+
+                  <div class="col-md-12">
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome">
+                  </div>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Telefone">
+                    </div>
+
+                    <div class="col-md-6">
+                      <input type="text" id="celular" name="celular" class="form-control" placeholder="Celular">
+                    </div>
+                  </div>
+                </div>
+
+                <input type="submit" value="AGORA VAMOS FAZER O PEDIDO!" class="btn btn-block btn-primary">
+
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <!-- END: 2ª ETAPA -->
+
+        <!-- 3ª ETAPA PEDIDO -->
+        <div class="row">
+          <div class="col-md-9" style="background: white; border-radius: 10px; margin-top: 5%;">
+
+            <div class="col-md-12" style="background: white; border-radius: 10px;">
+
+              <ul class="nav nav-tabs" role="tablist" style="margin-top: 5%;">
+                <li role="presentation" class="active"><a href="#pizzas" aria-controls="home" role="tab" data-toggle="tab">Pizzas</a></li>
+                <li role="presentation"><a href="#esfihas" aria-controls="esfihas" role="tab" data-toggle="tab">Espihas</a></li>
+                <li role="presentation"><a href="#sucos" aria-controls="sucos" role="tab" data-toggle="tab">Sucos</a></li>
+                <li role="presentation"><a href="#bebidas" aria-controls="bebidas" role="tab" data-toggle="tab">Bebidas</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content" style="margin-top: 5%;">
+
+                <!-- PAINEL DE PIZZAS -->
+                <div role="tabpanel" class="tab-pane active" id="pizzas">
+                  <table class="table">
+                    <thead>
+                     <tr>
+                       <th>Sabores</th>
+                       <th>Grande</th>
+                       <th>Broto</th>
+                     </tr>
+                    </thead>
+
+                    <tbody>
+                     <tr>
+                      <td>Calabresa <br /><small>calabresa com cebola</small></td>
+                      <td>R$ 20.99</td>
+                      <td>R$ 12.99</td>
+                     </tr>
+
+                     <tr>
+                      <td>Mussarela <br /><small>mussarela com oregano</small></td>
+                      <td>R$ 20.99</td>
+                      <td>R$ 12.99</td>
+                    </tr>
+                    <tr>
+                     <td>Frango c/catupiry <br /><small>frango com catupiry</small></td>
+                     <td>R$ 38.99</td>
+                     <td>R$ 28.99</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+
+                <!-- PAINEL DE ESFIHAS -->
+                <div role="tabpanel" class="tab-pane" id="esfihas">
+                  Espihas
+                </div>
+
+                <!-- PAINEL DE SUCOS -->
+                <div role="tabpanel" class="tab-pane" id="sucos">
+                  Sucos
+                </div>
+
+                <!-- PAINEL DE BEBIDAS -->
+                <div role="tabpanel" class="tab-pane" id="bebidas">
+                  Bebidas
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Tab panes -->
+
+          <div class="col-md-3" style="margin-top: 5%;">
+            <div class="col-md-12" style="background: white; border-radius: 10px;">
+              seu pedido
+            </div>
+          </div>
+        </div>
+        <!-- FIM: 3ª ETAPA PEDIDO -->
+
+
+    </div>
+
+  <script>
+
+  $('.nav-tabs li a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+
+  </script>
+
+    <!-- <form ng-submit="enviarPedido(this)">
+      <fieldset>
+        <legend><h1 class="text-center area">Cadastrando pedido pelo site</h1></legend>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Nome" ng-model="nome">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Telefone" ng-model="telefone">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Celular" ng-model="celular">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Endereço" ng-model="endereco">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Bairro" ng-model="bairro">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Cep" ng-model="cep">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Ponto de ref." ng-model="referencia">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Valor" ng-model="valor">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Pedido" ng-model="pedido">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Observações" ng-model="observacoes">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Forma de pagamento" ng-model="formaPg">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Enviar pedido para o sistema!</button>
+      </fieldset>
+    </form> -->
+  </div>
 </div>
