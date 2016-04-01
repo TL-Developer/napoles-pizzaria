@@ -76,6 +76,7 @@
         </form>
 
       </div>
+    </div>
       <!-- END: 1ª ETAPA -->
 
 
@@ -117,89 +118,153 @@
             </div>
           </form>
 
+          </div>
         </div>
         <!-- END: 2ª ETAPA -->
 
-        <!-- 3ª ETAPA PEDIDO -->
-        <div class="row">
-          <div class="col-md-9" style="background: white; border-radius: 10px; margin-top: 5%;">
 
-            <div class="col-md-12" style="background: white; border-radius: 10px;">
+    </div>
+    <!-- FIM CONTAINER -->
 
-              <ul class="nav nav-tabs" role="tablist" style="margin-top: 5%;">
-                <li role="presentation" class="active"><a href="#pizzas" aria-controls="home" role="tab" data-toggle="tab">Pizzas</a></li>
-                <li role="presentation"><a href="#esfihas" aria-controls="esfihas" role="tab" data-toggle="tab">Espihas</a></li>
-                <li role="presentation"><a href="#sucos" aria-controls="sucos" role="tab" data-toggle="tab">Sucos</a></li>
-                <li role="presentation"><a href="#bebidas" aria-controls="bebidas" role="tab" data-toggle="tab">Bebidas</a></li>
-              </ul>
+    <!-- 3ª ETAPA PEDIDO -->
+    <div class="row" style="padding-left: 2%;padding-right: 0.8%;">
+      <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8" style="background: white; border-radius: 10px; margin-top: 5%;">
 
-              <!-- Tab panes -->
-              <div class="tab-content" style="margin-top: 5%;">
+        <div class="col-md-12" style="background: white; border-radius: 10px;">
 
-                <!-- PAINEL DE PIZZAS -->
-                <div role="tabpanel" class="tab-pane active" id="pizzas">
-                  <table class="table">
-                    <thead>
-                     <tr>
-                       <th>Sabores</th>
-                       <th>Grande</th>
-                       <th>Broto</th>
-                     </tr>
-                    </thead>
+          <ul class="nav nav-tabs" role="tablist" style="margin-top: 5%;">
+            <li role="presentation" class="active"><a href="#pizzas" aria-controls="home" role="tab" data-toggle="tab">Pizzas</a></li>
+            <li role="presentation"><a href="#esfihas" aria-controls="esfihas" role="tab" data-toggle="tab">Espihas</a></li>
+            <li role="presentation"><a href="#sucos" aria-controls="sucos" role="tab" data-toggle="tab">Sucos</a></li>
+            <li role="presentation"><a href="#bebidas" aria-controls="bebidas" role="tab" data-toggle="tab">Bebidas</a></li>
+          </ul>
 
-                    <tbody>
-                     <tr>
-                      <td>Calabresa <br /><small>calabresa com cebola</small></td>
-                      <td>R$ 20.99</td>
-                      <td>R$ 12.99</td>
-                     </tr>
+          <!-- Tab panes -->
+          <div class="tab-content" style="margin-top: 5%;">
 
-                     <tr>
-                      <td>Mussarela <br /><small>mussarela com oregano</small></td>
-                      <td>R$ 20.99</td>
-                      <td>R$ 12.99</td>
-                    </tr>
-                    <tr>
-                     <td>Frango c/catupiry <br /><small>frango com catupiry</small></td>
-                     <td>R$ 38.99</td>
-                     <td>R$ 28.99</td>
-                    </tr>
-                  </tbody>
-                </table>
-                </div>
+            <!-- PAINEL DE PIZZAS -->
+            <div role="tabpanel" class="tab-pane active" id="pizzas">
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Grande</th>
+                   <th>Broto</th>
+                 </tr>
+                </thead>
 
-                <!-- PAINEL DE ESFIHAS -->
-                <div role="tabpanel" class="tab-pane" id="esfihas">
-                  Espihas
-                </div>
+                <tbody class="conteudo-pizzas">
+                  <tr>
+                    <td>Calabresa <br /><small>calabresa com cebola</small></td>
+                    <td>R$ 20.99 <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"></span></td>
+                    <td>R$ 12.99 <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"></span></td>
+                  </tr>
 
-                <!-- PAINEL DE SUCOS -->
-                <div role="tabpanel" class="tab-pane" id="sucos">
-                  Sucos
-                </div>
 
-                <!-- PAINEL DE BEBIDAS -->
-                <div role="tabpanel" class="tab-pane" id="bebidas">
-                  Bebidas
-                </div>
+                  <!-- MODAL -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="exampleModalLabel">Calabresa</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
 
-              </div>
+                              <label for="recipient-name" class="control-label">Adicionar borda:</label>
+                              <div class="row">
+                                <div class="col-md-12 panel-default">
+                                  Catupiry <button class="btn btn-box-tool" style="background:green;"><i class="fa fa-plus" style="color:white;"></i></button>
+                                  Cheddar <button class="btn btn-box-tool" style="background:green;"><i class="fa fa-plus" style="color:white;"></i></button>
 
+                                  <hr />
+
+                                  <ul class="list-group">
+                                    <li class="list-group-item"><button class="btn btn-box-tool" style="background:red;"><i class="fa fa-minus" style="color:white;"></i></button> catupiry</li>
+                                  </ul>
+                                </div>
+                              </div>
+
+
+
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="control-label">Observações do pedido(ex:sem cebola, sem tomate):</label>
+                              <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">PRONTO!</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              </tbody>
+            </table>
+            </div>
+
+            <!-- PAINEL DE ESFIHAS -->
+            <div role="tabpanel" class="tab-pane" id="esfihas">
+              Espihas
+            </div>
+
+            <!-- PAINEL DE SUCOS -->
+            <div role="tabpanel" class="tab-pane" id="sucos">
+              Sucos
+            </div>
+
+            <!-- PAINEL DE BEBIDAS -->
+            <div role="tabpanel" class="tab-pane" id="bebidas">
+              Bebidas
             </div>
 
           </div>
-          <!-- Tab panes -->
 
-          <div class="col-md-3" style="margin-top: 5%;">
-            <div class="col-md-12" style="background: white; border-radius: 10px;">
-              seu pedido
+        </div>
+
+      </div>
+      <!-- Tab panes -->
+
+      <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4" style="margin-top: 5%;">
+
+        <div class="col-md-12" style="background: white; border-radius: 10px;">
+          <div class="col-md-12">
+            <h3 style="color: #ccc;">Seu pedido</h3>
+            <hr />
+          </div>
+
+        <div class="col-md-12 panel panel-default">
+          <div class="col-md-12">
+            <h4><span class="badge" style="background: green;">1</span> <b>Pizza calabresa</b></h4>
+            <small>
+              <b>*Obs.:</b> sem cebola<br />
+              <b>*Extras:</b> borda catupiry
+            </small>
+          </div>
+
+          <div class="col-md-12" style="margin-top: 3%;">
+            <div class="col-md-6" style="margin:0;padding:0;">
+              <span class="fa fa-minus-circle fa-2x" style="color: red;cursor: pointer;"></span>
+              <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;"></span>
+            </div>
+
+            <div class="col-md-6">
+              <h4 class="text-right">R$ 20.50</h4>
             </div>
           </div>
         </div>
-        <!-- FIM: 3ª ETAPA PEDIDO -->
+
+      </div>
 
 
+      </div>
     </div>
+    <!-- FIM: 3ª ETAPA PEDIDO -->
+
 
   <script>
 
@@ -207,6 +272,8 @@
     e.preventDefault()
     $(this).tab('show')
   })
+
+  $('#exampleModal').on('show.bs.modal')
 
   </script>
 
