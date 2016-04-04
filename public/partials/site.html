@@ -10,13 +10,15 @@
 
       <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
 
-        <form>
+        <form ng-submit="enviaEndereco(this)">
 
           <div class="selecione-bairro" style="margin-bottom: 10px; border-bottom: 1px solid #ccc;">
             <h3 class="text-center">Descubra seu bairro com delivery</h3>
             <div class="form-group">
-              <select name="bairro" id="bairro" class="form-control">
-                <option value="Selecione o bairro">Selecione o bairro</option>
+              <select name="bairro" id="bairro" class="form-control" ng-model="bairro">
+                <option ng-repeat="bairro in bairros" value="{{bairro}}">
+                    {{bairro}}
+                </option>
               </select>
             </div>
           </div>
@@ -27,15 +29,15 @@
               <div class="row">
 
                 <div class="col-md-4">
-                  <input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
+                  <input type="text" id="cep" name="cep" ng-model="cep" class="form-control" placeholder="CEP" ng-blur="getCep(cep)">
                 </div>
 
                 <div class="col-md-4">
-                  <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" disabled>
+                  <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" ng-model="cidade">
                 </div>
 
                 <div class="col-md-4">
-                  <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" disabled>
+                  <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" ng-model="uf">
                 </div>
 
               </div>
@@ -46,11 +48,11 @@
                 <div class="row">
 
                   <div class="col-md-9">
-                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço" disabled>
+                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço" ng-model="endereco">
                   </div>
 
                   <div class="col-md-3">
-                    <input type="text" id="numero" name="numero" class="form-control" placeholder="Nº" disabled>
+                    <input type="text" id="numero" name="numero" class="form-control" placeholder="Nº" ng-model="numero">
                   </div>
                 </div>
               </div>
@@ -60,11 +62,11 @@
                 <div class="row">
 
                   <div class="col-md-6">
-                    <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento" disabled>
+                    <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento" ng-model="complemento">
                   </div>
 
                   <div class="col-md-6">
-                    <input type="text" id="referencia" name="referencia" class="form-control" placeholder="Ponto de referencia" disabled>
+                    <input type="text" id="referencia" name="referencia" class="form-control" placeholder="Ponto de referencia" ng-model="referencia">
                   </div>
                 </div>
               </div>
@@ -85,7 +87,7 @@
 
         <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
 
-          <form>
+          <form ng-submit="enviaDados(this)">
 
             <div class="dados" style="margin-bottom: 10px;">
               <h3 class="text-center">Digite seus dados</h3>
@@ -93,7 +95,7 @@
                 <div class="row">
 
                   <div class="col-md-12">
-                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome">
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" ng-model="nome">
                   </div>
                 </div>
 
@@ -103,11 +105,11 @@
                   <div class="row">
 
                     <div class="col-md-6">
-                      <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Telefone">
+                      <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Telefone" ng-model="telefone">
                     </div>
 
                     <div class="col-md-6">
-                      <input type="text" id="celular" name="celular" class="form-control" placeholder="Celular">
+                      <input type="text" id="celular" name="celular" class="form-control" placeholder="Celular" ng-model="celular">
                     </div>
                   </div>
                 </div>
