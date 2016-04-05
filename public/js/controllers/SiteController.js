@@ -2,14 +2,6 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
 
   $scope.mensagem = '';
 
-  // LISTANDO API DE PIZZAS DO SISTEMA
-  $http.get('https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg').then(function(data){
-    console.log(data)
-  }, function(err){
-    console.log(err)
-  });
-
-
   const pedido = {};
 
   // DADOS DE ENDEREÇO
@@ -77,39 +69,94 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
 
   // DADOS DO PEDIDO
 
+
   // ENVIA DADOS DO PEDIDO
 
+  // LISTANDO API DE PIZZAS DO SISTEMA
+  $scope.pizzas = [];
 
-  $scope.enviarPedido = function(form){
+  $http.get('https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg').then(function(pizzas){
+    $scope.pizzas = pizzas.data;
+  }, function(err){
+    console.log(err)
+  });
 
-    var data = new Date()
-      , mes = data.getDay()
-      , dia = data.getMonth()
-      , ano = data.getFullYear()
-      , hora = data.getHours()
-      , minutos = data.getMinutes();
 
-    var pedido = {
-      nome: form.nome,
-      telefone: form.telefone,
-      celular: form.celular,
-      endereco: form.endereco,
-      referencia: form.referencia,
-      pedido: form.pedido,
-      valor: form.valor,
-      bairro: form.bairro,
-      cep: form.cep,
-      formaPg: form.formaPg,
-      observacoes: form.observacoes
-    };
+  var tipo
+    , valor
+    , nome;
 
-    // https://napoles-pizzaria.herokuapp.com/api/pedidos?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
-    $http.post('/api/pedidos', pedido).success(function(data, status){
-      $scope.mensagem = 'Enviado para cozinha!';
-      $timeout(function(){
-        $scope.mensagem = '';
-      }, 2000);
-    });
-
+  // ENVIA TAMANHO E TIPO
+  $scope.enviaBroto = function(broto){
+    tipo = 'Broto';
+    valor = broto.valorBroto;
+    nome = broto.nome;
   };
+  $scope.enviaPizza = function(pizza){
+    tipo = 'Pizza';
+    valor = pizza.valorGrande;
+    nome = pizza.nome;
+  };
+
+
+  // SUBPEDIDOS
+  $scope.subpedidos = [];
+
+  // ADICIONA PEDIDO
+  $scope.adicionaPedido = function(form){
+    $scope.subpedidos.push({
+      qtd: form.qtd,
+      nome: tipo+' '+nome,
+      observacoes: form.observacoes,
+      extras: form.extras,
+      valor: parseFloat(valor.replace(/,/, '.')) * form.qtd
+    });
+    $('.modal').modal('hide');
+  };
+
+  $scope.qtd = 1;
+  // ADICIONA QUANTIDADE
+  $scope.addQtdSubPedido = function(subpedido){
+    subpedido.qtd = subpedido.qtd + 1;
+    subpedido.valor = parseFloat(valor.replace(/,/, '.')) * subpedido.qtd;
+  };
+
+  // REMOVE SUBPEDIDO
+  $scope.removeSubPedido = function(subpedido){
+    var index = $scope.subpedidos.indexOf(subpedido);
+    $scope.subpedidos.splice(index, 1);
+  };
+
+  // $scope.enviarPedido = function(form){
+
+  //   var data = new Date()
+  //     , mes = data.getDay()
+  //     , dia = data.getMonth()
+  //     , ano = data.getFullYear()
+  //     , hora = data.getHours()
+  //     , minutos = data.getMinutes();
+
+  //   var pedido = {
+  //     nome: form.nome,
+  //     telefone: form.telefone,
+  //     celular: form.celular,
+  //     endereco: form.endereco,
+  //     referencia: form.referencia,
+  //     pedido: form.pedido,
+  //     valor: form.valor,
+  //     bairro: form.bairro,
+  //     cep: form.cep,
+  //     formaPg: form.formaPg,
+  //     observacoes: form.observacoes
+  //   };
+
+  //   // https://napoles-pizzaria.herokuapp.com/api/pedidos?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  //   $http.post('/api/pedidos', pedido).success(function(data, status){
+  //     $scope.mensagem = 'Enviado para cozinha!';
+  //     $timeout(function(){
+  //       $scope.mensagem = '';
+  //     }, 2000);
+  //   });
+
+  // };
 }]);

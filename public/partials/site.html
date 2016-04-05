@@ -156,57 +156,57 @@
                 </thead>
 
                 <tbody class="conteudo-pizzas">
-                  <tr>
-                    <td>Calabresa <br /><small>calabresa com cebola</small></td>
-                    <td>R$ 20.99 <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"></span></td>
-                    <td>R$ 12.99 <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"></span></td>
+                  <tr ng-repeat="pizza in pizzas">
+                    <td>{{pizza.nome}} <br /><small>{{pizza.descricao}}</small></td>
+                    <td>{{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaPizza(pizza)"></span></td>
+                    <td>{{pizza.valorBroto}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaBroto(pizza)"></span></td>
                   </tr>
-
-
-                  <!-- MODAL -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="exampleModalLabel">Calabresa</h4>
-                        </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-
-                              <label for="recipient-name" class="control-label">Adicionar borda:</label>
-                              <div class="row">
-                                <div class="col-md-12 panel-default">
-                                  Catupiry <button class="btn btn-box-tool" style="background:green;"><i class="fa fa-plus" style="color:white;"></i></button>
-                                  Cheddar <button class="btn btn-box-tool" style="background:green;"><i class="fa fa-plus" style="color:white;"></i></button>
-
-                                  <hr />
-
-                                  <ul class="list-group">
-                                    <li class="list-group-item"><button class="btn btn-box-tool" style="background:red;"><i class="fa fa-minus" style="color:white;"></i></button> catupiry</li>
-                                  </ul>
-                                </div>
-                              </div>
-
-
-
-                            </div>
-                            <div class="form-group">
-                              <label for="message-text" class="control-label">Observações do pedido(ex:sem cebola, sem tomate):</label>
-                              <textarea class="form-control" id="message-text"></textarea>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-dismiss="modal">PRONTO!</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
               </tbody>
             </table>
+
+            <!-- MODAL -->
+            <div ng-repeat="pizza in pizzas" class="modal fade" id="{{pizza._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Pizza - </b>{{pizza.nome}}</h4></h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="form" ng-submit="adicionaPedido(this)">
+                      <div class="form-group">
+                        <input type="number" class="form-control" value="1" ng-model="qtd">
+                      </div>
+                      <div class="form-group">
+                        <label for="recipient-name" class="control-label">Adicionar borda:</label>
+                        <br />
+                        <div class="radio-inline">
+                          <label>
+                            <input type="radio" value="Catupiry" ng-model="extras">
+                            Catupiry
+                          </label>
+                        </div>
+                        <div class="radio-inline">
+                          <label>
+                            <input type="radio" value="Cheddar" ng-model="extras">
+                            Cheddar
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="control-label">Observações do pedido(ex:sem cebola, sem tomate):</label>
+                        <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">PRONTO!</button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
             </div>
 
             <!-- PAINEL DE ESFIHAS -->
@@ -239,23 +239,23 @@
             <hr />
           </div>
 
-        <div class="col-md-12 panel panel-default">
+        <div class="col-md-12 panel panel-default" ng-repeat="subpedido in subpedidos">
           <div class="col-md-12">
-            <h4><span class="badge" style="background: green;">1</span> <b>Pizza calabresa</b></h4>
+            <h4><span class="badge" style="background: green;">{{subpedido.qtd}}</span> <b>{{subpedido.nome}}</b></h4>
             <small>
-              <b>*Obs.:</b> sem cebola<br />
-              <b>*Extras:</b> borda catupiry
+              <b>*Obs.:</b> {{subpedido.observacoes}}<br />
+              <b>*Extras:</b> borda {{subpedido.extras}}
             </small>
           </div>
 
           <div class="col-md-12" style="margin-top: 3%;">
             <div class="col-md-6" style="margin:0;padding:0;">
-              <span class="fa fa-minus-circle fa-2x" style="color: red;cursor: pointer;"></span>
-              <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;"></span>
+              <span class="fa fa-minus-circle fa-2x" style="color: red;cursor: pointer;" ng-click="removeSubPedido(subpedido)"></span>
+              <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" ng-click="addQtdSubPedido(subpedido)"></span>
             </div>
 
             <div class="col-md-6">
-              <h4 class="text-right">R$ 20.50</h4>
+              <h4 class="text-right">R$ {{subpedido.valor}}</h4>
             </div>
           </div>
         </div>
@@ -274,8 +274,6 @@
     e.preventDefault()
     $(this).tab('show')
   })
-
-  $('#exampleModal').on('show.bs.modal')
 
   </script>
 
@@ -321,3 +319,4 @@
     </form> -->
   </div>
 </div>
+
