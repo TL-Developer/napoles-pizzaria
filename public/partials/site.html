@@ -182,14 +182,14 @@
                         <br />
                         <div class="radio-inline">
                           <label>
-                            <input type="radio" value="Catupiry" ng-model="extras">
-                            Catupiry
+                            <input type="radio" value="Borda Catupiry" ng-model="extras">
+                            Borda catupiry
                           </label>
                         </div>
                         <div class="radio-inline">
                           <label>
-                            <input type="radio" value="Cheddar" ng-model="extras">
-                            Cheddar
+                            <input type="radio" value="Borda Cheddar" ng-model="extras">
+                            Borda cheddar
                           </label>
                         </div>
                       </div>
@@ -244,7 +244,7 @@
             <h4><span class="badge" style="background: green;">{{subpedido.qtd}}</span> <b>{{subpedido.nome}}</b></h4>
             <small>
               <b>*Obs.:</b> {{subpedido.observacoes}}<br />
-              <b>*Extras:</b> borda {{subpedido.extras}}
+              <b>*Extras:</b> {{subpedido.extras}}
             </small>
           </div>
 
@@ -256,6 +256,100 @@
 
             <div class="col-md-6">
               <h4 class="text-right">R$ {{subpedido.valor}}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="text-left" style="color: #9b9b9b;">Sub total</h5>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-right" style="color: #9b9b9b;">R$ {{subTotal}}</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="text-left" style="color: #9b9b9b;">Taxa de entrega</h5>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-right" style="color: #9b9b9b;">R$ {{taxaEntrega}}</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="text-left">Total</h3>
+          </div>
+          <div class="col-md-6">
+            <h3 class="text-right">R$ {{valorTotal}}</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-success btn-block btn-lg" style="margin-bottom: 3%;" data-toggle="modal" data-target="#formaPg" ng-click="enviarSubPedido()">FAZER PEDIDO!</button>
+          </div>
+        </div>
+
+
+        <!-- MODAL -->
+        <div class="modal fade" id="formaPg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Qual forma de pagamento?</h4></h4>
+              </div>
+              <div class="modal-body">
+                <form name="form" ng-submit="enviarPedido(this)">
+                  <div class="form-group">
+                    <select class="form-control" ng-model="formaPagamento">
+                      <option value="Cartão de crédito">Dinheiro</option>
+                      <option value="Cartão de crédito">Cartão de crédito</option>
+                      <option value="Cartão de crédito">Cartão de débito</option>
+                      <option value="Cartão de crédito">Vale refeição</option>
+                      <option value="Cartão de crédito">Vale alimentação</option>
+                      <option value="Cartão de crédito">Ticket restaurante</option>
+                      <option value="Cartão de crédito">VR</option>
+                    </select>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h5 class="text-left" style="color: #9b9b9b;">Sub total</h5>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="text-right" style="color: #9b9b9b;">R$ {{subTotal}}</h5>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h5 class="text-left" style="color: #9b9b9b;">Taxa de entrega</h5>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="text-right" style="color: #9b9b9b;">R$ {{taxaEntrega}}</h5>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h3 class="text-left">Total</h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h3 class="text-right">R$ {{valorTotal}}</h3>
+                    </div>
+                  </div>
+
+
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">FAZER MEU PEDIDO AGORA!</button>
+                  </div>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
