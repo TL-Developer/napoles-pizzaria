@@ -3,7 +3,10 @@ var mongoose = require('mongoose');
 module.exports = function(){
 
   var schema = new mongoose.Schema({
-    bairro: {type: String},
+    bairro: {
+      nome: {type: String},
+      valor: {type: String}
+    },
     celular: {type: String},
     cep: {type: String},
     cidade: {type: String},
@@ -14,7 +17,10 @@ module.exports = function(){
     numero: {type: String},
     pedido: [
       {
-        extras: {type: String},
+        borda: {
+          nome: {type: String},
+          valor: {type: String}
+        },
         nome: {type: String},
         observacoes: {type: String},
         qtd: {type: Number},

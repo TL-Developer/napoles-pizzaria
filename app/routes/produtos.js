@@ -5,4 +5,10 @@ module.exports = function(app){
   app.route('/api/produtos/pizzas')
     .get(controller.getPizzas);
 
+  app.route('/api/produtos/bairros')
+    .get(controller.getBairros);
+
+  app.route('/api/produtos/bordas')
+    .get(controller.getBordas);
+
 };

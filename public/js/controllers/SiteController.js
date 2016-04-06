@@ -1,14 +1,22 @@
-angular.module('napoles').controller('SiteController',['$scope','$http','$timeout', function($scope, $http, $timeout){
+angular.module('napoles').controller('SiteController',['$scope','$http','$timeout','$window', function($scope, $http, $timeout, $window){
 
   $scope.mensagem = '';
+  $scope.trueSubPedidos = true;
 
   const pedido = {};
 
   // DADOS DE ENDEREÇO
-  $scope.bairros = [
-    'jd.helena',
-    'São miguel'
-  ];
+  $scope.bairros = [];
+  $scope.bairro = 'Escolha o bairro';
+
+  // BUSCANDO BAIRROS DO SISTEMA
+  // https://napoles-pizzaria.herokuapp.com/api/produtos/bairros?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  $http.get('/api/produtos/bairros').then(function(bairros){
+    $scope.bairros = bairros.data;
+  }, function(erro){
+    console.log(erro);
+    console.log('Não foi possível buscar os bairros.')
+  });
 
   $scope.getCep = function(cep){
     // AJAX CEP
@@ -34,6 +42,12 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     pedido.numero = form.numero;
     pedido.referencia = form.referencia;
     pedido.complemento = form.complemento;
+  };
+
+  // ENVIA VALOR DA TAXA
+  $scope.selectBairro = function(taxa){
+    $scope.taxaEntrega = parseFloat(taxa.replace(/,/, '.'));
+    $scope.valorTotal = $scope.subTotal + $scope.taxaEntrega;
   };
 
   // DADOS DO CLIENTE
@@ -80,37 +94,60 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
   // VALORES TOTAIS
   $scope.qtd = 0;
   $scope.subTotal = 0;
-  $scope.taxaEntrega = 2.00;
+  $scope.taxaEntrega = 0;
   $scope.valorTotal = $scope.subTotal + $scope.taxaEntrega;
 
 
-  // ADICIONA PEDIDO
+
+  // ADICIONANDO BORDAS
+  $scope.bordas = [];
+  $scope.borda = 'Escolha a borda';
+
+  // https://napoles-pizzaria.herokuapp.com/api/produtos/bordas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  $http.get('/api/produtos/bordas').then(function(bordas){
+    $scope.bordas = bordas.data;
+  }, function(erro){
+    console.log(erro);
+    console.log('Não foi possível buscar os bordas.')
+  });
+
+  // ENVIA VALOR DA BORDA
+  $scope.selectBorda = function(taxa){
+    $scope.valorBorda = taxa;
+  };
+
+  // ADICIONANDO PEDIDO
   $scope.adicionaPedido = function(form){
     $scope.subpedidos.push({
       qtd: form.qtd,
       nome: tipo+' '+nome,
       observacoes: form.observacoes,
-      extras: form.extras,
-      valor: parseFloat(valor.replace(/,/, '.')) * form.qtd
+      borda: form.borda,
+      valorBorda: form.valorBorda,
+      valor: (parseFloat(valor.replace(/,/, '.')) * form.qtd ) + parseFloat(form.valorBorda.replace(/,/, '.'))
     });
 
     $('.modal').modal('hide');
 
+    $scope.valorBorda = form.valorBorda.replace(/,/, '.');
     $scope.qtd = form.qtd;
 
     // SOMA VALORES FINAIS
-    $scope.subTotal += parseFloat(valor.replace(/,/, '.')) * $scope.qtd;
+    $scope.subTotal += (parseFloat(valor.replace(/,/, '.')) * $scope.qtd) + parseFloat($scope.valorBorda);
     $scope.valorTotal = $scope.subTotal + $scope.taxaEntrega;
+
+    // HABILITANDO BOTAO ENVIAR PEDIDO
+    $scope.trueSubPedidos = false;
   };
 
   $scope.qtd = 1;
   // ADICIONA QUANTIDADE DE PEDIDOS
   $scope.addQtdSubPedido = function(subpedido){
     subpedido.qtd = subpedido.qtd + 1;
-    subpedido.valor = parseFloat(valor.replace(/,/, '.')) * subpedido.qtd;
+    subpedido.valor = (parseFloat(valor.replace(/,/, '.')) + parseFloat($scope.valorBorda) )* subpedido.qtd;
 
     // SOMA VALORES FINAIS
-    $scope.subTotal += parseFloat(valor.replace(/,/, '.')) * $scope.qtd;
+    $scope.subTotal += (parseFloat(valor.replace(/,/, '.')) + parseFloat($scope.valorBorda) )* $scope.qtd;
     $scope.valorTotal = $scope.subTotal + $scope.taxaEntrega;
   };
 
@@ -138,10 +175,16 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
 
     // https://napoles-pizzaria.herokuapp.com/api/pedidos?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
     $http.post('/api/pedidos', pedido).success(function(data, status){
-      $scope.mensagem = 'Enviado para cozinha!';
+
+      $('.modal').modal('hide');
+
       $timeout(function(){
-        $scope.mensagem = '';
-      }, 2000);
+       $scope.mensagem = 'Enviado para cozinha!';
+        $timeout(function(){
+          $scope.mensagem = '';
+          $window.location.reload();
+        }, 2000);
+      }, 1000);
     });
   };
 

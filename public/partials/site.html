@@ -15,10 +15,8 @@
           <div class="selecione-bairro" style="margin-bottom: 10px; border-bottom: 1px solid #ccc;">
             <h3 class="text-center">Descubra seu bairro com delivery</h3>
             <div class="form-group">
-              <select name="bairro" id="bairro" class="form-control" ng-model="bairro">
-                <option ng-repeat="bairro in bairros" value="{{bairro}}">
-                    {{bairro}}
-                </option>
+              <select name="bairro" id="bairro" class="form-control" ng-model="bairro" ng-options="bairro as bairro.nome for bairro in bairros track by bairro.nome" ng-change="selectBairro(bairro.valor)">
+              <option value="">-- Selecione seu bairro --</option>
               </select>
             </div>
           </div>
@@ -33,11 +31,11 @@
                 </div>
 
                 <div class="col-md-4">
-                  <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" ng-model="cidade">
+                  <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" ng-model="cidade" disabled>
                 </div>
 
                 <div class="col-md-4">
-                  <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" ng-model="uf">
+                  <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" ng-model="uf" disabled>
                 </div>
 
               </div>
@@ -174,23 +172,20 @@
                   </div>
                   <div class="modal-body">
                     <form name="form" ng-submit="adicionaPedido(this)">
-                      <div class="form-group">
-                        <input type="number" class="form-control" value="1" ng-model="qtd">
-                      </div>
-                      <div class="form-group">
-                        <label for="recipient-name" class="control-label">Adicionar borda:</label>
-                        <br />
-                        <div class="radio-inline">
-                          <label>
-                            <input type="radio" value="Borda Catupiry" ng-model="extras">
-                            Borda catupiry
-                          </label>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantas pizzas?:</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
                         </div>
-                        <div class="radio-inline">
-                          <label>
-                            <input type="radio" value="Borda Cheddar" ng-model="extras">
-                            Borda cheddar
-                          </label>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label">Adicionar borda:</label>
+                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
+                          <option value="">-- Selecione a borda --</option>
+                           </select>
+                           <input type="text" ng-model="valorBorda" style="display: none;">
                         </div>
                       </div>
                       <div class="form-group">
@@ -244,7 +239,7 @@
             <h4><span class="badge" style="background: green;">{{subpedido.qtd}}</span> <b>{{subpedido.nome}}</b></h4>
             <small>
               <b>*Obs.:</b> {{subpedido.observacoes}}<br />
-              <b>*Extras:</b> {{subpedido.extras}}
+              <b>*Extras:</b> {{subpedido.borda.nome}} - <b>R${{subpedido.valorBorda}}</b>
             </small>
           </div>
 
@@ -289,7 +284,7 @@
 
         <div class="row">
           <div class="col-md-12">
-            <button type="button" class="btn btn-success btn-block btn-lg" style="margin-bottom: 3%;" data-toggle="modal" data-target="#formaPg" ng-click="enviarSubPedido()">FAZER PEDIDO!</button>
+            <button type="button" class="btn btn-success btn-block btn-lg" style="margin-bottom: 3%;" data-toggle="modal" data-target="#formaPg" ng-click="enviarSubPedido()" ng-disabled="trueSubPedidos">FAZER PEDIDO!</button>
           </div>
         </div>
 
