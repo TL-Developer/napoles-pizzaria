@@ -5,6 +5,9 @@ module.exports = function(app){
   app.route('/api/produtos/pizzas')
     .get(controller.getPizzas);
 
+  app.route('/api/produtos/esfihas')
+    .get(controller.getEsfihas);
+
   app.route('/api/produtos/bairros')
     .get(controller.getBairros);
 
