@@ -134,6 +134,7 @@
 
           <ul class="nav nav-tabs" role="tablist" style="margin-top: 5%;">
             <li role="presentation" class="active"><a href="#pizzas" aria-controls="home" role="tab" data-toggle="tab">Pizzas</a></li>
+            <li role="presentation"><a href="#pizzasDoces" aria-controls="home" role="tab" data-toggle="tab">Pizzas doces</a></li>
             <li role="presentation"><a href="#esfihas" aria-controls="esfihas" role="tab" data-toggle="tab">Esfihas</a></li>
             <li role="presentation"><a href="#sucos" aria-controls="sucos" role="tab" data-toggle="tab">Sucos</a></li>
             <li role="presentation"><a href="#bebidas" aria-controls="bebidas" role="tab" data-toggle="tab">Bebidas</a></li>
@@ -152,7 +153,6 @@
                    <th>Broto</th>
                  </tr>
                 </thead>
-
                 <tbody class="conteudo-pizzas">
                   <tr ng-repeat="pizza in pizzas">
                     <td>{{pizza.nome}} <br /><small>{{pizza.descricao}}</small></td>
@@ -160,6 +160,7 @@
                     <td>{{pizza.valorBroto}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaBroto(pizza)"></span></td>
                   </tr>
               </tbody>
+
             </table>
 
             <!-- MODAL -->
@@ -174,7 +175,71 @@
                     <form name="form" ng-submit="adicionaPedido(this, 'pizza')">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="Quantidade" class="control-label">Quantas pizzas?:</label>
+                          <label for="Quantidade" class="control-label">Quantas pizzas de {{pizza.nome}}?</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
+                          <option value="">-- Selecione a borda --</option>
+                           </select>
+                           <input type="text" ng-model="valorBorda" style="display: none;">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="control-label">Observações do pedido(ex:sem cebola, sem tomate):</label>
+                        <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">PRONTO!</button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+
+            <!-- PAINEL DE PIZZAS DOCES -->
+            <div role="tabpanel" class="tab-pane" id="pizzasDoces">
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Grande</th>
+                   <th>Broto</th>
+                 </tr>
+                </thead>
+                <tbody class="conteudo-pizzasDoces">
+                  <tr ng-repeat="pizzaDoce in pizzasDoces">
+                    <td>{{pizzaDoce.nome}} <br /><small>{{pizzaDoce.descricao}}</small></td>
+                    <td>{{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaPizza(pizzaDoce)"></span></td>
+                    <td>{{pizzaDoce.valorBroto}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaBroto(pizzaDoce)"></span></td>
+                  </tr>
+              </tbody>
+
+            </table>
+
+            <!-- MODAL -->
+            <div ng-repeat="pizzaDoce in pizzasDoces" class="modal fade" id="{{pizzaDoce._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Pizza doce - </b>{{pizzaDoce.nome}}</h4></h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="form" ng-submit="adicionaPedido(this, 'pizza')">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantas pizzas de {{pizzaDoce.nome}?</label>
                           <input type="number" class="form-control" value="1" ng-model="qtd">
                         </div>
                       </div>
@@ -203,6 +268,8 @@
               </div>
             </div>
             </div>
+
+
 
             <!-- PAINEL DE ESFIHAS -->
             <div role="tabpanel" class="tab-pane" id="esfihas">
@@ -234,7 +301,7 @@
                       <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="Quantidade" class="control-label">Quantas esfihas?:</label>
+                            <label for="Quantidade" class="control-label">Quantas esfihas de {{esfiha.nome}}?</label>
                             <input type="number" class="form-control" value="1" ng-model="qtd">
                           </div>
                         </div>
@@ -257,12 +324,100 @@
 
             <!-- PAINEL DE SUCOS -->
             <div role="tabpanel" class="tab-pane" id="sucos">
-              Sucos
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Valor</th>
+                 </tr>
+                </thead>
+
+                <tbody class="conteudo-sucos">
+                  <tr ng-repeat="suco in sucos">
+                    <td>{{suco.nome}} <br /><small>{{suco.descricao}}</small></td>
+                    <td>{{suco.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{suco._id}}" ng-click="enviaEsfiha(suco)"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- MODAL -->
+              <div ng-repeat="suco in sucos" class="modal fade" id="{{suco._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">Suco - </b>{{suco.nome}}</h4></h4>
+                    </div>
+                    <div class="modal-body">
+                      <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantos sucos {{suco.nome}}?:</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações do pedido(ex: sem gelo):</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">PRONTO!</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- PAINEL DE BEBIDAS -->
             <div role="tabpanel" class="tab-pane" id="bebidas">
-              Bebidas
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Valor</th>
+                 </tr>
+                </thead>
+
+                <tbody class="conteudo-bebidas">
+                  <tr ng-repeat="bebida in bebidas">
+                    <td>{{bebida.nome}} <br /><small>{{bebida.descricao}}</small></td>
+                    <td>{{bebida.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{bebida._id}}" ng-click="enviaEsfiha(bebida)"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- MODAL -->
+              <div ng-repeat="bebida in bebidas" class="modal fade" id="{{bebida._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">Bebida - </b>{{bebida.nome}}</h4></h4>
+                    </div>
+                    <div class="modal-body">
+                      <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantas bebidas {{bebida.nome}}?:</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações do pedido(ex: sem gelo):</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">PRONTO!</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -341,19 +496,13 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Qual forma de pagamento?</h4></h4>
+                <h4 class="modal-title" id="exampleModalLabel">Qual tipo de pagamento na entrega?</h4></h4>
               </div>
               <div class="modal-body">
                 <form name="form" ng-submit="enviarPedido(this)">
                   <div class="form-group">
-                    <select class="form-control" ng-model="formaPagamento">
-                      <option value="Cartão de crédito">Dinheiro</option>
-                      <option value="Cartão de crédito">Cartão de crédito</option>
-                      <option value="Cartão de crédito">Cartão de débito</option>
-                      <option value="Cartão de crédito">Vale refeição</option>
-                      <option value="Cartão de crédito">Vale alimentação</option>
-                      <option value="Cartão de crédito">Ticket restaurante</option>
-                      <option value="Cartão de crédito">VR</option>
+                    <select name="formaPagamento" id="formaPagamento" class="form-control" ng-model="formaPagamento" ng-options="pagamento as pagamento.nome for pagamento in pagamentos track by pagamento.nome">
+                    <option value="">-- Selecione o tipo --</option>
                     </select>
                   </div>
 

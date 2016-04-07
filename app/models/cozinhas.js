@@ -12,7 +12,9 @@ module.exports = function(){
     cidade: {type: String},
     complemento: {type: String},
     endereco: {type: String},
-    formaPg: {type: String},
+    formaPg: {
+      nome: {type: String}
+    },
     nome: {type: String},
     numero: {type: String},
     pedido: [

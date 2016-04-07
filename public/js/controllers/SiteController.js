@@ -73,6 +73,17 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     console.log('Não foi possível listar as pizzas');
   });
 
+  // LISTANDO API DE PIZZAS DOCES DO SISTEMA
+  $scope.pizzasDoces = [];
+
+  // https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  $http.get('/api/produtos/pizzasDoces').then(function(pizzasDoces){
+    $scope.pizzasDoces = pizzasDoces.data;
+  }, function(err){
+    console.log(err)
+    console.log('Não foi possível listar as pizzas doces');
+  });
+
   // LISTANDO API DE ESFIHAS DO SISTEMA
   $scope.esfihas = [];
 
@@ -81,6 +92,39 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
   }, function(err){
     console.log(err)
     console.log('Não foi possível listar as esfihas');
+  });
+
+  // LISTANDO API DE SUCOS DO SISTEMA
+  $scope.sucos = [];
+
+  // https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  $http.get('/api/produtos/sucos').then(function(sucos){
+    $scope.sucos = sucos.data;
+  }, function(err){
+    console.log(err)
+    console.log('Não foi possível listar os sucos');
+  });
+
+  // LISTANDO API DE BEBIDAS DO SISTEMA
+  $scope.bebidas = [];
+
+  // https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  $http.get('/api/produtos/bebidas').then(function(bebidas){
+    $scope.bebidas = bebidas.data;
+  }, function(err){
+    console.log(err)
+    console.log('Não foi possível listar as bebidas');
+  });
+
+  // LISTANDO API DE PAGAMENTOS DO SISTEMA
+  $scope.pagamentos = [];
+
+  // https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  $http.get('/api/produtos/pagamentos').then(function(pagamentos){
+    $scope.pagamentos = pagamentos.data;
+  }, function(err){
+    console.log(err)
+    console.log('Não foi possível listar as formas de pagamentos');
   });
 
   var tipo
@@ -225,7 +269,8 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
        $scope.mensagem = 'Enviado para cozinha!';
         $timeout(function(){
           $scope.mensagem = '';
-          $window.location.reload();
+          // $window.location.reload();
+          console.log(pedido);
         }, 2000);
       }, 1000);
     });

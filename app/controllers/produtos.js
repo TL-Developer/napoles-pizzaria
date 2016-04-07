@@ -22,6 +22,30 @@ var pizzas = [
   }
 ];
 
+var pizzasDoces = [
+  {
+    _id: 13,
+    nome: 'Chocolate',
+    descricao: 'chocolate',
+    valorGrande: '20,00',
+    valorBroto: '10,00'
+  },
+  {
+    _id: 14,
+    nome: 'Chocolate com morango',
+    descricao: 'chocolate e morango',
+    valorGrande: '20,00',
+    valorBroto: '10,00'
+  },
+  {
+    _id: 15,
+    nome: 'Romeu e julieta',
+    descricao: 'chocolate',
+    valorGrande: '20,00',
+    valorBroto: '10,00'
+  }
+];
+
 var esfihas = [
   {
     _id: 4,
@@ -79,6 +103,47 @@ var bordas = [
   }
 ];
 
+var sucos = [
+  {
+    _id: 16,
+    nome: 'Dell vale',
+    valor: '3,50'
+  }
+];
+
+var bebidas = [
+  {
+    _id: 17,
+    nome: 'Skol lata',
+    valor: '4,50'
+  },
+  {
+    _id: 18,
+    nome: 'Skol 600ml',
+    valor: '7,50'
+  },
+  {
+    _id: 19,
+    nome: 'Itaipava lata',
+    valor: '3,50'
+  }
+];
+
+var pagamentos = [
+  {
+    _id: 20,
+    nome: 'Dinheiro'
+  },
+  {
+    _id: 21,
+    nome: 'Cartão de crédito'
+  },
+  {
+    _id: 22,
+    nome: 'Vale refeição'
+  }
+];
+
 module.exports = function(app){
 
   var controller = {};
@@ -88,9 +153,24 @@ module.exports = function(app){
     res.json(pizzas);
   };
 
+  // PIZZAS DOCES
+  controller.getPizzasDoces = function(req, res){
+    res.json(pizzasDoces);
+  };
+
   // ESFIHAS
   controller.getEsfihas = function(req, res){
     res.json(esfihas);
+  };
+
+  // SUCOS
+  controller.getSucos = function(req, res){
+    res.json(sucos);
+  };
+
+  // BEBIDAS
+  controller.getBebidas = function(req, res){
+    res.json(bebidas);
   };
 
   // BAIRROS
@@ -101,6 +181,11 @@ module.exports = function(app){
   // BORDAS
   controller.getBordas = function(req, res){
     res.json(bordas);
+  };
+
+  // FORMAS DE PAGAMENTO
+  controller.getPagamentos = function(req, res){
+    res.json(pagamentos);
   };
 
   return controller;
