@@ -32,7 +32,7 @@ module.exports = function(){
     referencia: {type: String},
     telefone: {type: String},
     uf: {type: String},
-    valorTotal: {type: Number},
+    valor: {type: Number},
     hora: {
       type: String,
       required: true

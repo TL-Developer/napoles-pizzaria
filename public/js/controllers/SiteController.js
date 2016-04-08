@@ -147,6 +147,16 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     valor = esfiha.valor;
     nome = esfiha.nome;
   };
+  $scope.enviaSuco = function(suco){
+    tipo = 'Suco';
+    valor = suco.valor;
+    nome = suco.nome;
+  };
+  $scope.enviaBebida = function(bebida){
+    tipo = 'Bebida';
+    valor = bebida.valor;
+    nome = bebida.nome;
+  };
 
 
   // SUBPEDIDOS
@@ -252,7 +262,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
   // ENVIANDO SUBPEDIDO
   $scope.enviarSubPedido = function(){
     pedido.pedido = $scope.subpedidos;
-    pedido.valorTotal = parseFloat($scope.valorTotal).toFixed(2).replace('.',',');
+    pedido.valor = parseFloat($scope.valorTotal).toFixed(2).replace('.',',');
   };
 
 

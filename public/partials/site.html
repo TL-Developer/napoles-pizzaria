@@ -149,15 +149,17 @@
                 <thead>
                  <tr>
                    <th>Sabores</th>
-                   <th>Grande</th>
                    <th>Broto</th>
+                   <th>Meia</th>
+                   <th>Grande</th>
                  </tr>
                 </thead>
                 <tbody class="conteudo-pizzas">
                   <tr ng-repeat="pizza in pizzas">
                     <td>{{pizza.nome}} <br /><small>{{pizza.descricao}}</small></td>
-                    <td>{{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaPizza(pizza)"></span></td>
                     <td>{{pizza.valorBroto}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaBroto(pizza)"></span></td>
+                    <td>{{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}meia" ng-click="enviaPizza(pizza)"></span></td>
+                    <td>{{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaPizza(pizza)"></span></td>
                   </tr>
               </tbody>
 
@@ -204,9 +206,80 @@
               </div>
             </div>
 
+
+            <!-- MODAL MEIA-->
+            <div ng-repeat="pizza in pizzas" class="modal fade" id="{{pizza._id}}meia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Pizza - <small>meia</small> </b>{{pizza.nome}}</b> <small>meia</small> <b>{{meia.nome}}</b></h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="form" ng-submit="adicionaPedido(this, 'pizza')">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantas pizzas?</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>1ª Opção</label>
+                          <input type="text" value="{{pizza.nome}}" disabled class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
+                          <option value="">-- Selecione a borda --</option>
+                           </select>
+                           <input type="text" ng-model="valorBorda" style="display: none;">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações:</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>2ª Opção</label>
+                          <select name="pizzas" id="pizzas" class="form-control" ng-model="meia.nome" ng-change="">
+                          <option value="">-- Selecione a 2ª opção --</option>
+                          <option value="{{pizza.nome}}" ng-repeat="pizza in pizzas">{{pizza.nome}} - R${{pizza.valorGrande}}</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
+                          <option value="">-- Selecione a borda --</option>
+                           </select>
+                           <input type="text" ng-model="valorBorda" style="display: none;">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações:</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">PRONTO!</button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
             </div>
 
 
+            </div>
             <!-- PAINEL DE PIZZAS DOCES -->
             <div role="tabpanel" class="tab-pane" id="pizzasDoces">
               <table class="table">
@@ -335,7 +408,7 @@
                 <tbody class="conteudo-sucos">
                   <tr ng-repeat="suco in sucos">
                     <td>{{suco.nome}} <br /><small>{{suco.descricao}}</small></td>
-                    <td>{{suco.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{suco._id}}" ng-click="enviaEsfiha(suco)"></span></td>
+                    <td>{{suco.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{suco._id}}" ng-click="enviaSuco(suco)"></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -384,7 +457,7 @@
                 <tbody class="conteudo-bebidas">
                   <tr ng-repeat="bebida in bebidas">
                     <td>{{bebida.nome}} <br /><small>{{bebida.descricao}}</small></td>
-                    <td>{{bebida.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{bebida._id}}" ng-click="enviaEsfiha(bebida)"></span></td>
+                    <td>{{bebida.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{bebida._id}}" ng-click="enviaBebida(bebida)"></span></td>
                   </tr>
                 </tbody>
               </table>

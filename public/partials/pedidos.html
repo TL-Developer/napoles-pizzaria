@@ -35,15 +35,15 @@
                       </div>
                       <div class="collapsible-body">
                           <div class="col s12 white">
-                            <blockquote class="title">
-                              {{pedido.pedido}}
-                              <br />
-                              <small class="red-text bold">* {{pedido.observacoes}}</small>
+                            <blockquote class="title" ng-repeat="itemPedido in pedido.pedido">
+                              <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
+                              <span style="font-size: 12px;" ng-show="itemPedido.observacoes">*Obs.: {{itemPedido.observacoes}} <br /></span>
+                              <span style="font-size: 12px;" ng-show="itemPedido.borda.nome">*Extra: {{itemPedido.borda.nome}}<br /></span>
                             </blockquote><br/>
 
-                              <h5 class="secondary-content red-text">
-                                  <small><b>R$ {{pedido.valor}}</b></small>
-                              </h5>
+                            <h5 class="secondary-content red-text">
+                              <small><b>R$ {{pedido.valor}}</b></small>
+                            </h5>
                           </div>
                       </div>
                       <!-- Modal com as informações do cliente -->
@@ -56,16 +56,17 @@
                                   <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{pedido.nome}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{pedido.telefone}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{pedido.celular}}</li>
-                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.endereco}} - {{pedido.bairro}} - cep: {{pedido.cep}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.endereco}} - {{pedido.bairro.nome}} - cep: {{pedido.cep}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.referencia}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{pedido.data}} as {{pedido.hora}}hs</li>
-                                  <li class="collection-item"><i class="secondary-content fa fa-dollar left"></i>{{pedido.formaPg}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-dollar left"></i>{{pedido.formaPg.nome}}</li>
                                   <li class="collection-item">
-                                    <blockquote>
-                                      {{pedido.pedido}}
-                                      <br />
-                                      <small class="red-text bold">* {{pedido.observacoes}}</small>
-                                    </blockquote>
+                                    <blockquote class="title" ng-repeat="itemPedido in pedido.pedido">
+                                      <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
+                                      <span style="font-size: 12px;" ng-show="itemPedido.observacoes">*Obs.: {{itemPedido.observacoes}} <br /></span>
+                                      <span style="font-size: 12px;" ng-show="itemPedido.borda.nome">*Extra: {{itemPedido.borda.nome}} <br /></span>
+                                      <span style="font-size: 12px;">R$ {{itemPedido.valor}}</span> <br />
+                                    </blockquote><br/>
                                   </li>
                                   <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{pedido.valor}}</b></h5></li>
                                 </ul>

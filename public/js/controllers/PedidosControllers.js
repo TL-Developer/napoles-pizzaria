@@ -12,6 +12,7 @@ angular.module('napoles').controller('PedidosControllers',['$scope','$http', fun
   var listaPedidos = function(){
     $http.get('/api/pedidos').then(function(pedidos){
       $scope.pedidos = pedidos.data;
+      console.log(pedidos);
     });
   };
   listaPedidos();
