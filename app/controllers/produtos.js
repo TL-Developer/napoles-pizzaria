@@ -10,14 +10,14 @@ var pizzas = [
     _id: 2,
     nome: 'mussarela',
     descricao: 'mussarela e cebola',
-    valorGrande: '20,00',
+    valorGrande: '22,00',
     valorBroto: '10,00'
   },
   {
     _id: 3,
     nome: 'frango com catupiry',
     descricao: 'frango, catupiry e mussarela',
-    valorGrande: '20,00',
+    valorGrande: '38,00',
     valorBroto: '10,00'
   }
 ];
@@ -86,6 +86,11 @@ var bairros = [
 ];
 
 var bordas = [
+  {
+    _id: 25,
+    nome: 'Sem borda',
+    valor: '0,00'
+  },
   {
     _id: 10,
     nome: 'Borda catupiry',

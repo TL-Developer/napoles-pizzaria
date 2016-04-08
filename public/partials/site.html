@@ -10,12 +10,12 @@
 
       <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
 
-        <form ng-submit="enviaEndereco(this)">
+        <form ng-submit="enviaEndereco(this)" name="dadosEndereco">
 
           <div class="selecione-bairro" style="margin-bottom: 10px; border-bottom: 1px solid #ccc;">
             <h3 class="text-center">Descubra seu bairro com delivery</h3>
             <div class="form-group">
-              <select name="bairro" id="bairro" class="form-control" ng-model="bairro" ng-options="bairro as bairro.nome for bairro in bairros track by bairro.nome" ng-change="selectBairro(bairro.valor)">
+              <select name="bairro" id="bairro" class="form-control" ng-model="bairro" ng-options="bairro as bairro.nome for bairro in bairros track by bairro.nome" ng-change="selectBairro(bairro.valor)" required>
               <option value="">-- Selecione seu bairro --</option>
               </select>
             </div>
@@ -26,16 +26,12 @@
             <div class="form-group">
               <div class="row">
 
-                <div class="col-md-4">
-                  <input type="text" id="cep" name="cep" ng-model="cep" class="form-control" placeholder="CEP" ng-blur="getCep(cep)">
+                <div class="col-md-6">
+                  <input type="text" id="cep" name="cep" ng-model="cep" class="form-control" placeholder="CEP" ng-blur="getCep(cep)" required>
                 </div>
 
-                <div class="col-md-4">
-                  <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" ng-model="cidade" disabled>
-                </div>
-
-                <div class="col-md-4">
-                  <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" ng-model="uf" disabled>
+                <div class="col-md-6">
+                  <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento" ng-model="complemento" required>
                 </div>
 
               </div>
@@ -43,14 +39,24 @@
               <br />
 
               <div class="form-group">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="text" id="referencia" name="referencia" class="form-control" placeholder="Ponto de referencia" ng-model="referencia" required>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-group">
                 <div class="row">
 
                   <div class="col-md-9">
-                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço" ng-model="endereco">
+                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço" ng-model="endereco" required>
                   </div>
 
                   <div class="col-md-3">
-                    <input type="text" id="numero" name="numero" class="form-control" placeholder="Nº" ng-model="numero">
+                    <input type="text" id="numero" name="numero" class="form-control" placeholder="Nº" ng-model="numero" required>
                   </div>
                 </div>
               </div>
@@ -59,17 +65,18 @@
               <div class="form-group">
                 <div class="row">
 
-                  <div class="col-md-6">
-                    <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento" ng-model="complemento">
+                  <div class="col-md-9">
+                    <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" ng-model="cidade" required>
                   </div>
 
-                  <div class="col-md-6">
-                    <input type="text" id="referencia" name="referencia" class="form-control" placeholder="Ponto de referencia" ng-model="referencia">
+                  <div class="col-md-3">
+                    <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" ng-model="uf" required>
                   </div>
+
                 </div>
               </div>
 
-              <input type="submit" value="PROXIMO!" class="btn btn-block btn-primary">
+              <input type="submit" value="PROXIMO!" class="btn btn-block btn-primary" ng-disabled="dadosEndereco.$invalid">
 
             </div>
           </div>
@@ -85,7 +92,7 @@
 
         <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
 
-          <form ng-submit="enviaDados(this)">
+          <form ng-submit="enviaDados(this)" name="dadosCliente">
 
             <div class="dados" style="margin-bottom: 10px;">
               <h3 class="text-center">Digite seus dados</h3>
@@ -93,7 +100,7 @@
                 <div class="row">
 
                   <div class="col-md-12">
-                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" ng-model="nome">
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" ng-model="nome" required>
                   </div>
                 </div>
 
@@ -103,16 +110,16 @@
                   <div class="row">
 
                     <div class="col-md-6">
-                      <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Telefone" ng-model="telefone">
+                      <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Telefone" ng-model="telefone" required>
                     </div>
 
                     <div class="col-md-6">
-                      <input type="text" id="celular" name="celular" class="form-control" placeholder="Celular" ng-model="celular">
+                      <input type="text" id="celular" name="celular" class="form-control" placeholder="Celular" ng-model="celular" required>
                     </div>
                   </div>
                 </div>
 
-                <input type="submit" value="AGORA VAMOS FAZER O PEDIDO!" class="btn btn-block btn-primary">
+                <input type="submit" value="AGORA VAMOS FAZER O PEDIDO!" class="btn btn-block btn-primary" ng-disabled="dadosCliente.$invalid">
 
               </div>
             </div>
@@ -175,30 +182,35 @@
                   </div>
                   <div class="modal-body">
                     <form name="form" ng-submit="adicionaPedido(this, 'pizza')">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="Quantidade" class="control-label">Quantas pizzas de {{pizza.nome}}?</label>
-                          <input type="number" class="form-control" value="1" ng-model="qtd">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="Quantidade" class="control-label">Quantas pizzas?</label>
+                            <input type="number" class="form-control" value="1" ng-model="qtd">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                            <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
+                            <option value="">-- Selecione a borda --</option>
+                             </select>
+                             <input type="text" ng-model="valorBorda" style="display: none;">
+                          </div>
                         </div>
                       </div>
 
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="recipient-name" class="control-label">Adicione a borda:</label>
-                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
-                          <option value="">-- Selecione a borda --</option>
-                           </select>
-                           <input type="text" ng-model="valorBorda" style="display: none;">
-                        </div>
-                      </div>
                       <div class="form-group">
                         <label for="message-text" class="control-label">Observações do pedido(ex:sem cebola, sem tomate):</label>
                         <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
                       </div>
 
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">PRONTO!</button>
+                        <button type="submit" class="btn btn-primary btn-block" ng-show="borda">PRONTO!</button>
                       </div>
+
                     </form>
                   </div>
 
@@ -213,64 +225,56 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">Pizza - <small>meia</small> </b>{{pizza.nome}}</b> <small>meia</small> <b>{{meia.nome}}</b></h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Selecione suas opções de pizzas</h4>
                   </div>
                   <div class="modal-body">
-                    <form name="form" ng-submit="adicionaPedido(this, 'pizza')">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="Quantidade" class="control-label">Quantas pizzas?</label>
-                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                    <form name="form" ng-submit="adicionaPedido(this, 'pizza', 'meia')">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>1ª Opção</label>
+                            <input type="text" value="{{pizza.nome}}" ng-model="pizza.nome" disabled class="form-control">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>2ª Opção</label>
+                            <select name="pizzas" id="pizzas" class="form-control" ng-model="meia.pizza">
+                            <option value="">-- Selecione a 2ª opção --</option>
+                            <option value="{{pizza}}" ng-repeat="pizza in pizzas">{{pizza.nome}} - R${{pizza.valorGrande}}</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="Quantidade" class="control-label">Quantas pizzas?</label>
+                            <input type="number" class="form-control" value="1" ng-model="qtd">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                            <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
+                            <option value="">-- Selecione a borda --</option>
+                             </select>
+                             <input type="text" ng-model="valorBorda" style="display: none;">
+                          </div>
                         </div>
                       </div>
 
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>1ª Opção</label>
-                          <input type="text" value="{{pizza.nome}}" disabled class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="recipient-name" class="control-label">Adicione a borda:</label>
-                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
-                          <option value="">-- Selecione a borda --</option>
-                           </select>
-                           <input type="text" ng-model="valorBorda" style="display: none;">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="message-text" class="control-label">Observações:</label>
-                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>2ª Opção</label>
-                          <select name="pizzas" id="pizzas" class="form-control" ng-model="meia.nome" ng-change="">
-                          <option value="">-- Selecione a 2ª opção --</option>
-                          <option value="{{pizza.nome}}" ng-repeat="pizza in pizzas">{{pizza.nome}} - R${{pizza.valorGrande}}</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="recipient-name" class="control-label">Adicione a borda:</label>
-                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)">
-                          <option value="">-- Selecione a borda --</option>
-                           </select>
-                           <input type="text" ng-model="valorBorda" style="display: none;">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="message-text" class="control-label">Observações:</label>
-                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
-                        </div>
-
+                      <div class="form-group">
+                        <label for="message-text" class="control-label">Observações:</label>
+                        <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
                       </div>
 
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">PRONTO!</button>
+                        <button type="submit" class="btn btn-primary btn-block" ng-show="borda">PRONTO!</button>
                       </div>
+
                     </form>
                   </div>
 
@@ -312,7 +316,7 @@
                     <form name="form" ng-submit="adicionaPedido(this, 'pizza')">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="Quantidade" class="control-label">Quantas pizzas de {{pizzaDoce.nome}?</label>
+                          <label for="Quantidade" class="control-label">Quantas pizzas?</label>
                           <input type="number" class="form-control" value="1" ng-model="qtd">
                         </div>
                       </div>
@@ -332,7 +336,7 @@
                       </div>
 
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">PRONTO!</button>
+                        <button type="submit" class="btn btn-primary btn-block" ng-show="borda">PRONTO!</button>
                       </div>
                     </form>
                   </div>
@@ -374,7 +378,7 @@
                       <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="Quantidade" class="control-label">Quantas esfihas de {{esfiha.nome}}?</label>
+                            <label for="Quantidade" class="control-label">Quantas esfihas?</label>
                             <input type="number" class="form-control" value="1" ng-model="qtd">
                           </div>
                         </div>
@@ -385,7 +389,7 @@
                         </div>
 
                         <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">PRONTO!</button>
+                          <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
                         </div>
                       </form>
                     </div>
@@ -424,7 +428,7 @@
                     <div class="modal-body">
                       <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
                         <div class="form-group">
-                          <label for="Quantidade" class="control-label">Quantos sucos {{suco.nome}}?:</label>
+                          <label for="Quantidade" class="control-label">Quantos sucos?</label>
                           <input type="number" class="form-control" value="1" ng-model="qtd">
                         </div>
 
@@ -434,7 +438,7 @@
                         </div>
 
                         <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">PRONTO!</button>
+                          <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
                         </div>
                       </form>
                     </div>
@@ -473,7 +477,7 @@
                     <div class="modal-body">
                       <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
                         <div class="form-group">
-                          <label for="Quantidade" class="control-label">Quantas bebidas {{bebida.nome}}?:</label>
+                          <label for="Quantidade" class="control-label">Quantas bebidas?</label>
                           <input type="number" class="form-control" value="1" ng-model="qtd">
                         </div>
 
@@ -483,7 +487,7 @@
                         </div>
 
                         <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">PRONTO!</button>
+                          <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
                         </div>
                       </form>
                     </div>
@@ -512,8 +516,8 @@
           <div class="col-md-12">
             <h4><span class="badge" style="background: green;">{{subpedido.qtd}}</span> <b>{{subpedido.nome}}</b></h4>
             <small>
-              <b>*Obs.:</b> {{subpedido.observacoes}}<br />
-              <b>*Extras:</b> {{subpedido.borda.nome}} - <b>R${{subpedido.valorBorda}}</b>
+              <span ng-show="subpedido.observacoes"><b>*Obs.:</b> {{subpedido.observacoes}}<br /></span>
+              <span ng-show="subpedido.borda.nome"><b>*Extras:</b> {{subpedido.borda.nome}} - <b>R${{subpedido.valorBorda}}</b></span>
             </small>
           </div>
 

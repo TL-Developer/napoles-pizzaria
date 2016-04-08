@@ -172,7 +172,6 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
 
   // ADICIONANDO BORDAS
   $scope.bordas = [];
-  $scope.borda = 'Escolha a borda';
 
   // https://napoles-pizzaria.herokuapp.com/api/produtos/bordas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
   $http.get('/api/produtos/bordas').then(function(bordas){
@@ -188,26 +187,58 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
   };
 
   // ADICIONANDO PEDIDO
-  $scope.adicionaPedido = function(form, produto){
+  $scope.adicionaPedido = function(form, produto, tipoProduto){
     if(produto == 'pizza'){
-      $scope.subpedidos.push({
-        qtd: form.qtd,
-        nome: tipo+' '+nome,
-        observacoes: form.observacoes,
-        borda: form.borda,
-        valorBorda: form.valorBorda,
-        valorNormal: valor,
-        valor: (parseFloat(valor.replace(/,/, '.')) * form.qtd ) + parseFloat(form.valorBorda.replace(/,/, '.'))
-      });
 
-      $('.modal').modal('hide');
+      if(tipoProduto == 'meia'){
 
-      $scope.valorBorda = form.valorBorda.replace(/,/, '.');
-      $scope.qtd = form.qtd;
+        var meiaPizza = JSON.parse(form.meia.pizza)
+          , valorOpcao1 = valor
+          , valorOpcao2 = meiaPizza.valorGrande;
 
-      // SOMA VALORES FINAIS
-      $scope.subTotal += (parseFloat(valor.replace(/,/, '.')) * $scope.qtd) + parseFloat($scope.valorBorda);
-      $scope.valorTotal = parseFloat($scope.subTotal + $scope.taxaEntrega).toFixed(2).replace('.',',');
+        // CALCULO DE PIZZA MEIO A MEIO MENOR OU MAIOR
+        if(valorOpcao1 < valorOpcao2){
+          valor = valorOpcao2;
+        }
+
+        $scope.subpedidos.push({
+          qtd: form.qtd,
+          nome: 'Pizza 1/2 '+ form.pizza.nome + ' 1/2 ' + meiaPizza.nome,
+          observacoes: form.observacoes,
+          borda: form.borda,
+          valorBorda: form.valorBorda,
+          valorNormal: valor,
+          valor: (parseFloat(valor.replace(/,/, '.')) * form.qtd ) + parseFloat(form.valorBorda.replace(/,/, '.'))
+        });
+
+        $('.modal').modal('hide');
+
+        $scope.valorBorda = form.valorBorda.replace(/,/, '.');
+        $scope.qtd = form.qtd;
+
+        // SOMA VALORES FINAIS
+        $scope.subTotal += (parseFloat(valor.replace(/,/, '.')) * $scope.qtd) + parseFloat($scope.valorBorda);
+        $scope.valorTotal = parseFloat($scope.subTotal + $scope.taxaEntrega).toFixed(2).replace('.',',');
+      }else {
+        $scope.subpedidos.push({
+          qtd: form.qtd,
+          nome: tipo+' '+nome,
+          observacoes: form.observacoes,
+          borda: form.borda,
+          valorBorda: form.valorBorda,
+          valorNormal: valor,
+          valor: (parseFloat(valor.replace(/,/, '.')) * form.qtd ) + parseFloat(form.valorBorda.replace(/,/, '.'))
+        });
+
+        $('.modal').modal('hide');
+
+        $scope.valorBorda = form.valorBorda.replace(/,/, '.');
+        $scope.qtd = form.qtd;
+
+        // SOMA VALORES FINAIS
+        $scope.subTotal += (parseFloat(valor.replace(/,/, '.')) * $scope.qtd) + parseFloat($scope.valorBorda);
+        $scope.valorTotal = parseFloat($scope.subTotal + $scope.taxaEntrega).toFixed(2).replace('.',',');
+      }
     }else if(produto == 'esfiha'){
       $scope.subpedidos.push({
         qtd: form.qtd,
