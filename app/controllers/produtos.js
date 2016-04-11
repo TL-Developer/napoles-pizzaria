@@ -34,14 +34,14 @@ var pizzasDoces = [
     _id: 14,
     nome: 'Chocolate com morango',
     descricao: 'chocolate e morango',
-    valorGrande: '20,00',
+    valorGrande: '25,00',
     valorBroto: '10,00'
   },
   {
     _id: 15,
     nome: 'Romeu e julieta',
     descricao: 'chocolate',
-    valorGrande: '20,00',
+    valorGrande: '30,00',
     valorBroto: '10,00'
   }
 ];

@@ -43,6 +43,10 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     pedido.numero = form.numero;
     pedido.referencia = form.referencia;
     pedido.complemento = form.complemento;
+
+    $('.dadosEndereco').fadeOut(1000, function(){
+      $('.dadosCliente').fadeIn();
+    });
   };
 
   // ENVIA VALOR DA TAXA
@@ -58,6 +62,10 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     pedido.nome = form.nome;
     pedido.telefone = form.telefone;
     pedido.celular = form.celular;
+
+    $('.dadosCliente').fadeOut(1000, function(){
+      $('.dadosPedido').fadeIn();
+    });
   };
 
   // DADOS DO PEDIDO
@@ -201,15 +209,27 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
           valor = valorOpcao2;
         }
 
-        $scope.subpedidos.push({
-          qtd: form.qtd,
-          nome: 'Pizza 1/2 '+ form.pizza.nome + ' 1/2 ' + meiaPizza.nome,
-          observacoes: form.observacoes,
-          borda: form.borda,
-          valorBorda: form.valorBorda,
-          valorNormal: valor,
-          valor: (parseFloat(valor.replace(/,/, '.')) * form.qtd ) + parseFloat(form.valorBorda.replace(/,/, '.'))
-        });
+        if(form.pizza){
+          $scope.subpedidos.push({
+            qtd: form.qtd,
+            nome: 'Pizza 1/2 '+ form.pizza.nome + ' 1/2 ' + meiaPizza.nome,
+            observacoes: form.observacoes,
+            borda: form.borda,
+            valorBorda: form.valorBorda,
+            valorNormal: valor,
+            valor: (parseFloat(valor.replace(/,/, '.')) * form.qtd ) + parseFloat(form.valorBorda.replace(/,/, '.'))
+          });
+        }else {
+          $scope.subpedidos.push({
+            qtd: form.qtd,
+            nome: 'Pizza 1/2 '+ form.pizzaDoce.nome + ' 1/2 ' + meiaPizza.nome,
+            observacoes: form.observacoes,
+            borda: form.borda,
+            valorBorda: form.valorBorda,
+            valorNormal: valor,
+            valor: (parseFloat(valor.replace(/,/, '.')) * form.qtd ) + parseFloat(form.valorBorda.replace(/,/, '.'))
+          });
+        }
 
         $('.modal').modal('hide');
 
@@ -310,8 +330,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
        $scope.mensagem = 'Enviado para cozinha!';
         $timeout(function(){
           $scope.mensagem = '';
-          // $window.location.reload();
-          console.log(pedido);
+          $window.location.reload();
         }, 2000);
       }, 1000);
     });

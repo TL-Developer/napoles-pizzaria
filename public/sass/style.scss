@@ -24,7 +24,6 @@
 .icon-doce:before{content:'\0044';}
 .icon-hamburguer:before{content:'\0045';}
 
-
 html,h1{
     margin:0;
     padding: 0;
@@ -253,4 +252,8 @@ ul.popout{
 .totalPedidos:hover{
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.dadosCliente, .dadosPedido {
+  display: none;
 }
