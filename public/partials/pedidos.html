@@ -77,8 +77,20 @@
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
                           </div>
                       </div>
-                      <a class="waves-effect waves-light btn full-width" ng-click="toCozinha(pedido)"><i class="fa fa-cutlery"></i> ir para cozinha</a>
-                      <a href="#deletarPedido" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+                      <a href="#enviarParaCozinha" class="waves-effect waves-light btn full-width"><i class="fa fa-cutlery"></i> Enviar para cozinha</a>
+                      <a href="#deletarPedido" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> Cancelar pedido</a>
+
+                      <!-- Modal enviar -->
+                      <div id="enviarParaCozinha" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Enviar para Cozinha?</h4>
+                              <p>Tem certeza que deseja enviar este pedido para cozinha?</p>
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toCozinha(pedido)">Sim</button>
+                          </div>
+                      </div>
 
                       <!-- Modal com as informações do cliente -->
                       <div id="deletarPedido" class="modal">
@@ -133,9 +145,11 @@
                       </div>
                       <div class="collapsible-body">
                           <div class="col s12 white">
-                            <blockquote class="title">
-                              {{cozinha.pedido}}
-                              </blockquote><br/>
+                            <blockquote class="title" ng-repeat="itemPedido in cozinha.pedido">
+                              <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
+                              <span style="font-size: 12px;" ng-show="itemPedido.observacoes">*Obs.: {{itemPedido.observacoes}} <br /></span>
+                              <span style="font-size: 12px;" ng-show="itemPedido.borda.nome">*Extra: {{itemPedido.borda.nome}}<br /></span>
+                            </blockquote><br/>
                           </div>
                       </div>
                       <!-- Modal com as informações do cliente -->
@@ -145,14 +159,21 @@
                               <div class="row">
 
                                 <ul class="collection">
-                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{cozinha.nome}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{cozinha.telefone}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{cozinha.celular}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.endereco}} - {{cozinha.bairro}} - cep: {{cozinha.cep}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.referencia}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{cozinha.data}} as {{cozinha.hora}}hs</a>
-                                  <li class="collection-item"><blockquote>{{cozinha.pedido}}</blockquote></a>
-                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{cozinha.valor}}</b></h5></a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{cozinha.nome}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{cozinha.telefone}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{cozinha.celular}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.endereco}} - {{cozinha.bairro.nome}} - cep: {{cozinha.cep}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.referencia}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{cozinha.data}} as {{cozinha.hora}}hs</li>
+                                  <li class="collection-item">
+                                    <blockquote class="title" ng-repeat="itemPedido in cozinha.pedido">
+                                      <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
+                                      <span style="font-size: 12px;" ng-show="itemPedido.observacoes">*Obs.: {{itemPedido.observacoes}} <br /></span>
+                                      <span style="font-size: 12px;" ng-show="itemPedido.borda.nome">*Extra: {{itemPedido.borda.nome}} <br /></span>
+                                      <span style="font-size: 12px;">R$ {{itemPedido.valor}}</span> <br />
+                                    </blockquote><br/>
+                                  </li>
+                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{cozinha.valor}}</b></h5></li>
                                 </ul>
 
                               </div>
@@ -161,8 +182,20 @@
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
                           </div>
                       </div>
-                      <a class="waves-effect waves-light btn full-width" ng-click="toEntrega(cozinha)"><i class="fa fa-paper-plane"></i> ir para entrega</a>
+                      <a href="#enviarParaEntrega" class="waves-effect waves-light btn full-width" ng-click=""><i class="fa fa-paper-plane"></i> Enviar para entrega</a>
                       <a href="#deletarPedidoCozinha" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+
+                      <!-- Modal enviar -->
+                      <div id="enviarParaEntrega" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Enviar para entrega?</h4>
+                              <p>Tem certeza que deseja enviar este pedido para entrega?</p>
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toEntrega(cozinha)">Sim</button>
+                          </div>
+                      </div>
 
                       <!-- Modal com as informações do cliente -->
                       <div id="deletarPedidoCozinha" class="modal">
@@ -224,7 +257,7 @@
                       <div class="collapsible-body">
                           <div class="col s12 white">
                             <blockquote class="title">
-                              {{entrega.endereco}} - {{entrega.bairro}} - Ref. {{entrega.referencia}} - Cep {{entrega.cep}}
+                              {{entrega.endereco}} - {{entrega.bairro.nome}} - Ref. {{entrega.referencia}} - Cep {{entrega.cep}}
                             </blockquote><br/>
                           </div>
                       </div>
@@ -235,14 +268,21 @@
                               <div class="row">
 
                                 <ul class="collection">
-                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{entrega.nome}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{entrega.telefone}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{entrega.celular}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.endereco}} - {{entrega.bairro}} - cep: {{entrega.cep}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.referencia}}</a>
-                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{entrega.data}} as {{entrega.hora}}hs</a>
-                                  <li class="collection-item"><blockquote>{{entrega.pedido}}</blockquote></a>
-                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{entrega.valor}}</b></h5></a>
+                                  <li class="collection-item"><i class="secondary-content fa fa-user left"></i>{{entrega.nome}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-phone left"></i>{{entrega.telefone}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-mobile left"></i>{{entrega.celular}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.endereco}} - {{entrega.bairro.nome}} - cep: {{entrega.cep}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.referencia}}</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{entrega.data}} as {{entrega.hora}}hs</li>
+                                  <li class="collection-item">
+                                    <blockquote class="title" ng-repeat="itemPedido in entrega.pedido">
+                                      <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
+                                      <span style="font-size: 12px;" ng-show="itemPedido.observacoes">*Obs.: {{itemPedido.observacoes}} <br /></span>
+                                      <span style="font-size: 12px;" ng-show="itemPedido.borda.nome">*Extra: {{itemPedido.borda.nome}} <br /></span>
+                                      <span style="font-size: 12px;">R$ {{itemPedido.valor}}</span> <br />
+                                    </blockquote><br/>
+                                  </li>
+                                  <li class="collection-item right red-text"><h5><b><i class="secondary-content fa fa-money left"></i>R${{entrega.valor}}</b></h5></li>
                                 </ul>
 
                               </div>
@@ -251,8 +291,20 @@
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
                           </div>
                       </div>
-                      <a class="waves-effect waves-light btn full-width" ng-click="toPedidoSuccess(entrega)"><i class="fa fa-check"></i> finalizar pedido</a>
+                      <a href="#finalizarPedido" class="waves-effect waves-light btn full-width"><i class="fa fa-check"></i> Finalizar pedido</a>
                       <a href="#deletarPedidoEntrega" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+
+                      <!-- Modal enviar -->
+                      <div id="finalizarPedido" class="modal">
+                          <div class="modal-content">
+                              <h4 class="center">Finalizar o pedido?</h4>
+                              <p>Tem certeza que deseja finalizar este pedido?</p>
+                          </div>
+                          <div class="modal-footer teal">
+                              <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toPedidoSuccess(entrega)">Sim</button>
+                          </div>
+                      </div>
 
                       <!-- Modal com as informações do cliente -->
                       <div id="deletarPedidoEntrega" class="modal">
