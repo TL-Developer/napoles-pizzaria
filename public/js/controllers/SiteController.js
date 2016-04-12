@@ -279,23 +279,30 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     $scope.trueSubPedidos = false;
   };
 
+  // SOMA VALORES FINAIS
+  var somaValoresFinais = function(){
+    var subtotal = 0
+      , total = 0;
+
+    for(var i = 0; i < $scope.subpedidos.length; i++){
+      subtotal += $scope.subpedidos[i].valor;
+      total = parseFloat(subtotal + $scope.taxaEntrega).toFixed(2).replace('.',',');
+      $scope.subTotal = subtotal;
+      $scope.valorTotal = total;
+    }
+  };
+
   $scope.qtd = 1;
   // ADICIONA QUANTIDADE DE PEDIDOS
   $scope.addQtdSubPedido = function(subpedido){
-    if(subpedido.nome.indexOf('Pizza') == 0 || subpedido.nome.indexOf('pizza') == 0){
-      subpedido.qtd = subpedido.qtd + 1;
+    if(subpedido.nome.indexOf('Pizza') == 0 || subpedido.nome.indexOf('pizza') == 0 || subpedido.nome.indexOf('Broto') == 0 || subpedido.nome.indexOf('broto') == 0 ){
+      subpedido.qtd++;
       subpedido.valor = (parseFloat(subpedido.valorNormal) + parseFloat($scope.valorBorda) ) * subpedido.qtd;
-
-      // SOMA VALORES FINAIS
-      $scope.subTotal += (parseFloat(subpedido.valorNormal) + parseFloat($scope.valorBorda) )* $scope.qtd;
-      $scope.valorTotal = parseFloat($scope.subTotal + $scope.taxaEntrega).toFixed(2).replace('.',',');
+      somaValoresFinais();
     }else if(subpedido.nome.indexOf('Esfiha') == 0 || subpedido.nome.indexOf('esfiha') == 0){
-      subpedido.qtd = subpedido.qtd + 1;
+      subpedido.qtd++;
       subpedido.valor = parseFloat(subpedido.valorNormal.replace(/,/, '.')) * subpedido.qtd;
-
-      // SOMA VALORES FINAIS
-      $scope.subTotal += parseFloat(subpedido.valorNormal.replace(/,/, '.')) * $scope.qtd;
-      $scope.valorTotal = parseFloat($scope.subTotal + $scope.taxaEntrega).toFixed(2).replace('.',',');
+      somaValoresFinais();
     }
   };
 

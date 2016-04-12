@@ -136,7 +136,7 @@
     <!-- FIM CONTAINER -->
 
     <!-- 3ª ETAPA PEDIDO -->
-    <div class="row dadosPedido" style="padding-left: 2%;padding-right: 0.8%;">
+    <div class="row dadosPedido" style="padding-left: 2%;padding-right: 0.8%; display: block;">
       <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8" style="background: white; border-radius: 10px; margin-top: 5%;">
 
         <div class="col-md-12" style="background: white; border-radius: 10px;">
@@ -301,8 +301,8 @@
                   <tr ng-repeat="pizzaDoce in pizzasDoces">
                     <td>{{pizzaDoce.nome}} <br /><small>{{pizzaDoce.descricao}}</small></td>
                     <td>{{pizzaDoce.valorBroto}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaBroto(pizzaDoce)"></span></td>
-                    <td>{{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaPizza(pizzaDoce)"></span></td>
                     <td>{{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}meia" ng-click="enviaPizza(pizzaDoce)"></span></td>
+                    <td>{{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaPizza(pizzaDoce)"></span></td>
                   </tr>
               </tbody>
 
@@ -446,7 +446,7 @@
                     </div>
                     <div class="modal-body">
                       <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                           <div class="form-group">
                             <label for="Quantidade" class="control-label">Quantas esfihas?</label>
                             <input type="number" class="form-control" value="1" ng-model="qtd">
