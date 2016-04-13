@@ -172,9 +172,9 @@
                 <tbody class="conteudo-pizzas">
                   <tr ng-repeat="pizza in pizzas | filter: buscarPizza">
                     <td>{{pizza.nome}} <br /><small>{{pizza.descricao}}</small></td>
-                    <td><b>Broto</b><br />R${{pizza.valorBroto}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaBroto(pizza)"></span></td>
-                    <td><b>Meia</b><br />R${{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}meia" ng-click="enviaPizza(pizza)"></span></td>
-                    <td><b>Grande</b><br />R${{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaPizza(pizza)"></span></td>
+                    <td><b>Broto</b><br />R${{pizza.valorBroto}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaBroto(pizza)"></span></td>
+                    <td><b>Meia</b><br />R${{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}meia" ng-click="enviaPizza(pizza)"></span></td>
+                    <td><b>Grande</b><br />R${{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaPizza(pizza)"></span></td>
                   </tr>
               </tbody>
 
@@ -317,9 +317,9 @@
                 <tbody class="conteudo-pizzasDoces">
                   <tr ng-repeat="pizzaDoce in pizzasDoces | filter: buscarPizzaDoce">
                     <td>{{pizzaDoce.nome}} <br /><small>{{pizzaDoce.descricao}}</small></td>
-                    <td><b>Broto</b><br />R${{pizzaDoce.valorBroto}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaBroto(pizzaDoce)"></span></td>
-                    <td><b>Meia</b><br />R${{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}meia" ng-click="enviaPizza(pizzaDoce)"></span></td>
-                    <td><b>Grande</b><br />R${{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaPizza(pizzaDoce)"></span></td>
+                    <td><b>Broto</b><br />R${{pizzaDoce.valorBroto}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaBroto(pizzaDoce)"></span></td>
+                    <td><b>Meia</b><br />R${{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}meia" ng-click="enviaPizza(pizzaDoce)"></span></td>
+                    <td><b>Grande</b><br />R${{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaPizza(pizzaDoce)"></span></td>
                   </tr>
               </tbody>
 
@@ -457,7 +457,7 @@
                 <tbody class="conteudo-esfihas">
                   <tr ng-repeat="esfiha in esfihas | filter: buscarEsfiha">
                     <td>{{esfiha.nome}} <br /><small>{{esfiha.descricao}}</small></td>
-                    <td>{{esfiha.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{esfiha._id}}" ng-click="enviaEsfiha(esfiha)"></span></td>
+                    <td>{{esfiha.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{esfiha._id}}" ng-click="enviaEsfiha(esfiha)"></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -514,7 +514,7 @@
                 <tbody class="conteudo-esfihas">
                   <tr ng-repeat="esfiha in esfihasDoces | filter: buscarEsfihaDoce">
                     <td>{{esfiha.nome}} <br /><small>{{esfiha.descricao}}</small></td>
-                    <td>{{esfiha.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{esfiha._id}}" ng-click="enviaEsfiha(esfiha)"></span></td>
+                    <td>{{esfiha.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{esfiha._id}}" ng-click="enviaEsfiha(esfiha)"></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -570,7 +570,7 @@
                 <tbody class="conteudo-sucos">
                   <tr ng-repeat="beirute in beirutes | filter: buscarBeirutes">
                     <td>{{beirute.nome}} <br /><small>{{beirute.descricao}}</small></td>
-                    <td>{{beirute.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{beirute._id}}" ng-click="enviaBeirute(beirute)"></span></td>
+                    <td>{{beirute.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{beirute._id}}" ng-click="enviaBeirute(beirute)"></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -624,7 +624,7 @@
                 <tbody class="conteudo-bebidas">
                   <tr ng-repeat="bebida in bebidas | filter: buscarBebidas">
                     <td>{{bebida.nome}} <br /><small>{{bebida.descricao}}</small></td>
-                    <td>{{bebida.valor}} <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{bebida._id}}" ng-click="enviaBebida(bebida)"></span></td>
+                    <td>{{bebida.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{bebida._id}}" ng-click="enviaBebida(bebida)"></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -687,7 +687,7 @@
           <div class="col-md-12" style="margin-top: 3%;">
             <div class="col-md-6" style="margin:0;padding:0;">
               <span class="fa fa-minus-circle fa-2x" style="color: red;cursor: pointer;" ng-click="removeSubPedido(subpedido)"></span>
-              <span class="fa fa-plus-circle fa-2x" style="color: green;cursor: pointer;" ng-click="addQtdSubPedido(subpedido)"></span>
+              <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" ng-click="addQtdSubPedido(subpedido)"></span>
             </div>
 
             <div class="col-md-6">
