@@ -3,6 +3,11 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
   $scope.mensagem = '';
   $scope.trueSubPedidos = true;
 
+  $scope.buscarPizza = '';
+  $scope.buscarPizzaDoce = '';
+  $scope.buscarEsfiha = '';
+  $scope.buscarEsfihaDoce = '';
+
   const pedido = {};
 
   // DADOS DE ENDEREÇO
@@ -102,15 +107,25 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     console.log('Não foi possível listar as esfihas');
   });
 
-  // LISTANDO API DE SUCOS DO SISTEMA
-  $scope.sucos = [];
+  // LISTANDO API DE ESFIHAS DO SISTEMA
+  $scope.esfihasDoces = [];
 
-  // https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
-  $http.get('/api/produtos/sucos').then(function(sucos){
-    $scope.sucos = sucos.data;
+  $http.get('/api/produtos/esfihasDoces').then(function(esfihas){
+    $scope.esfihasDoces = esfihas.data;
   }, function(err){
     console.log(err)
-    console.log('Não foi possível listar os sucos');
+    console.log('Não foi possível listar as esfihas doces');
+  });
+
+  // LISTANDO API DE SUCOS DO SISTEMA
+  $scope.beirutes = [];
+
+  // https://napoles-pizzaria.herokuapp.com/api/produtos/pizzas?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
+  $http.get('/api/produtos/beirutes').then(function(beirutes){
+    $scope.beirutes = beirutes.data;
+  }, function(err){
+    console.log(err)
+    console.log('Não foi possível listar os beirutes');
   });
 
   // LISTANDO API DE BEBIDAS DO SISTEMA
@@ -149,6 +164,11 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
     tipo = 'Pizza';
     valor = pizza.valorGrande;
     nome = pizza.nome;
+  };
+  $scope.enviaBeirute = function(beirute){
+    tipo = 'Beirute';
+    valor = beirute.valor;
+    nome = beirute.nome;
   };
   $scope.enviaEsfiha = function(esfiha){
     tipo = 'Esfiha';
@@ -299,7 +319,7 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
       subpedido.qtd++;
       subpedido.valor = (parseFloat(subpedido.valorNormal) + parseFloat($scope.valorBorda) ) * subpedido.qtd;
       somaValoresFinais();
-    }else if(subpedido.nome.indexOf('Esfiha') == 0 || subpedido.nome.indexOf('esfiha') == 0){
+    }else if(subpedido.nome.indexOf('Esfiha') == 0 || subpedido.nome.indexOf('esfiha') == 0 || subpedido.nome.indexOf('Beirute') == 0 || subpedido.nome.indexOf('beirute') == 0 || subpedido.nome.indexOf('Bebida') == 0 || subpedido.nome.indexOf('bebida') == 0){
       subpedido.qtd++;
       subpedido.valor = parseFloat(subpedido.valorNormal.replace(/,/, '.')) * subpedido.qtd;
       somaValoresFinais();

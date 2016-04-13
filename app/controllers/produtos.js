@@ -1,108 +1,12 @@
 var pizzas = require('./produtos/pizzas').pizzas;
 var pizzasDoces = require('./produtos/pizzas').pizzasDoces;
-
-var esfihas = [
-  {
-    _id: 4,
-    nome: 'carne',
-    descricao: 'carne',
-    valor: '2,00'
-  },
-  {
-    _id: 5,
-    nome: 'calabresa',
-    descricao: 'calabresa',
-    valor: '3,00'
-  },
-  {
-    _id: 6,
-    nome: 'frango',
-    descricao: 'frango com catupiry',
-    valor: '4,00'
-  }
-];
-
-var bairros = [
-  {
-    _id: 7,
-    nome: 'Jd. Helena',
-    valor: '2,00'
-  },
-  {
-    _id: 8,
-    nome: 'São miguel',
-    valor: '2,00'
-  },
-  {
-    _id: 9,
-    nome: 'Vila mara',
-    valor: '2,00'
-  }
-];
-
-var bordas = [
-  {
-    _id: 25,
-    nome: 'Sem borda',
-    valor: '0,00'
-  },
-  {
-    _id: 10,
-    nome: 'Borda catupiry',
-    valor: '2,00'
-  },
-  {
-    _id: 11,
-    nome: 'Borda cheddar',
-    valor: '3,00'
-  },
-  {
-    _id: 12,
-    nome: 'Borda doce',
-    valor: '3,50'
-  }
-];
-
-var sucos = [
-  {
-    _id: 16,
-    nome: 'Dell vale',
-    valor: '3,50'
-  }
-];
-
-var bebidas = [
-  {
-    _id: 17,
-    nome: 'Skol lata',
-    valor: '4,50'
-  },
-  {
-    _id: 18,
-    nome: 'Skol 600ml',
-    valor: '7,50'
-  },
-  {
-    _id: 19,
-    nome: 'Itaipava lata',
-    valor: '3,50'
-  }
-];
-
-var pagamentos = [
-  {
-    _id: 20,
-    nome: 'Dinheiro'
-  },
-  {
-    _id: 21,
-    nome: 'Cartão de crédito'
-  },
-  {
-    _id: 22,
-    nome: 'Vale refeição'
-  }
-];
+var esfihas = require('./produtos/esfihas').esfihas;
+var esfihasDoces = require('./produtos/esfihas').esfihasDoces;
+var bairros = require('./produtos/outros').bairros;
+var bordas = require('./produtos/outros').bordas;
+var bebidas = require('./produtos/bebidas').bebidas;
+var pagamentos = require('./produtos/outros').pagamentos;
+var beirutes = require('./produtos/beirutes').beirutes;
 
 module.exports = function(app){
 
@@ -123,9 +27,14 @@ module.exports = function(app){
     res.json(esfihas);
   };
 
-  // SUCOS
-  controller.getSucos = function(req, res){
-    res.json(sucos);
+  // ESFIHAS DOCES
+  controller.getEsfihasDoces = function(req, res){
+    res.json(esfihasDoces);
+  };
+
+  // BEIRUTES
+  controller.getBeirutes = function(req, res){
+    res.json(beirutes);
   };
 
   // BEBIDAS

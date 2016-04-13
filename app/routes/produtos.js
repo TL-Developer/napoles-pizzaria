@@ -11,10 +11,13 @@ module.exports = function(app){
   app.route('/api/produtos/esfihas')
     .get(controller.getEsfihas);
 
-  app.route('/api/produtos/sucos')
-    .get(controller.getSucos);
+  app.route('/api/produtos/esfihasDoces')
+    .get(controller.getEsfihasDoces);
 
-    app.route('/api/produtos/bebidas')
+  app.route('/api/produtos/beirutes')
+    .get(controller.getBeirutes);
+
+  app.route('/api/produtos/bebidas')
     .get(controller.getBebidas);
 
   app.route('/api/produtos/bairros')
