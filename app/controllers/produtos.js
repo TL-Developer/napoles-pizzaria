@@ -1,50 +1,5 @@
-var pizzas = [
-  {
-    _id: 1,
-    nome: 'calabresa',
-    descricao: 'calabresa e cebola',
-    valorGrande: '20,00',
-    valorBroto: '10,00'
-  },
-  {
-    _id: 2,
-    nome: 'mussarela',
-    descricao: 'mussarela e cebola',
-    valorGrande: '22,00',
-    valorBroto: '10,00'
-  },
-  {
-    _id: 3,
-    nome: 'frango com catupiry',
-    descricao: 'frango, catupiry e mussarela',
-    valorGrande: '38,00',
-    valorBroto: '10,00'
-  }
-];
-
-var pizzasDoces = [
-  {
-    _id: 13,
-    nome: 'Chocolate',
-    descricao: 'chocolate',
-    valorGrande: '20,00',
-    valorBroto: '10,00'
-  },
-  {
-    _id: 14,
-    nome: 'Chocolate com morango',
-    descricao: 'chocolate e morango',
-    valorGrande: '25,00',
-    valorBroto: '10,00'
-  },
-  {
-    _id: 15,
-    nome: 'Romeu e julieta',
-    descricao: 'chocolate',
-    valorGrande: '30,00',
-    valorBroto: '10,00'
-  }
-];
+var pizzas = require('./produtos/pizzas').pizzas;
+var pizzasDoces = require('./produtos/pizzas').pizzasDoces;
 
 var esfihas = [
   {
