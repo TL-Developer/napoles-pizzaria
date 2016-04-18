@@ -1,4 +1,11 @@
 <div class="geral" style="background: black; width: 100%;position: absolute;">
+
+  <div class="loading" style="display:none;background: rgba(255,255,255,0.95);width: 100%;position: absolute; z-index: 50;height: 100%;">
+    <div class="imagem" style="margin: 30% auto;">
+      <img src="img/loading.gif" alt="">
+    </div>
+  </div>
+
   <div class="container">
     <h4 ng-show="mensagem" class="mensagem-feedback alert alert-success" role="alert"><i class="fa fa-check"></i> {{mensagem}}</h4>
   </div>
@@ -741,9 +748,14 @@
               <div class="modal-body">
                 <form name="form" ng-submit="enviarPedido(this)">
                   <div class="form-group">
-                    <select name="formaPagamento" id="formaPagamento" class="form-control" ng-model="formaPagamento" ng-options="pagamento as pagamento.nome for pagamento in pagamentos track by pagamento.nome" required>
+                    <select name="formaPagamento" id="formaPagamento" class="form-control" ng-model="formaPagamento" ng-options="pagamento as pagamento.nome for pagamento in pagamentos track by pagamento.nome" ng-change="formaDePg(formaPagamento)" required>
                     <option value="">-- Selecione o tipo --</option>
                     </select>
+                  </div>
+
+                  <div class="form-group" ng-show="dinheiro">
+                    <label for="troco">Troco para quanto?</label>
+                    <input type="text" ng-model="troco" id="troco" class="form-control input-dinheiro" placeholder="ex: troco para 50,00">
                   </div>
 
                   <div class="row">

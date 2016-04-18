@@ -27,7 +27,7 @@ module.exports = {
   },
   {
     _id: 84,
-    nome: 'calabresa c/ catupiry',
+    nome: 'calabresa c/ requeijão tipo catupiry',
     descricao: '',
     valor: '3,00'
   },
@@ -39,7 +39,7 @@ module.exports = {
   },
   {
     _id: 86,
-    nome: 'camarão c/ catupiry',
+    nome: 'camarão c/ requeijão tipo catupiry',
     descricao: '',
     valor: '4,00'
   },
@@ -57,19 +57,19 @@ module.exports = {
   },
   {
     _id: 89,
-    nome: 'catupiry',
+    nome: 'requeijão tipo catupiry',
     descricao: '',
     valor: '2,50'
   },
   {
     _id: 90,
-    nome: 'catupiry c/ queijo',
+    nome: 'requeijão tipo catupiry c/ queijo',
     descricao: '',
     valor: '3,00'
   },
   {
     _id: 91,
-    nome: 'catupiry c/ milho',
+    nome: 'requeijão tipo catupiry c/ milho',
     descricao: '',
     valor: '3,00'
   },
@@ -81,7 +81,7 @@ module.exports = {
   },
   {
     _id: 93,
-    nome: 'escarola c/ catupiry',
+    nome: 'escarola c/ requeijão tipo catupiry',
     descricao: '',
     valor: '3,00'
   },
@@ -99,7 +99,7 @@ module.exports = {
   },
   {
     _id: 96,
-    nome: 'frango c/ catupiry',
+    nome: 'frango c/ requeijão tipo catupiry',
     descricao: '',
     valor: '3,00'
   },
@@ -117,7 +117,7 @@ module.exports = {
   },
   {
     _id: 99,
-    nome: 'palmito c/ catupiry',
+    nome: 'palmito c/ requeijão tipo catupiry',
     descricao: '',
     valor: '3,00'
   },

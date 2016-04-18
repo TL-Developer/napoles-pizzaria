@@ -4,7 +4,7 @@ module.exports = {
   {
     _id: 1,
     nome: 'alemã',
-    descricao: 'molho de tomate, mussarela, provolone, catupiry, cheddar e azeitonas',
+    descricao: 'molho de tomate, mussarela, provolone, requeijão tipo catupiry, cheddar e azeitonas',
     valorGrande: '37,00',
     valorBroto: '22,00'
   },
@@ -25,14 +25,14 @@ module.exports = {
   {
     _id: 4,
     nome: 'a moda',
-    descricao: 'molho de tomate, frango desfiado, mussarela, catupiry, champignon e azeitonas',
+    descricao: 'molho de tomate, frango desfiado, mussarela, requeijão tipo catupiry, champignon e azeitonas',
     valorGrande: '38,00',
     valorBroto: '23,00'
   },
   {
     _id: 5,
     nome: 'argentina',
-    descricao: 'molho de tomate, frango desfiado, escarola, catupiry e azeitonas',
+    descricao: 'molho de tomate, frango desfiado, escarola, requeijão tipo catupiry e azeitonas',
     valorGrande: '37,00',
     valorBroto: '22,00'
   },
@@ -81,7 +81,7 @@ module.exports = {
   {
     _id: 12,
     nome: 'becel',
-    descricao: 'molho de tomate, lombo canadense, milho verde, mussarela, catupiry e azeitonas',
+    descricao: 'molho de tomate, lombo canadense, milho verde, mussarela, requeijão tipo catupiry e azeitonas',
     valorGrande: '38,00',
     valorBroto: '23,00'
   },
@@ -123,14 +123,14 @@ module.exports = {
   {
     _id: 18,
     nome: 'catupiry',
-    descricao: 'molho de tomate, catupiry e azeitonas',
+    descricao: 'molho de tomate, requeijão tipo catupiry e azeitonas',
     valorGrande: '31,00',
     valorBroto: '19,00'
   },
   {
     _id: 19,
     nome: 'champiry',
-    descricao: 'molho de tomate, champignon, catupiry e azeitonas',
+    descricao: 'molho de tomate, champignon, requeijão tipo catupiry e azeitonas',
     valorGrande: '34,00',
     valorBroto: '20,00'
   },
@@ -144,7 +144,7 @@ module.exports = {
   {
     _id: 21,
     nome: 'cristal',
-    descricao: 'molho de tomate, milho verde, catupiry e azeitonas',
+    descricao: 'molho de tomate, milho verde, requeijão tipo catupiry e azeitonas',
     valorGrande: '34,00',
     valorBroto: '20,00'
   },
@@ -158,21 +158,21 @@ module.exports = {
   {
     _id: 23,
     nome: 'camarão c/ catupiry',
-    descricao: 'molho de tomate, camarão, catupiry e azeitonas',
+    descricao: 'molho de tomate, camarão, requeijão tipo catupiry e azeitonas',
     valorGrande: '41,00',
     valorBroto: '25,00'
   },
   {
     _id: 23,
     nome: 'camarão II',
-    descricao: 'molho de tomate, camarão temperado, catupiry, copa e alho poró',
+    descricao: 'molho de tomate, camarão temperado, requeijão tipo catupiry, copa e alho poró',
     valorGrande: '46,00',
     valorBroto: '28,00'
   },
   {
     _id: 25,
     nome: 'dois quejos',
-    descricao: 'molho de tomate, catupiry, provolone e azeitonas',
+    descricao: 'molho de tomate, requeijão tipo catupiry, provolone e azeitonas',
     valorGrande: '34,00',
     valorBroto: '20,00'
   },
@@ -186,7 +186,7 @@ module.exports = {
   {
     _id: 27,
     nome: 'delivery',
-    descricao: 'molho de tomate, presunto, catupiry, ovo, mussarela e azeitonas',
+    descricao: 'molho de tomate, presunto, requeijão tipo catupiry, ovo, mussarela e azeitonas',
     valorGrande: '39,00',
     valorBroto: '24,00'
   },
@@ -214,7 +214,7 @@ module.exports = {
   {
     _id: 31,
     nome: 'frango nápoles',
-    descricao: 'molho de tomate, frango desfiado, catupiry, milho verde e azeitonas',
+    descricao: 'molho de tomate, frango desfiado, requeijão tipo catupiry, milho verde e azeitonas',
     valorGrande: '37,00',
     valorBroto: '22,00'
   },
@@ -256,7 +256,7 @@ module.exports = {
   {
     _id: 37,
     nome: 'hot dog',
-    descricao: 'molho de tomate, salsicha, cheddar, mussarela, catupiry, milho, batata palha e azeitonas',
+    descricao: 'molho de tomate, salsicha, cheddar, mussarela, requeijão tipo catupiry, milho, batata palha e azeitonas',
     valorGrande: '39,00',
     valorBroto: '24,00'
   },
@@ -291,7 +291,7 @@ module.exports = {
   {
     _id: 42,
     nome: 'lombo',
-    descricao: 'molho de tomate, lombo canadense, catupiry e azeitonas',
+    descricao: 'molho de tomate, lombo canadense, requeijão tipo catupiry e azeitonas',
     valorGrande: '35,00',
     valorBroto: '21,00'
   },
@@ -368,7 +368,7 @@ module.exports = {
   {
     _id: 53,
     nome: 'paulista',
-    descricao: 'molho de tomate, catupiry, champignon, bacon, parmesão ralado e azeitonas',
+    descricao: 'molho de tomate, requeijão tipo catupiry, champignon, bacon, parmesão ralado e azeitonas',
     valorGrande: '37,00',
     valorBroto: '22,00'
   },
@@ -417,7 +417,7 @@ module.exports = {
   {
     _id: 60,
     nome: 'picanha',
-    descricao: 'molho de tomate, picanha, mussarela, catupiry e azeitonas',
+    descricao: 'molho de tomate, picanha, mussarela, requeijão tipo catupiry e azeitonas',
     valorGrande: '41,00',
     valorBroto: '25,00'
   },
@@ -452,14 +452,14 @@ module.exports = {
   {
     _id: 65,
     nome: 'quatro queijos',
-    descricao: 'molho de tomate, mussarela, provolone, catupiry, parmesão ralado e azeitonas',
+    descricao: 'molho de tomate, mussarela, provolone, requeijão tipo catupiry, parmesão ralado e azeitonas',
     valorGrande: '37,00',
     valorBroto: '22,00'
   },
   {
     _id: 66,
     nome: 'salame',
-    descricao: 'molho de tomate, salame, catupiry, tomate, mussarela e azeitonas',
+    descricao: 'molho de tomate, salame, requeijão tipo catupiry, tomate, mussarela e azeitonas',
     valorGrande: '42,00',
     valorBroto: '26,00'
   },
@@ -480,7 +480,7 @@ module.exports = {
   {
     _id: 69,
     nome: 'traviata',
-    descricao: 'molho de tomate, calabresa, catupiry e azeitonas',
+    descricao: 'molho de tomate, calabresa, requeijão tipo catupiry e azeitonas',
     valorGrande: '36,00',
     valorBroto: '22,00'
   },
@@ -501,7 +501,7 @@ module.exports = {
   {
     _id: 72,
     nome: 'três queijos',
-    descricao: 'molho de tomate, mussarela, catupiry, provolone, orégano e azeitonas',
+    descricao: 'molho de tomate, mussarela, requeijão tipo catupiry, provolone, orégano e azeitonas',
     valorGrande: '36,00',
     valorBroto: '22,00'
   },

@@ -346,21 +346,38 @@ angular.module('napoles').controller('SiteController',['$scope','$http','$timeou
 
   // ENVIANDO PEDIDO FINAL
   $scope.enviarPedido = function(form){
+
+    $('.modal').modal('hide');
+    $('.loading').fadeIn();
+
     pedido.formaPg = form.formaPagamento;
+    pedido.troco = form.troco;
 
     // https://napoles-pizzaria.herokuapp.com/api/pedidos?token=eyJhbGciOiJIUzI1NiJ9.cGF1bG8.C2wuETOYPzALi8wHVI7Nk9c23AqFpu8-Q0BUe4SO7Jg
     $http.post('/api/pedidos', pedido).success(function(data, status){
 
-      $('.modal').modal('hide');
+      $('.loading').fadeOut();
 
       $timeout(function(){
        $scope.mensagem = 'Enviado para cozinha!';
         $timeout(function(){
           $scope.mensagem = '';
-          $window.location.reload();
+          window.parent.location.href = 'http://napolespizzaria.com.br/';
         }, 2000);
       }, 1000);
     });
+  };
+
+
+  // FUNÇÃO DE TROCO
+  $scope.formaDePg = function(forma){
+    if(forma.nome == 'Dinheiro' || forma.nome == 'dinheiro'){
+      $scope.dinheiro = 'dinheiro';
+      $('.input-dinheiro').attr('required','required');
+    }else {
+      $scope.dinheiro = '';
+      $('.input-dinheiro').removeAttr('required');
+    }
   };
 
 }]);

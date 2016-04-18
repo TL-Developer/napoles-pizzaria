@@ -30,6 +30,7 @@ module.exports = function(app){
       bairro: pedido.bairro,
       cep: pedido.cep,
       formaPg: pedido.formaPg,
+      troco: pedido.troco,
       observacoes: pedido.observacoes,
       hora: moment().hours() + ':' + moment().minutes(),
       data: moment().locale('pt-br').format('L')
@@ -43,7 +44,6 @@ module.exports = function(app){
       res.status(500).json(erro);
     });
   };
-
 
   controller.deletePedido = function(req, res){
     var _id = req.params.id;

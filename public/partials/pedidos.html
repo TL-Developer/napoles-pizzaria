@@ -1,4 +1,11 @@
 <div id="colunas" class="row">
+
+  <div class="loading" style="display:block;background: rgba(255,255,255,0.95);width: 100%;position: absolute; z-index: 50;height: 100%;">
+    <div class="imagem" style="margin: 35% auto;text-align:center;">
+      <img src="img/loading.gif" alt="">
+    </div>
+  </div>
+
   <h4 class="center teal-text text-lighten-4 teal darken-3">
       Nápoles Pizzaria
   </h4>
@@ -18,9 +25,16 @@
       <div class="divider deep-orange lighten-1"></div>
       <div class="row">
           <div class="col s12 totalPedidos">
-              <ul class="collapsible popout" data-collapsible="accordion">
+              <ul class="collapsible popout lista" data-collapsible="accordion">
                   <!-- INICIO***** ITEM DO PEDIDO -->
                   <li ng-repeat="pedido in pedidos | orderBy:'hora'">
+
+                      <div class="loading" style="display:none;background: rgba(255,255,255,0.95);width: 100%;position: absolute; z-index: 50;height: 100%;">
+                        <div class="imagem" style="margin: 35% auto;text-align:center;">
+                          <img src="img/loading.gif" alt="">
+                        </div>
+                      </div>
+
                       <h6 class="hora">as <b>{{pedido.hora}}hs</b></h6>
                       <a href="#{{pedido._id}}" class="waves-effect waves-light btn full-width secondary-content modal-trigger left" modal>
                           <i class="fa fa-shopping-basket"></i> detalhes
@@ -60,6 +74,7 @@
                                   <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{pedido.referencia}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{pedido.data}} as {{pedido.hora}}hs</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-dollar left"></i>{{pedido.formaPg.nome}}</li>
+                                  <li class="collection-item" ng-show="pedido.troco"><i class="secondary-content fa fa-dollar left"></i>Troco: {{pedido.troco}}</li>
                                   <li class="collection-item">
                                     <blockquote class="title" ng-repeat="itemPedido in pedido.pedido">
                                       <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
@@ -77,33 +92,31 @@
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
                           </div>
                       </div>
-                      <a href="#enviarParaCozinha" class="waves-effect waves-light btn full-width modal-trigger"><i class="fa fa-cutlery"></i> Enviar para cozinha</a>
-                      <a href="#deletarPedido" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> Cancelar pedido</a>
+
+                      <a href="#{{pedido._id}}enviarCozinha" class="waves-effect waves-light btn full-width modal-trigger"><i class="fa fa-cutlery"></i> Enviar para cozinha</a>
+                      <a href="#{{pedido._id}}deletarPedido" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> Cancelar pedido</a>
 
                       <!-- Modal enviar -->
-                      <div id="enviarParaCozinha" class="modal">
+                      <div ng-repeat="pedido in pedidos" id="{{pedido._id}}enviarCozinha" class="modal">
                           <div class="modal-content">
                               <h4 class="center">Enviar para Cozinha?</h4>
                               <p>Tem certeza que deseja enviar este pedido para cozinha?</p>
                           </div>
                           <div class="modal-footer teal">
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
-                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toCozinha(pedido)">Sim</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toCozinha(pedido, $event)">Sim</button>
                           </div>
                       </div>
 
                       <!-- Modal com as informações do cliente -->
-                      <div id="deletarPedido" class="modal">
+                      <div ng-repeat="pedido in pedidos" id="{{pedido._id}}deletarPedido" class="modal">
                           <div class="modal-content">
                               <h4 class="center">Cancelar o pedido?</h4>
-
-
                                 <p>Tem certeza que deseja remover este pedido?</p>
-
                           </div>
                           <div class="modal-footer teal">
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
-                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedido(pedido)">Sim</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedido(pedido, $event)">Sim</button>
                           </div>
                       </div>
 
@@ -132,9 +145,16 @@
       <div class="row">
           <div class="col s12 totalPedidos">
 
-            <ul class="collapsible popout" data-collapsible="accordion">
+            <ul class="collapsible popout lista" data-collapsible="accordion">
                   <!-- INICIO***** ITEM DO PEDIDO -->
                   <li ng-repeat="cozinha in cozinhas | orderBy:'hora'">
+
+                      <div class="loading" style="display:none;background: rgba(255,255,255,0.95);width: 100%;position: absolute; z-index: 50;height: 100%;">
+                        <div class="imagem" style="margin: 35% auto;text-align:center;">
+                          <img src="img/loading.gif" alt="">
+                        </div>
+                      </div>
+
                       <h6 class="text-center hora">as <b>{{cozinha.hora}}hs</b></h6>
                       <a href="#{{cozinha._id}}" class="waves-effect waves-light btn full-width secondary-content modal-trigger left" modal>
                           <i class="fa fa-shopping-basket"></i> detalhes
@@ -165,6 +185,8 @@
                                   <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.endereco}} - {{cozinha.bairro.nome}} - cep: {{cozinha.cep}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{cozinha.referencia}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{cozinha.data}} as {{cozinha.hora}}hs</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-dollar left"></i>{{cozinha.formaPg.nome}}</li>
+                                  <li class="collection-item" ng-show="cozinha.troco"><i class="secondary-content fa fa-dollar left"></i>Troco: {{cozinha.troco}}</li>
                                   <li class="collection-item">
                                     <blockquote class="title" ng-repeat="itemPedido in cozinha.pedido">
                                       <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
@@ -182,33 +204,30 @@
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
                           </div>
                       </div>
-                      <a href="#enviarParaEntrega" class="waves-effect waves-light btn full-width modal-trigger"><i class="fa fa-paper-plane"></i> Enviar para entrega</a>
-                      <a href="#deletarPedidoCozinha" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+                      <a href="#{{cozinha._id}}enviarParaEntrega" class="waves-effect waves-light btn full-width modal-trigger"><i class="fa fa-paper-plane"></i> Enviar para entrega</a>
+                      <a href="#{{cozinha._id}}deletarPedidoCozinha" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
 
                       <!-- Modal enviar -->
-                      <div id="enviarParaEntrega" class="modal">
+                      <div ng-repeat="cozinha in cozinhas" id="{{cozinha._id}}enviarParaEntrega" class="modal">
                           <div class="modal-content">
                               <h4 class="center">Enviar para entrega?</h4>
                               <p>Tem certeza que deseja enviar este pedido para entrega?</p>
                           </div>
                           <div class="modal-footer teal">
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
-                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toEntrega(cozinha)">Sim</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toEntrega(cozinha, $event)">Sim</button>
                           </div>
                       </div>
 
                       <!-- Modal com as informações do cliente -->
-                      <div id="deletarPedidoCozinha" class="modal">
+                      <div ng-repeat="cozinha in cozinhas" id="{{cozinha._id}}deletarPedidoCozinha" class="modal">
                           <div class="modal-content">
                               <h4 class="center">Cancelar o pedido?</h4>
-
-
                                 <p>Tem certeza que deseja remover este pedido?</p>
-
                           </div>
                           <div class="modal-footer teal">
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
-                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedidoCozinha(cozinha)">Sim</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedidoCozinha(cozinha, $event)">Sim</button>
                           </div>
                       </div>
 
@@ -239,9 +258,16 @@
       <div class="row">
           <div class="col s12 totalPedidos">
 
-            <ul class="collapsible popout" data-collapsible="accordion">
+            <ul class="collapsible popout lista" data-collapsible="accordion">
                   <!-- INICIO***** ITEM DO PEDIDO -->
                   <li ng-repeat="entrega in entregas | orderBy:'hora'">
+
+                      <div class="loading" style="display:none;background: rgba(255,255,255,0.95);width: 100%;position: absolute; z-index: 50;height: 100%;">
+                        <div class="imagem" style="margin: 35% auto;text-align:center;">
+                          <img src="img/loading.gif" alt="">
+                        </div>
+                      </div>
+
                       <h6 class="text-center hora">as <b>{{entrega.hora}}hs</b></h6>
                       <a href="#{{entrega._id}}" class="waves-effect waves-light btn full-width secondary-content modal-trigger left" modal>
                           <i class="fa fa-shopping-basket"></i> detalhes
@@ -274,6 +300,8 @@
                                   <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.endereco}} - {{entrega.bairro.nome}} - cep: {{entrega.cep}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-map-marker left"></i>{{entrega.referencia}}</li>
                                   <li class="collection-item"><i class="secondary-content fa fa-calendar left"></i>{{entrega.data}} as {{entrega.hora}}hs</li>
+                                  <li class="collection-item"><i class="secondary-content fa fa-dollar left"></i>{{entrega.formaPg.nome}}</li>
+                                  <li class="collection-item" ng-show="entrega.troco"><i class="secondary-content fa fa-dollar left"></i>Troco: {{entrega.troco}}</li>
                                   <li class="collection-item">
                                     <blockquote class="title" ng-repeat="itemPedido in entrega.pedido">
                                       <span class="badge">{{itemPedido.qtd}}</span> {{itemPedido.nome}} <br />
@@ -291,33 +319,30 @@
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text">OK</button>
                           </div>
                       </div>
-                      <a href="#finalizarPedido" class="waves-effect waves-light btn full-width modal-trigger"><i class="fa fa-check"></i> Finalizar pedido</a>
-                      <a href="#deletarPedidoEntrega" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
+                      <a href="#{{entrega._id}}finalizarPedido" class="waves-effect waves-light btn full-width modal-trigger"><i class="fa fa-check"></i> Finalizar pedido</a>
+                      <a href="#{{entrega._id}}deletarPedidoEntrega" class="waves-effect waves-light btn full-width red modal-trigger"><i class="fa fa-times-circle"></i> cancelar pedido</a>
 
                       <!-- Modal enviar -->
-                      <div id="finalizarPedido" class="modal">
+                      <div ng-repeat="entrega in entregas" id="{{entrega._id}}finalizarPedido" class="modal">
                           <div class="modal-content">
                               <h4 class="center">Finalizar o pedido?</h4>
                               <p>Tem certeza que deseja finalizar este pedido?</p>
                           </div>
                           <div class="modal-footer teal">
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
-                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toPedidoSuccess(entrega)">Sim</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="toPedidoSuccess(entrega, $event)">Sim</button>
                           </div>
                       </div>
 
                       <!-- Modal com as informações do cliente -->
-                      <div id="deletarPedidoEntrega" class="modal">
+                      <div ng-repeat="entrega in entregas" id="{{entrega._id}}deletarPedidoEntrega" class="modal">
                           <div class="modal-content">
                               <h4 class="center">Cancelar o pedido?</h4>
-
-
                                 <p>Tem certeza que deseja remover este pedido?</p>
-
                           </div>
                           <div class="modal-footer teal">
                               <button class="modal-action modal-close waves-effect waves-green btn-flat white-text left">Não</button>
-                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedidoEntrega(entrega)">Sim</button>
+                              <button class="modal-action modal-close waves-effect waves-light btn-flat white-text red" ng-click="cancelPedidoEntrega(entrega, $event)">Sim</button>
                           </div>
                       </div>
 

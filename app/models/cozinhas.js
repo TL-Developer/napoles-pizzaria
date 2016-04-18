@@ -7,6 +7,7 @@ module.exports = function(){
       nome: {type: String},
       valor: {type: String}
     },
+    troco: {type: String},
     celular: {type: String},
     cep: {type: String},
     cidade: {type: String},
